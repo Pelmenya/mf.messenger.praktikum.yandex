@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="Чат, мессенджер, переписка, передача файлов"/>
+    <meta name="description" content="Сервис для общения"/>
+    <meta name="author" content="Dmitry Lyapin"/>
+    <link rel="stylesheet" href="./pages/index.css">
+    <link rel="shortcut icon" href="./images/favicon.png'" type="images/png">
+    <link rel="icon" href="./images/favicon.png" type="images/png">
+    <title>Мессенджер ~ Главная страница</title>
+  </head>
+<body>
+  <main class="body">
+      <div class="form-window">
+        <div class="form-window__content form-window__content_login">
+          <h1 class="form-window__title">Регистрация</h1>
+          <form class="form" name="signup">
+            <label class="form__label" for="email">Почта</label>
+            <input class="input" name="email" type="email" placeholder="Почта">
+            <span class="form__error">Неверная почта</span>
+            <label class="form__label" for="login">Логин</label>
+            <input class="input" name="login" type="text" placeholder="Логин">
+            <span class="form__error">Неверный логин</span>
+            <label class="form__label" for="first_name">Имя</label>
+            <input class="input" name="first_name" type="text" placeholder="Имя">
+            <span class="form__error">Неверное имя</span>
+            <label class="form__label" for="second_name">Фамилия</label>
+            <input class="input" name="second_name" type="text" placeholder="Фамилия">
+            <span class="form__error">Неверное фамилие</span>
+            <label class="form__label" for="phone">Телефон</label>
+            <input class="input" name="phone" type="tel" placeholder="Телефон">
+            <span class="form__error">Неверный телефон</span>
+            <label class="form__label" for="password">Пароль</label>
+            <input class="input" name="password" type="password" placeholder="Пароль">
+            <span class="form__error">Неверный пароль</span>
+            <label class="form__label" for="password">Пароль (ещё раз)</label>
+            <input class="input" name="password" type="password" placeholder="Пароль (ещё раз)">
+            <span class="form__error">Неверный пароль</span>
+            <button class="button button_sign-up">Зарегистрироваться</button>
+            <button class="form__button-link">Войти</button>
+          </form>
+        </div>
+      </div>
+    <template>
+      <h1 class="form-window__title">Вход</h1>
+      <form class="form" name="signin">
+        <label class="form__label" for="login">Логин</label>
+        <input class="input" name="login" type="text" placeholder="Логин">
+        <span class="form__error">Неверный логин</span>
+        <label class="form__label" for="password">Пароль</label>
+        <input class="input" name="login" type="password" placeholder="Пароль">
+        <span class="form__error">Неверный пароль</span>
+        <button class="button button_sign-in">Авторизоваться</button>
+        <button class="form__button-link">Нет аккаунта?</button>
+      </form>
+    </template>
+    <template>
+      <form name="signup">
+
+      </form>
+    </template>
+  </main>
+  <script src="./js/index.js"></script>
+</body>
+</html>
