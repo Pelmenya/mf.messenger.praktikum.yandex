@@ -1,0 +1,10 @@
+@import url(./__content/form-window__content.css);
+@import url(./__content/_login/form-window__content_login.css);
+@import url(./__title/form-window__title.css);
+
+
+.form-window {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
