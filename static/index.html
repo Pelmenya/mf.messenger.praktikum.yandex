@@ -15,54 +15,62 @@
 <body>
   <main class="body">
       <div class="form-window">
-        <div class="form-window__content form-window__content_login">
-          <h1 class="form-window__title">Регистрация</h1>
-          <form class="form" name="signup">
-            <label class="form__label" for="email">Почта</label>
-            <input class="input" name="email" type="email" placeholder="Почта">
-            <span class="form__error">Неверная почта</span>
-            <label class="form__label" for="login">Логин</label>
-            <input class="input" name="login" type="text" placeholder="Логин">
-            <span class="form__error">Неверный логин</span>
-            <label class="form__label" for="first_name">Имя</label>
-            <input class="input" name="first_name" type="text" placeholder="Имя">
-            <span class="form__error">Неверное имя</span>
-            <label class="form__label" for="second_name">Фамилия</label>
-            <input class="input" name="second_name" type="text" placeholder="Фамилия">
-            <span class="form__error">Неверное фамилие</span>
-            <label class="form__label" for="phone">Телефон</label>
-            <input class="input" name="phone" type="tel" placeholder="Телефон">
-            <span class="form__error">Неверный телефон</span>
-            <label class="form__label" for="password">Пароль</label>
-            <input class="input" name="password" type="password" placeholder="Пароль">
-            <span class="form__error">Неверный пароль</span>
-            <label class="form__label" for="password">Пароль (ещё раз)</label>
-            <input class="input" name="password" type="password" placeholder="Пароль (ещё раз)">
-            <span class="form__error">Неверный пароль</span>
-            <button class="button button_sign-up">Зарегистрироваться</button>
-            <button class="form__button-link">Войти</button>
-          </form>
-        </div>
       </div>
-    <template>
-      <h1 class="form-window__title">Вход</h1>
-      <form class="form" name="signin">
-        <label class="form__label" for="login">Логин</label>
-        <input class="input" name="login" type="text" placeholder="Логин">
-        <span class="form__error">Неверный логин</span>
-        <label class="form__label" for="password">Пароль</label>
-        <input class="input" name="login" type="password" placeholder="Пароль">
-        <span class="form__error">Неверный пароль</span>
-        <button class="button button_sign-in">Авторизоваться</button>
-        <button class="form__button-link">Нет аккаунта?</button>
-      </form>
+    <template class="form-window__signin">
+      <div class="form-window__content form-window__content_login">
+        <h1 class="form-window__title">Вход</h1>
+        <form class="form form__signin" name="signin">
+          <div class="form__wrap">
+            <label class="form__label" for="login">Логин</label>
+            <input class="input" name="login" type="text" placeholder="Логин" required minlength="2" maxlength="30">
+            <span class="form__error form__error_login">Неверный логин</span>
+            <label class="form__label" for="password">Пароль</label>
+            <input class="input" name="password" type="password" placeholder="Пароль" required  minlength="6">
+            <span class="form__error form__error_password">Неверный пароль</span>
+          </div>
+          <div class="form__wrap">
+            <button class="button">Авторизоваться</button>
+            <button class="form__button-link">Нет аккаунта?</button>
+          </div>
+        </form>
+      </div>
     </template>
-    <template>
-      <form name="signup">
-
-      </form>
+    <template class="form-window__signup">
+      <div class="form-window__content form-window__content_login">
+        <h1 class="form-window__title">Регистрация</h1>
+        <form class="form form__signup" name="signup">
+          <div class="form__wrap">
+            <label class="form__label" for="email">Почта</label>
+            <input class="input" name="email" type="email" placeholder="Почта" pattern="^[A-Za-z]((\.|-)?[A-Za-z0-9]+)+@[A-Za-z0-9](-?[A-Za-z0-9]+)+(\.[A-Za-z]{2,})+$">
+            <span class="form__error form__error_email">Неверная почта</span>
+            <label class="form__label" for="login">Логин</label>
+            <input class="input" name="login" type="text" placeholder="Логин" required minlength="2" maxlength="30">
+            <span class="form__error form__error_login">Неверный логин</span>
+            <label class="form__label" for="first_name">Имя</label>
+            <input class="input" name="first_name" type="text" placeholder="Имя" required minlength="2" maxlength="30">
+            <span class="form__error form__error_first_name">Неверное имя</span>
+            <label class="form__label" for="second_name">Фамилия</label>
+            <input class="input" name="second_name" type="text" placeholder="Фамилия" required minlength="2" maxlength="30">
+            <span class="form__error form__error_second_name">Неверное фамилие</span>
+            <label class="form__label" for="phone">Телефон</label>
+            <input class="input" name="phone" type="tel" placeholder="Телефон"  pattern="^(\+7|8)\s?(\(\d{3}\)|\d{3})\s?[\-]?\d{3}[\-]?\d{2}[\-]?\d{2}$">
+            <span class="form__error form__error_phone">Неверный телефон</span>
+            <label class="form__label" for="password">Пароль</label>
+            <input class="input" name="password" type="password" placeholder="Пароль" required  minlength="6">
+            <span class="form__error form__error_password">Неверный пароль</span>
+          </div>
+          <div class="form__wrap">
+            <button class="button">Зарегистрироваться</button>
+            <button type="button" class="form__button-link">Войти</button>
+        </div>
+        </form>
+      </div>
     </template>
   </main>
+  <script src="./constants/error.js"></script>
+  <script src="./components/Element.js"></script>
+  <script src="./components/ElementsListeners.js"></script>
+  <script src="./blocks/form/Form.js"></script>
   <script src="./js/index.js"></script>
 </body>
 </html>
