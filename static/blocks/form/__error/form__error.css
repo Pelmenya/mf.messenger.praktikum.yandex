@@ -5,10 +5,11 @@
   font-size: 8px;
   line-height: 8px;
   color: #ff2f2f;
-  margin-bottom: 16px;
   margin-top: 8px;
+  display: block;
 }
 
 .form__error:last-of-type{
-  margin-bottom: 0;
+  display: block;
+  margin-bottom: 50px;
 }

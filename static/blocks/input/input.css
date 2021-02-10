@@ -19,3 +19,7 @@
 .input::placeholder {
   color: #999999;
 }
+
+.input:invalid{
+  color:#ff2f2f;
+}
