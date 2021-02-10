@@ -1,0 +1,25 @@
+{
+  "name": "mf.messenger.praktikum.yandex",
+  "version": "1.0.0",
+  "description": "Web application Chat",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pelmenya/mf.messenger.praktikum.yandex.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pelmenya/mf.messenger.praktikum.yandex/issues"
+  },
+  "homepage": "https://github.com/Pelmenya/mf.messenger.praktikum.yandex#readme",
+  "devDependencies": {
+    "express": "4.17.1",
+    "bem-tools-core": "0.0.3",
+    "bem-tools-create": "2.3.0"
+  }
+}
