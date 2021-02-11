@@ -1,5 +1,5 @@
 function main() {
-  localStorage.setItem("chatUser", "");
+  localStorage.setItem("chatUser", "login");
 
   const formWindow = new Element({
     element: document.querySelector(".form-window"),

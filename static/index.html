@@ -14,8 +14,40 @@
   </head>
 <body>
   <main class="body">
-      <div class="form-window">
-      </div>
+    <div class="body__wrap">
+      <aside class="sidebar chats">
+        <header class="chats__header">
+          <nav class="chats__nav">
+            <a class="chats__link" href="my-account.html">
+              <span class="chats__link-text">Профиль&nbsp;&nbsp;</span>
+              <span class="chats__icon-angle-right"></span>
+            </a>
+          </nav>
+          <form class="chats__form">
+            <input class="input chats__search" type="text">
+            <span class="chats__search-placeholder">&nbsp;&nbsp;Поиск</span>
+          </form> 
+          
+        </header>
+        <section class="chats-list">
+          <h1  class="chats-list__title" hidden>Список чатов</h1>
+          <div class="chat-list__container">
+
+          </div>
+        </section>
+      </aside>
+      <aside class="sidebar chat">
+        <header>
+
+        </header>    
+        <section>
+          <h1 hidden>Чат</h1>
+
+        </section>
+      </aside>
+    </div>
+    <div class="form-window">
+    </div>
     <template class="form-window__signin">
       <div class="form-window__content form-window__content_login">
         <h1 class="form-window__title">Вход</h1>
