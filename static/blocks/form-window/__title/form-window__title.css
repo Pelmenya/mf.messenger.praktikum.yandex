@@ -8,3 +8,10 @@
   margin-top: 0;
   margin-bottom: 40px;
 }
+
+.form-window__title::after{
+  color: black;
+  font-family: "Font Awesome 5 Pro";
+  font-weight: 400;
+  content: '\f055';
+}
