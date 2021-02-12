@@ -12,5 +12,7 @@
   width: 25%;
   padding-top: 20px;
   background-color:  #fbfbfb;;
-  border-right: 1px solid #eaeaea; ;
+  border-right: 1px solid #eaeaea; 
+  height: 100vh;
+  overflow: hidden;
 }

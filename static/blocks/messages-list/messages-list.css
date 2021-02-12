@@ -1,0 +1,11 @@
+@import url(./__wrap-row/messages-list__wrap-row.css);
+@import url(./__info-start/messages-list__info-start.css);
+
+.messages-list {
+  width: 100%;
+  height: 100vh;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
