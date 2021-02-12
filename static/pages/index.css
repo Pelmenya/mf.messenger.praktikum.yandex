@@ -7,4 +7,7 @@
 @import url(../blocks/chats/chats.css);
 @import url(../blocks/chats-list/chats-list.css);
 @import url(../blocks/card/card.css);
+@import url(../blocks/chat/chat.css);
+@import url(../blocks/messages-list/messages-list.css);
+@import url(../blocks/menu/menu.css);
 

@@ -1,8 +1,9 @@
 @import url(./__content/form-window__content.css);
 @import url(./__content/_login/form-window__content_login.css);
+@import url(./__content/_menu/form-window__content_menu.css);
 @import url(./__title/form-window__title.css);
 @import url(./_is-opened/form-window_is-opened.css);
-
+@import url(./__absolute/form-window__absolute.css);
 
 .form-window {
   height: 100%;
@@ -10,3 +11,4 @@
   align-items: center;
   display: none;
 }
+
