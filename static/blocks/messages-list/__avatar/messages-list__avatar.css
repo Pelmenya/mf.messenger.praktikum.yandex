@@ -1,6 +1,6 @@
-.card__pic {
-  height: 47px;
-  width: 47px;
+.messages-list__avatar {
+  height: 34px;
+  width: 34px;
   background-color: #efefef;
   background-repeat: no-repeat;
   background-size: contain;

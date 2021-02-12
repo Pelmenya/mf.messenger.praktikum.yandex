@@ -1,8 +1,7 @@
-@import url(./__info/chat__info.css);
-@import url(./__info/chat__info.css);
-
 .chat {
   width: 75%;
+  box-sizing: border-box;
   height: 100vh;
+  position: relative;
   overflow: hidden;
 }
