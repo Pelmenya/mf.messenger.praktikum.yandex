@@ -1,50 +1,59 @@
 function main() {
-  localStorage.setItem("chatUser", "login");
+  localStorage.setItem("chatUser", "");
 
-  const formWindow = new Element({
-    element: document.querySelector(".form-window"),
-    classOpened: "form-window_is-opened",
+  const body = new Element({
+    element: document.querySelector(".body"),
+    classOpened: "body_is-opened",
   });
 
   const formSignIn = document.querySelector(".form-window__signin");
   const formSignUp = document.querySelector(".form-window__signup");
+  const chatTemplate = document.querySelector(".chat-template");
+
+  function openChat(item) {
+    console.log(item);
+    body.clear();
+    body.appendChild(chatTemplate.content.cloneNode(true));
+    body.open();
+  }
 
   function openFormSignUp() {
-    formWindow.clear();
-    formWindow.appendChild(formSignUp.content.cloneNode(true));
+    body.clear();
+    body.appendChild(formSignUp.content.cloneNode(true));
     const formObjectSignUp = new Form(
       [
         {
-          element: formWindow.querySelector(".form__button-link"),
+          element: body.querySelector(".form__button-link"),
           event: "click",
           callBack: openFormSignIn,
         },
       ],
-      formWindow,
-      console.log
+      body,
+      openChat,
     );
     formObjectSignUp.create();
-    formWindow.open();
+    body.open();
   }
 
   function openFormSignIn() {
-    formWindow.clear();
-    formWindow.appendChild(formSignIn.content.cloneNode(true));
+    body.clear();
+    body.appendChild(formSignIn.content.cloneNode(true));
     const formObjectSignIn = new Form(
       [
         {
-          element: formWindow.querySelector(".form__button-link"),
+          element: body.querySelector(".form__button-link"),
           event: "click",
           callBack: openFormSignUp,
         },
       ],
-      formWindow,
-      console.log
+      body,
+      openChat,
     );
     formObjectSignIn.create();
-    formWindow.open();
+    body.open();
   }
-   if (localStorage.getItem("chatUser") === "") openFormSignIn();
+
+  if (localStorage.getItem("chatUser") === "") openFormSignIn();
 
 }
 

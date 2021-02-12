@@ -110,10 +110,7 @@ class Form extends ElementsListeners {
   }
 
   submitForm(event) {
-    //this._disabledForm();
     this.handlerSubmit(this._getInfo());
-    this.container.clear();
-    this.container.close();
     event.preventDefault();
   }
 }
