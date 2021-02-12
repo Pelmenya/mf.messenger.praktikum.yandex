@@ -12,6 +12,13 @@
 @import url(./__name/messages-list__name.css);
 @import url(./__settings/messages-list__settings.css);
 @import url(./__settings-icon/messages-list__settings-icon.css);
+@import url(./__form-send/messages-list__form-send.css);
+@import url(./__send-input/messages-list__send-input.css);
+@import url(./__send/messages-list__send.css);
+@import url(./__add-resource/messages-list__add-resource.css);
+@import url(./__button/messages-list__button.css);
+
+
 
 .messages-list {
   width: 100%;
