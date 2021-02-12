@@ -3,3 +3,8 @@
 @import url(../blocks/form/form.css);
 @import url(../blocks/button/button.css);
 @import url(../blocks/input/input.css);
+@import url(../blocks/sidebar/sidebar.css);
+@import url(../blocks/chats/chats.css);
+@import url(../blocks/chats-list/chats-list.css);
+@import url(../blocks/card/card.css);
+
