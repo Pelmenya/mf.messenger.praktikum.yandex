@@ -10,9 +10,5 @@
 .chats {
   flex-direction: column;
   width: 25%;
-  background-color:  #fbfbfb;
   border-right: 1px solid #eaeaea; 
-  height: 100vh;
-  box-sizing: border-box;
-  overflow: hidden;
 }
