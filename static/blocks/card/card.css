@@ -7,9 +7,9 @@
 @import url(./__wrap-col/card__wrap-col.css);
 @import url(./__wrap-row/card__wrap-row.css);
 @import url(./__person/card__person.css);
-@import url(./_active/card_active.css);
 @import url(./__number-message-text/card__number-message-text.css);
 @import url(./__info/card__info.css);
+@import url(./__active/card__active.css);
 
 .card {
   width: 100%;

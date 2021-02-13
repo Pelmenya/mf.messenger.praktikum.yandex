@@ -1,5 +1,5 @@
 function main() {
-  localStorage.setItem("chatUser", "");
+  localStorage.setItem("chatUser", "sdfsdf");
 
   const body = new Element({
     element: document.querySelector(".body"),
@@ -53,7 +53,7 @@ function main() {
     body.open();
   }
 
-  if (localStorage.getItem("chatUser") === "") openFormSignIn();
+  if (localStorage.getItem("chatUser") === "") openFormSignIn(); else openChat();
 
 }
 
