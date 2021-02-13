@@ -1,0 +1,7 @@
+.account__data {
+  max-width: 510px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
