@@ -1,5 +1,6 @@
 @import url(./__error/form__error.css);
 @import url(./__label/form__label.css);
+@import url(./__label/_hidden/form__label_hidden.css);
 @import url(./__link/form__link.css);
 @import url(./__text/form__text.css);
 @import url(./__button-link/form__button-link.css);

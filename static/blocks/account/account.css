@@ -4,12 +4,14 @@
 @import url(./__edit-btn/account__edit-btn.css);
 @import url(./__edit-btn/_log-out/account__edit-btn_log-out.css);
 @import url(./__form/account__form.css);
+@import url(./__form/_password/account__form_password.css);
 @import url(./__input/account__input.css);
 @import url(./__label/account__label.css);
 @import url(./__wrap-row/account__wrap-row.css);
 @import url(./__name/account__name.css);
 @import url(./__spliter/account__spliter.css);
 @import url(./__menu/account__menu.css);
+@import url(./__save-password/account__save-password.css);
 
 
 .account {

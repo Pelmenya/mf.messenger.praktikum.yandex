@@ -16,6 +16,7 @@
   <main class="body body_grey">
     <template class="chat-template">
       <div class="body__container body__container_is-opened">
+        <h1 hidden>Чат для общения</h1>
         <aside class="sidebar chats">
           <header class="chats__header">
             <nav class="chats__nav">
@@ -30,7 +31,7 @@
             </form> 
           </header>
           <section class="chats-list">
-            <h1  class="chats-list__title" hidden>Список чатов</h1>
+            <h2  class="chats-list__title" hidden>Список чатов</h2>
             <div class="chats-list__container">
               <hr class="chats-list__spliter">
               <div class="card">
@@ -358,7 +359,6 @@
             </header>
             <hr class="messages-list__spliter">
             <h2 class="messages-list__title" hidden>Чат</h2>
-            
             <div class="messages-list__container">
               <time class="messages-list__text messages-list__text_info messages-list__text_time" datetime="2021-02-12">12 февраля</time> 
               <div class="messages-list__wrap-row messages-list__align-start">
@@ -425,11 +425,11 @@
           <h1 class="form-window__title">Вход</h1>
           <form class="form form__signin" name="signin">
             <div class="form__wrap">
-              <label class="form__label" for="login">Логин</label>
-              <input class="input" name="login" type="text" placeholder="Логин" required minlength="2" maxlength="30">
+              <label class="form__label form__label_hidden" for="login-signin">Логин</label>
+              <input class="input" name="login" id="login-signin" type="text" placeholder="Логин" required minlength="2" maxlength="30">
               <span class="form__error form__error_login">Неверный логин</span>
-              <label class="form__label" for="password">Пароль</label>
-              <input class="input" name="password" type="password" placeholder="Пароль" required  minlength="6">
+              <label class="form__label form__label_hidden" for="password-signin">Пароль</label>
+              <input class="input" name="password" id="password-signin" type="password" placeholder="Пароль" required  minlength="6">
               <span class="form__error form__error_password">Неверный пароль</span>
             </div>
             <div class="form__wrap">
@@ -446,23 +446,23 @@
           <h1 class="form-window__title">Регистрация</h1>
           <form class="form form__signup" name="signup">
             <div class="form__wrap">
-              <label class="form__label" for="email">Почта</label>
-              <input class="input" name="email" type="email" placeholder="Почта" pattern="^[A-Za-z]((\.|-)?[A-Za-z0-9]+)+@[A-Za-z0-9](-?[A-Za-z0-9]+)+(\.[A-Za-z]{2,})+$">
+              <label class="form__label form__label_hidden" for="email-signup">Почта</label>
+              <input class="input" name="email" id="email-signup" type="email" placeholder="Почта" pattern="^[A-Za-z]((\.|-)?[A-Za-z0-9]+)+@[A-Za-z0-9](-?[A-Za-z0-9]+)+(\.[A-Za-z]{2,})+$">
               <span class="form__error form__error_email">Неверная почта</span>
-              <label class="form__label" for="login">Логин</label>
-              <input class="input" name="login" type="text" placeholder="Логин" required minlength="2" maxlength="30">
+              <label class="form__label form__label_hidden" for="login-signup">Логин</label>
+              <input class="input" name="login" id="login-signup" type="text" placeholder="Логин" required minlength="2" maxlength="30">
               <span class="form__error form__error_login">Неверный логин</span>
-              <label class="form__label" for="first_name">Имя</label>
-              <input class="input" name="first_name" type="text" placeholder="Имя" required minlength="2" maxlength="30">
+              <label class="form__label form__label_hidden" for="first_name-signup">Имя</label>
+              <input class="input" name="first_name" id="first_name-signup" type="text" placeholder="Имя" required minlength="2" maxlength="30">
               <span class="form__error form__error_first_name">Неверное имя</span>
-              <label class="form__label" for="second_name">Фамилия</label>
-              <input class="input" name="second_name" type="text" placeholder="Фамилия" required minlength="2" maxlength="30">
+              <label class="form__label form__label_hidden" for="second_name-signup">Фамилия</label>
+              <input class="input" name="second_name" id="second_name-signup" type="text" placeholder="Фамилия" required minlength="2" maxlength="30">
               <span class="form__error form__error_second_name">Неверное фамилие</span>
-              <label class="form__label" for="phone">Телефон</label>
-              <input class="input" name="phone" type="tel" placeholder="Телефон"  pattern="^(\+7|8)\s?(\(\d{3}\)|\d{3})\s?[\-]?\d{3}[\-]?\d{2}[\-]?\d{2}$">
+              <label class="form__label form__label_hidden" for="phone-signup">Телефон</label>
+              <input class="input" name="phone" id="phone-signup" type="tel" placeholder="Телефон"  pattern="^(\+7|8)\s?(\(\d{3}\)|\d{3})\s?[\-]?\d{3}[\-]?\d{2}[\-]?\d{2}$">
               <span class="form__error form__error_phone">Неверный телефон</span>
-              <label class="form__label" for="password">Пароль</label>
-              <input class="input" name="password" type="password" placeholder="Пароль" required  minlength="6">
+              <label class="form__label form__label_hidden" for="password-signup">Пароль</label>
+              <input class="input" name="password" id="password-signup" type="password" placeholder="Пароль" required  minlength="6">
               <span class="form__error form__error_password">Неверный пароль</span>
             </div>
             <div class="form__wrap">

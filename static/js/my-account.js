@@ -1,6 +1,4 @@
 function main() {
-  localStorage.setItem("chatUser", "");
-
   const body = new Element({
     element: document.querySelector(".body"),
     classOpened: "body_is-opened",
@@ -10,8 +8,7 @@ function main() {
   const formSignUp = document.querySelector(".form-window__signup");
   const chatTemplate = document.querySelector(".chat-template");
 
-  function openChat(item) {
-    console.log(item);
+  function openMyAccount() {
     body.clear();
     body.appendChild(chatTemplate.content.cloneNode(true));
     body.open();

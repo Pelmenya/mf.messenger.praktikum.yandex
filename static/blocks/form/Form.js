@@ -37,6 +37,10 @@ class Form extends ElementsListeners {
     if (event.target.type === "email") errorStr = this.ERROR_EMAIL;
     if (event.target.type === "password") errorStr = this.ERROR_PASSWORD;
     if (event.target.type === "tel") errorStr = this.ERROR_TEL;
+    if (event.target.value !== "" && this.labels)
+      event.target.previousElementSibling.style.visibility = "visible";
+    else event.target.previousElementSibling.style.visibility = "hidden";
+
     this._validInput(event.target, error, errorStr);
   }
 
@@ -78,6 +82,12 @@ class Form extends ElementsListeners {
     });
   }
 
+  _labelsControl() {
+    return Object.keys(this.inputs).every((index) =>
+      this.inputs[index].previousElementSibling.classList.contains("form__label_hidden")
+    );
+  }
+
   constructor(props, container, handlerSubmit = null) {
     super(props);
 
@@ -107,6 +117,7 @@ class Form extends ElementsListeners {
     this.addListeners();
     this._formReset();
     this._initalInputsListeners();
+    this.labels = this._labelsControl();
   }
 
   submitForm(event) {
