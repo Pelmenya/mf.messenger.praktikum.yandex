@@ -53,7 +53,6 @@ function main() {
     formObjectSignIn.create();
     body.open();
   }
-  console.log(localStorage.getItem(profileOwner))
   if (localStorage.getItem(profileOwner) === null) openFormSignIn();
   else openChat(getProfile(profileOwner));
 }

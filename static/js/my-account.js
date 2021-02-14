@@ -60,7 +60,7 @@ function main() {
   }
 
   function setLogOut() {
-    removeProfile(profileOwner);
+    localStorage.clear();
     window.location.href = "index.html";
   }
 
