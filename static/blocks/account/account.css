@@ -9,12 +9,13 @@
 @import url(./__input/account__input.css);
 @import url(./__label/account__label.css);
 @import url(./__wrap-row/account__wrap-row.css);
+@import url(./__wrap-row/_avatar/account__wrap-row_avatar.css);
 @import url(./__name/account__name.css);
 @import url(./__spliter/account__spliter.css);
 @import url(./__menu/account__menu.css);
 @import url(./__save-password/account__save-password.css);
 @import url(./__save-data/account__save-data.css);
-
+@import url(./__avatar-text/account__avatar-text.css);
 
 
 .account {
