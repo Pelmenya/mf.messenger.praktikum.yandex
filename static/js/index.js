@@ -1,5 +1,5 @@
 function main() {
-  localStorage.setItem("chatUser", "sdfsdf");
+  localStorage.setItem("chatUser", "");
 
   const body = new Element({
     element: document.querySelector(".body"),
@@ -11,7 +11,10 @@ function main() {
   const chatTemplate = document.querySelector(".chat-template");
 
   function openChat(item) {
-    console.log(item);
+    removeProfile(profileOwner);
+    setProfile(profileOwner, item);
+    console.log(getProfile(profileOwner));
+
     body.clear();
     body.appendChild(chatTemplate.content.cloneNode(true));
     body.open();
@@ -29,7 +32,7 @@ function main() {
         },
       ],
       body,
-      openChat,
+      openChat
     );
     formObjectSignUp.create();
     body.open();
@@ -47,14 +50,13 @@ function main() {
         },
       ],
       body,
-      openChat,
+      openChat
     );
     formObjectSignIn.create();
     body.open();
   }
-
+  
   if (localStorage.getItem("chatUser") === "") openFormSignIn(); else openChat();
 
 }
-
 main();

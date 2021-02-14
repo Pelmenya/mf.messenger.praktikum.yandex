@@ -1,6 +1,9 @@
+@import url(./_is-opened/button_is-opened.css);
+
 .button {
   font-family: Inter, sans-serif;
   width: 100%;
+  max-width: 280px;
   background-color: #3369f3;
   border-radius: 8px;
   padding-top: 12px;
