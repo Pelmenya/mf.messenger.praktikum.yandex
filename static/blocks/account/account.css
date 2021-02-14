@@ -1,6 +1,7 @@
 @import url(./__data/account__data.css);
+@import url(./__data/_is-opened/account__data_is-opened.css);
 @import url(./__avatar/account__avatar.css);
-@import url(./__button/account__button.css);
+@import url(./__avatar-overlay/account__avatar-overlay.css);
 @import url(./__edit-btn/account__edit-btn.css);
 @import url(./__edit-btn/_log-out/account__edit-btn_log-out.css);
 @import url(./__form/account__form.css);
@@ -12,6 +13,8 @@
 @import url(./__spliter/account__spliter.css);
 @import url(./__menu/account__menu.css);
 @import url(./__save-password/account__save-password.css);
+@import url(./__save-data/account__save-data.css);
+
 
 
 .account {

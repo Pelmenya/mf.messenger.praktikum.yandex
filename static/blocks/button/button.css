@@ -1,3 +1,5 @@
+@import url(./_is-opened/button_is-opened.css);
+
 .button {
   font-family: Inter, sans-serif;
   width: 100%;

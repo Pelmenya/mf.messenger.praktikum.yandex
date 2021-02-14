@@ -7,6 +7,12 @@
 @import url(./__signin/form__signin.css);
 @import url(./__signup/form__signup.css);
 @import url(./__wrap/form__wrap.css);
+@import url(./__wrap/_data/form__wrap_data.css);
+@import url(./__load-file/form__load-file.css);
+@import url(./__input-file/form__input-file.css);
+@import url(./__select-file/form__select-file.css);
+@import url(./__select-file/_ok/form__select-file_ok.css);
+
 
 .form {
   width: 100%;
