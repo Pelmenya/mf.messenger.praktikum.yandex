@@ -5,6 +5,9 @@
   border-radius: 50%;
   background-color: #000;
   opacity: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .account__avatar-overlay:hover {
