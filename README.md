@@ -19,7 +19,7 @@
 
 Сохраните проект у себя на компьютере:
 ```
-git clone `https://github.com/Pelmenya/news-explorer-frontend.git`
+git clone `https://github.com/Pelmenya/mf.messenger.praktikum.yandex.git`
 ```
 В корне проекта через консоль/терминал запустите команду:
 ```
