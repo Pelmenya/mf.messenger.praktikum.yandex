@@ -21,7 +21,7 @@ function main() {
   Object.keys(inputs).forEach((item) => {
     inputs[item].disabled = true;
     if (inputs[item].name in profileObj) inputs[item].value = profileObj[inputs[item].name];
-    if (inputs[item].name === "nickname") inputs[item].value = profileObj["login"];
+    if (inputs[item].name === "display_name") inputs[item].value = profileObj["login"];
   });
 
   accountData.open();

@@ -1,4 +1,6 @@
 function main() {
+  localStorage.setItem("chatUser", "");
+
   const body = new Element({
     element: document.querySelector(".body"),
     classOpened: "body_is-opened",
@@ -53,11 +55,8 @@ function main() {
     formObjectSignIn.create();
     body.open();
   }
+  
+  if (localStorage.getItem("chatUser") === "") openFormSignIn(); else openChat();
 
-  try {
-    openChat(getProfile(profileOwner))
-  } catch (err) {
-    openFormSignIn();
-  }
 }
 main();
