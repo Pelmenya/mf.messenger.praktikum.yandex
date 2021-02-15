@@ -1,4 +1,5 @@
 @import url(./__error/form__error.css);
+@import url(./__error/_popup/form__error_popup.css);
 @import url(./__label/form__label.css);
 @import url(./__label/_hidden/form__label_hidden.css);
 @import url(./__link/form__link.css);
@@ -12,7 +13,8 @@
 @import url(./__input-file/form__input-file.css);
 @import url(./__select-file/form__select-file.css);
 @import url(./__select-file/_ok/form__select-file_ok.css);
-
+@import url(./__user/form__user.css);
+@import url(./__btn-user/form__btn-user.css);
 
 .form {
   width: 100%;
