@@ -12,5 +12,20 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  display: none;
+  position: relative;
+}
+
+.page-link{
+  font-family: Inter;
+  font-size: 15px;
+  color:maroon;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+}
+
+.page-link_chat{
+  bottom: 200px;
+  right: 20px;
 }

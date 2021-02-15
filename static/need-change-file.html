@@ -70,7 +70,24 @@
         </section>
       </aside>
     </div>
-      <a class="page-link" href="my-account-data.html">Следущая страница</a>
+    <div class="popup popup_is-opened">
+      <div class="popup__content">
+        <div class="form-window form-window_is-opened form-window_popup">
+          <div class="form-window__content form-window__content_popup">
+            <h3 class="form-window__title form-window__title_popup">Файл загружен</h3>
+            <form class="form form__load-file" name="load_file" enctype="multipart/form-data">
+               <input class="form__input-file" type="file" name="photo" id="photo-field" accept="image/*">
+               <div class="form__wrap form__wrap_data">
+                <label class="form__select-file" for="photo-field">Выбрать файл на компьютере</label>
+              </div>
+               <button class="button">Поменять</button>
+               <span class="form__error form__error_popup">Неверный пароль</span>
+              </form>
+            </div>
+        </div>
+      </div>
+    </div>
+    <a class="page-link" href="error-load-file.html">Следущая страница</a>
   </main>
 </body>
 </html>
