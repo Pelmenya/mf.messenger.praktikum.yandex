@@ -4,7 +4,8 @@
   "description": "Web application Chat",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "./node_modules/.bin/tsc --project ./tsconfig.json --watch"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,11 @@
   },
   "homepage": "https://github.com/Pelmenya/mf.messenger.praktikum.yandex#readme",
   "devDependencies": {
-    "express": "4.17.1"
+    "express": "4.17.1",
+    "ts-node": "9.1.1",
+    "typescript": "4.1.5"
+  },
+  "dependencies": {
+    "@types/lodash": "4.14.168"
   }
 }
