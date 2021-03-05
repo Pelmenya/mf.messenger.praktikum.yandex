@@ -13,7 +13,7 @@ const chat:Template = (() => {
           </a>\
         </nav>\
         <form class="chats__form">\
-          <input class="input chats__search" type="text">\
+          <input class="input chats__search" type="text" minlength="2">\
           <span class="chats__search-placeholder">&nbsp;&nbsp;Поиск</span>\
         </form> \
       </header>\
@@ -128,7 +128,7 @@ const chat:Template = (() => {
                 </div>\
               </div>\
             </div>\
-            <input  class="messages-list__send-input" name="message" type="text" placeholder="Сообщение">\
+            <input  class="messages-list__send-input" name="message" type="text" placeholder="Сообщение" minlength="2">\
             <button class="messages-list__button messages-list__send"></button>\
           </form>\
         </div>\
