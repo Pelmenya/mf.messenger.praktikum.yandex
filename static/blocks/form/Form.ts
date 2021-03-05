@@ -88,9 +88,11 @@ class Form {
   }
 
   private handlerSubmitForm = (event: Event) => {
-    if (this.validatePasswordsFields()) {
-      if (typeof this.handlerSubmit === "function") this.handlerSubmit();
-    } else event.preventDefault();
+    if (this.validatePasswords) {
+      if (this.validatePasswordsFields()) {
+        if (typeof this.handlerSubmit === "function") this.handlerSubmit();
+      } else event.preventDefault();
+    }
   };
 
   constructor(props: FormProps) {
