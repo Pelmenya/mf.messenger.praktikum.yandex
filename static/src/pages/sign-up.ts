@@ -10,4 +10,11 @@
       email: PATTERN_EMAIL,
     })
   );
+  const formContainer: Nullable<HTMLFormElement> = document.querySelector(".form__signup");
+  if (formContainer !== null) {
+    const form = new Form({
+      container: formContainer,
+    });
+    form.create();
+  }
 })()

@@ -6,12 +6,12 @@ const formSignIn:Template = (() => {
         <h1 class="form-window__title">Вход</h1>\
         <form class="form form__signin" name="signin">\
           <div class="form__wrap">\
-            <label class="form__label" for="login-signin">Логин</label>\
+            <label class="form__label form__label_hidden" for="login-signin">Логин</label>\
             <input class="input" name="login" id="login-signin" type="text" placeholder="Логин" required minlength="2" maxlength="30">\
-            <span class="form__error form__error_login">Неверный логин</span>\
-            <label class="form__label" for="password-signin">Пароль</label>\
+            <span class="form__error form__error_login"></span>\
+            <label class="form__label form__label_hidden" for="password-signin">Пароль</label>\
             <input class="input" name="password" id="password-signin" type="password" placeholder="Пароль" required  minlength="6">\
-            <span class="form__error form__error_password">Неверный пароль</span>\
+            <span class="form__error form__error_password"></span>\
           </div>\
           <div class="form__wrap">\
             <button name="submit_btn" class="button">Авторизоваться</button>\
