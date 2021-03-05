@@ -19,7 +19,7 @@ const myAccount:Template = (() => {
         <form class="form account__form account__form_data" name="edit_data">\
           <div class="account__wrap-row">\
             <label class="account__label" for="email-field">Почта</label>\
-            <input value="pochta@yandex.ru" <%=disabled%> name="email" id="email-field" class="input account__input" type="email" pattern=<%=email%>>\
+            <input value="pochta@yandex.ru" <%=disabled%> name="email" id="email-field" class="input account__input" type="email" required pattern=<%=email%>>\
             <span class="form__error form__error_account"></span>\
           </div>\
           <hr class="account__spliter">\
@@ -49,7 +49,7 @@ const myAccount:Template = (() => {
           <hr class="account__spliter">\
           <div class="account__wrap-row">\
             <label class="account__label" for="phone-field">Телефон</label>\
-            <input value="+79099673030" <%=disabled%> name="phone" id="phone-field" class="input account__input" type="tel" pattern="<%=phone%>">\
+            <input value="+79099673030" <%=disabled%> name="phone" id="phone-field" class="input account__input" type="tel" required pattern="<%=phone%>">\
             <span class="form__error form__error_account"></span>\
             </div>\
           <button class="button account__save-data">Сохранить</button>\
