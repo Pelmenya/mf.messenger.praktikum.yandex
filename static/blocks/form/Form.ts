@@ -62,9 +62,15 @@ class Form {
   private validatePasswordsFields(): boolean {
     let str: string = "";
     let flag: boolean = true;
+    let valid: boolean = true;
     Object.keys(this.inputs).forEach((item: string) => {
       let input: HTMLInputElement = this.inputs[Number(item)];
       if (input.type === "password" && input.name !== "old_password") {
+        if (input.nextElementSibling !== null)
+          if (input.nextElementSibling.classList.contains("form__error")) {
+            input.nextElementSibling.textContent = "";
+            input.nextElementSibling.classList.remove("form__error_is-opened");
+          }
         if (flag) {
           str = input.value;
           flag = false;
@@ -73,20 +79,18 @@ class Form {
             if (input.nextElementSibling.classList.contains("form__error")) {
               input.nextElementSibling.textContent = ERRORS.ERROR_PASSWORDS;
               input.nextElementSibling.classList.add("form__error_is-opened");
-              return false;
+              valid = false;
             }
         }
       }
     });
-
-    return true;
+    return valid;
   }
 
   private handlerSubmitForm = (event: Event) => {
-    if (this.validatePasswords)
-      if (this.validatePasswordsFields())
-        if (typeof this.handlerSubmit === "function") this.handlerSubmit();
-        else event.preventDefault();
+    if (this.validatePasswordsFields()) {
+      if (typeof this.handlerSubmit === "function") this.handlerSubmit();
+    } else event.preventDefault();
   };
 
   constructor(props: FormProps) {

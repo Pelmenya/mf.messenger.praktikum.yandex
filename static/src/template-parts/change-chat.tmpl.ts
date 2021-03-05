@@ -4,6 +4,7 @@ const changeChat:Template = (() => {
     <div class="body__container body__container_is-opened">\
       <h1 hidden>Чат для общения</h1>\
       <aside class="sidebar chats">\
+        <header class="chats__header">\
           <nav class="chats__nav">\
             <a class="chats__link" href="my-account.html">\
               <span class="chats__link-text">Профиль&nbsp;&nbsp;</span>\
@@ -11,9 +12,9 @@ const changeChat:Template = (() => {
             </a>\
           </nav>\
           <form class="chats__form">\
-            <input class="input chats__search" id="search-chat" type="text">\
+            <input class="input chats__search" type="text" minlength="1">\
             <span class="chats__search-placeholder">&nbsp;&nbsp;Поиск</span>\
-          </form>\
+          </form> \
         </header>\
         <section class="chats-list">\
           <h2  class="chats-list__title" hidden>Список чатов</h2>\
