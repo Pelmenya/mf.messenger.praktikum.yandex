@@ -8,4 +8,4 @@
 [build]
   base = "static"
   command = "npm run build"
-  publish = "static"
+  publish = "static/dist"
