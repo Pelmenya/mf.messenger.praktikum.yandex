@@ -1,3 +1,4 @@
+const EventBusClass = (() => {
   class EventBus {
     listeners: Listeners;
 
@@ -25,3 +26,6 @@
       else throw Error(`Нет события: ${event}`);
     }
   }
+
+  return { EventBus };
+})();
