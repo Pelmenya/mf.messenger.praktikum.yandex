@@ -6,6 +6,6 @@
 # “publish” is the directory to publish (relative to the root of your repo).
 
 [build]
-  base = "mf.messenger.praktikum.yandex"
+  base = ""
   command = "npm run build"
-  publish = "mf.messenger.praktikum.yandex/static"
+  publish = "static"
