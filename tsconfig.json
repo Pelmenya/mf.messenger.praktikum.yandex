@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "./dist",
+    "outDir": "./static/dist",
     "target": "es2016",
     "declaration": false,
     "module": "commonjs",
