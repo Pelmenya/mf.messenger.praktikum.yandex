@@ -19,11 +19,20 @@
   }
 
   render(
-    ".form__signin",
+    ".form__wrap_buttons",
     new Button({
       name: "submit_btn",
       text: "Авторизоваться",
       classList: "button",
+    })
+  );
+
+  render(
+    ".form__wrap_buttons",
+    new Button({
+      name: "link",
+      text: "Нет аккаунта?",
+      classList: "form__button-link",
     })
   );
 })();

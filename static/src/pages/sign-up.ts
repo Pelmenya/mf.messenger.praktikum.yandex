@@ -1,4 +1,9 @@
 (() => {
+
+  const { render } = renderFunction;
+  const { Button } = ButtonClass;
+  const { Form } = FormClass;
+
   const { PATTERN_EMAIL, PATTERN_PHONE } = PATTERNS
 
   const body: Nullable<HTMLBodyElement> = document.getElementsByTagName(
@@ -19,4 +24,23 @@
     });
     form.create();
   }
+  
+  render(
+    ".form__wrap_buttons",
+    new Button({
+      name: "submit_btn",
+      text: "Зарегистрироваться",
+      classList: "button",
+    })
+  );
+
+  render(
+    ".form__wrap_buttons",
+    new Button({
+      name: "link",
+      text: "Войти",
+      classList: "form__button-link",
+    })
+  );
+
 })()

@@ -10,7 +10,8 @@ const popupUser:Template = (() => {
               <label class="form__label form__label_hidden" for="user-name">Логин</label>\
               <input class="input" name="user_name" id="user-name" type="text" placeholder="Пользователь">\
             </div>\
-            <button class="button form__btn-user"><%=action%></button>\
+            <div class="form__wrap form__wrap_buttons">\
+            </div>\
           </form>\
         </div>  \
       </div>\
