@@ -1,4 +1,6 @@
 (() => {
+  const { PATTERN_EMAIL, PATTERN_PHONE } = PATTERNS
+
   const body: Nullable<HTMLBodyElement> = document.getElementsByTagName(
     "body"
   )[0] as HTMLBodyElement;

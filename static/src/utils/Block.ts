@@ -1,24 +1,10 @@
-enum EVENTS {
-  INIT = "init",
-  FLOW_CDM = "flow:component-did-mount",
-  FLOW_CDU = "flow:component-did-update",
-  FLOW_RENDER = "flow:render",
-}
-
-interface PropsButton {
-  [text: string]: string;
-}
-
-interface Meta {
-  tagName: string;
-  props: PropsButton;
-}
+const { INIT, FLOW_CDM, FLOW_CDU, FLOW_RENDER } = EVENTS;
 
 class Block {
   private _element: Nullable<HTMLElement>;
   private meta: Meta;
   private eventBus: Function;
-  props: PropsButton;
+  props: Props;
 
   /** JSDoc
    * @param {string} tagName
@@ -26,20 +12,18 @@ class Block {
    *
    * @returns {void}
    */
-  constructor(tagName = "span", props: PropsButton) {
+  constructor(tagName = "div", props: Props) {
     const eventBus = new EventBus();
+
     this.meta = {
       tagName,
       props,
     };
 
-    console.log(this.meta);
-
     this.props = this.makePropsProxy(props);
 
     this._element = null;
     this.eventBus = () => eventBus;
-    console.log(this.eventBus);
     this.registerEvents(eventBus);
 
     eventBus.emit(EVENTS.INIT);
@@ -68,22 +52,20 @@ class Block {
     this.componentDidMount({});
   }
 
-  // Может переопределять пользователь, необязательно трогать
-  public componentDidMount(oldProps: PropsButton) {
+  public componentDidMount(oldProps: Props) {
     return oldProps;
   }
 
-  private _componentDidUpdate(oldProps: PropsButton, newProps: PropsButton) {
+  private _componentDidUpdate(oldProps: Props, newProps: Props) {
     const response = this.componentDidUpdate(oldProps, newProps);
     if (response) this._render();
   }
 
-  // Может переопределять пользователь, необязательно трогать
-  public componentDidUpdate(oldProps: PropsButton, newProps: PropsButton) {
+  public componentDidUpdate(oldProps: Props, newProps: Props) {
     return oldProps.text !== newProps.text ? true : false;
   }
 
-  setProps = (nextProps: PropsButton) => {
+  setProps = (nextProps: Props) => {
     if (!nextProps) {
       return;
     }
@@ -97,14 +79,9 @@ class Block {
 
   private _render() {
     const block: string = this.render();
-    // Этот небезопасный метод для упрощения логики
-    // Используйте шаблонизатор из npm или напишите свой безопасный
-    // Нужно не в строку компилировать (или делать это правильно),
-    // либо сразу в DOM-элементы возвращать из compile DOM-ноду
     if (this._element !== null) this._element.innerHTML = block;
   }
 
-  // Может переопределять пользователь, необязательно трогать
   public render(): string {
     return "";
   }
@@ -113,18 +90,15 @@ class Block {
     return this.element;
   }
 
-  private makePropsProxy(props: PropsButton) {
-    // Можно и так передать this
-    // Такой способ больше не применяется с приходом ES6+
+  private makePropsProxy(props: Props) {
     const self = this;
-    console.log(this);
     const proxyProps = new Proxy(props, {
       get(props, prop) {
         return props[String(prop)];
       },
 
       set(props, prop, val: string) {
-        const oldProps: PropsButton = {};
+        const oldProps: Props = {};
         Object.assign(oldProps, props);
         props[String(prop)] = val;
         self.eventBus().emit(EVENTS.FLOW_CDU, oldProps, props);
@@ -140,7 +114,6 @@ class Block {
   }
 
   private createDocumentElement(tagName: string) {
-    // Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков
     return document.createElement(tagName);
   }
 

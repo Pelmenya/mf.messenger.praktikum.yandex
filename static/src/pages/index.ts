@@ -17,14 +17,11 @@
   }
 
   class Button extends Block {
-    constructor(props: PropsButton) {
-      // Создаём враппер дом-элемент button
-      super("button", props);
+    constructor(props: Props) {
+      super("div", props);
     }
-  
     render() {
-      // В проекте должен быть ваш собственный шаблонизатор
-      return `<div>${this.props.text}</div>`;
+      return _.template(button.tmpl)(this.props);
     }
   }
   
@@ -34,17 +31,18 @@
     return root;
   }
   
-  const button = new Button({
-      text: 'Click me',
-  });
+  const btn = new Button({
+    name: "submit_btn",
+    text: "Авторизоваться",
+    classList: "button"
+});
   
   
-  //app — это id дива в корне DOM
-  render(".form__signin", button);
+  render(".form__signin", btn);
   
   // Через секунду контент изменится сам, достаточно обновить пропсы
   setTimeout(() => {
-    button.setProps({
+    btn.setProps({
       text: 'Click me, please Dmitry',
     });
   }, 1000);

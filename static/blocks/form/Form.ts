@@ -1,7 +1,11 @@
-interface FormProps {
-  container: HTMLFormElement;
-  handlerSubmit?: Nullable<Function>;
-}
+const {
+  ERROR_TEXT,
+  ERROR_EMAIL,
+  ERROR_PASSWORD,
+  ERROR_PASSWORDS,
+  ERROR_TEL,
+  ERROR_REQUIRED_FIELD,
+} = ERRORS;
 
 class Form {
   form: HTMLFormElement;
