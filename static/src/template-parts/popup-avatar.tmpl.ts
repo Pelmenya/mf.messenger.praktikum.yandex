@@ -11,7 +11,8 @@ const popupAvatar:Template = (() => {
             <div class="form__wrap form__wrap_data">\
               <label class="form__select-file <%=load%>" for="photo-field"><%=label%></label>\
             </div>\
-            <button class="button">Поменять</button>\
+            <div class="form__wrap form__wrap_buttons">\
+            </div>\
             <span class="form__error form__error_popup <%=error%>">Нужно выбрать файл</span>\
             </form>\
           </div>\

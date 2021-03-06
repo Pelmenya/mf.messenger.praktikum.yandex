@@ -28,9 +28,7 @@ const formSignUp:Template = (() => {
             <input class="input" name="password" id="second-password-signup" type="password" placeholder="Пароль" required  minlength="6">\
             <span class="form__error form__error_password"></span>\
           </div>\
-          <div class="form__wrap">\
-            <button class="button">Зарегистрироваться</button>\
-            <button type="button" class="form__button-link">Войти</button>\
+          <div class="form__wrap form__wrap_buttons">\
         </div>\
         </form>\
       </div>\

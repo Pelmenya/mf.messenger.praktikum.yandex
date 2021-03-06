@@ -51,8 +51,9 @@ const myAccount:Template = (() => {
             <label class="account__label" for="phone-field">Телефон</label>\
             <input value="+79099673030" <%=disabled%> name="phone" id="phone-field" class="input account__input" type="tel" required pattern="<%=phone%>">\
             <span class="form__error form__error_account"></span>\
-            </div>\
-          <button class="button account__save-data">Сохранить</button>\
+          </div>\
+          <div class="account__wrap-col account__wrap-col_buttons">\
+          </div>\
         </form>\
         <div class="menu account__menu <%=menu%>">\
           <button class="menu__button account__edit-btn account__edit-btn_data">Изменить данные</button>\

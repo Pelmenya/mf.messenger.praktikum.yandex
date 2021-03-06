@@ -27,7 +27,8 @@ const myAccountPassword:Template = (() => {
               <input name="new_password" id="second-new-password" class="input account__input" type="password" required minlength="6">\
               <span class="form__error form__error_account"></span>\
             </div>\
-            <button class="button account__save-password">Сохранить</button>\
+            <div class="account__wrap-col account__wrap-col_buttons">\
+            </div>\
           </form>\
         </section>\
       </aside>\

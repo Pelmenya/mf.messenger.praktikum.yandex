@@ -1,4 +1,8 @@
 (() => {
+  const { render } = renderFunction;
+  const { Button } = ButtonClass;
+  const { Form } = FormClass;
+
   const body: Nullable<HTMLBodyElement> = document.getElementsByTagName(
     "body"
   )[0] as HTMLBodyElement;
@@ -14,5 +18,16 @@
       container: formContainer,
     });
     form.create();
-  } 
+  }
+  
+  render(
+    ".account__wrap-col_buttons",
+    new Button({
+      name: "submit_btn",
+      text: "Сохранить",
+      classList: "button account__save-password",
+    })
+  );
+
+
 })();

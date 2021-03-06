@@ -1,4 +1,4 @@
-const ERRORS: InputErrors = (() => {
+const ERRORS = (() => {
   const ERROR_TEXT: string = 'Должно быть от 2 до 30 символов';
   const ERROR_EMAIL: string = 'Неправильный формат email';
   const ERROR_PASSWORD: string = 'Неправильный пароль. Должен быть не меньше 6 символов';

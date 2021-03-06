@@ -12,6 +12,8 @@
   margin-top: 14px;
   background-color: #fff;
   cursor: pointer;
+  display: block;
+  width: 100%;
 }
 
 .form__button-link:focus{
