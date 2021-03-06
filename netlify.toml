@@ -8,4 +8,4 @@
 [build]
   base = "mf.messenger.praktikum.yandex"
   command = "npm run build"
-  publish = "static"
+  publish = "mf.messenger.praktikum.yandex/static"
