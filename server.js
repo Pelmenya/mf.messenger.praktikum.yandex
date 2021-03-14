@@ -3,12 +3,6 @@ const PORT = 3000;
 
 const app = express();
 
-const options = {
-  extensions: [
-    "js",
-  ],
-};
-
-app.use(express.static(`${__dirname}/static`, options));
+app.use(express.static(`${__dirname}/static`));
 
 app.listen(PORT);

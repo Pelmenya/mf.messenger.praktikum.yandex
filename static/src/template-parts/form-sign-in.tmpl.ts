@@ -1,4 +1,4 @@
-import { Template } from "../types/Template";
+import { Template } from "../types/Template.js";
 
 export const formSignIn: Template = {
   tmpl:

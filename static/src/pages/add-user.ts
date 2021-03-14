@@ -1,6 +1,6 @@
 import Button from "../../blocks/button/Button.js";
 import render from "../utils/functions/render.js";
-import PopupUserPage from "./classes/PopupUserPage";
+import PopupUserPage from "./classes/PopupUserPage.js";
 
 render([
   {
