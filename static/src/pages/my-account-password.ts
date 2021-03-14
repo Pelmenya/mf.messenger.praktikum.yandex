@@ -2,7 +2,7 @@ import Button from "../../blocks/button/Button.js";
 import Form from "../../blocks/form/Form.js";
 import { Nullable } from "../types/Nullable.js";
 import render from "../utils/functions/render.js";
-import MyAccountPasswordPage from "./classes/MyAccountPasswordPage";
+import MyAccountPasswordPage from "./classes/MyAccountPasswordPage.js";
 
 render([
   {

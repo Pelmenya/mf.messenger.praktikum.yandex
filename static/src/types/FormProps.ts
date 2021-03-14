@@ -1,4 +1,4 @@
-import { Nullable } from "./Nullable";
+import { Nullable } from "./Nullable.js";
 
 export default interface FormProps {
   container: HTMLFormElement;
