@@ -1,11 +1,18 @@
-import { chat } from "../template-parts/chat.tmpl.js";
-import { Nullable } from "../types/Nullable.js";
+import render from "../utils/functions/render.js";
+import ChatPage from "./classes/ChatPage.js";
 
-  const body: Nullable<HTMLBodyElement> = document.getElementsByTagName(
-    "body"
-  )[0] as HTMLBodyElement;
-  
-  body.insertAdjacentHTML(
-    "afterbegin",
-    _.template(chat.tmpl)()
-  );
+render([
+  {
+    query: ".body-container",
+    block: new ChatPage({
+      tagNameBlock: "main",
+      classListBlock: ["body", "body_grey"],
+      displayBlock: "flex",
+    }),
+  },
+]);
+
+
+
+
+

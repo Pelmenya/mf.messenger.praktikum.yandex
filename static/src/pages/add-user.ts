@@ -1,28 +1,24 @@
 import Button from "../../blocks/button/Button.js";
-import { popupUser } from "../template-parts/popup-user.tmpl.js";
-import { Nullable } from "../types/Nullable.js";
 import render from "../utils/functions/render.js";
+import PopupUserPage from "./classes/PopupUserPage";
 
-  const body: Nullable<HTMLBodyElement> = document.getElementsByTagName(
-    "body"
-  )[0] as HTMLBodyElement;
-
-  body.insertAdjacentHTML(
-    "beforeend",
-    _.template(popupUser.tmpl)({
+render([
+  {
+    query: ".body-container",
+    block: new PopupUserPage({
+      tagNameBlock: "div",
+      classListBlock: ["popup", "popup_is-opened"],
+      displayBlock: "flex",
       title: "Добавить пользователя",
-      next: "delete-user.html",
-    })
-  );
-  
-  render(
-    ".form__wrap_buttons",
-    new Button({
+    }),
+  },
+  {
+    query: ".form__wrap_buttons",
+    block: new Button({
+      tagNameBlock: "div",
       name: "submit_btn",
       text: "Добавить",
       classList: "button form__btn-user",
-    })
-  );
-
-
-
+    }),
+  },
+]);

@@ -1,11 +1,13 @@
-import { changeChat } from "../template-parts/change-chat.tmpl.js";
-import { Nullable } from "../types/Nullable.js";
+import render from "../utils/functions/render.js";
+import ChangeChatPage from "./classes/ChangeChatPage.js";
 
-  const body: Nullable<HTMLBodyElement> = document.getElementsByTagName(
-    "body"
-  )[0] as HTMLBodyElement;
-  
-  body.insertAdjacentHTML(
-    "afterbegin",
-    _.template(changeChat.tmpl)()
-  );
+render([
+  {
+    query: ".body-container",
+    block: new ChangeChatPage({
+      tagNameBlock: "main",
+      classListBlock: ["body", "body_grey"],
+      displayBlock: "flex",
+    }),
+  },
+]);

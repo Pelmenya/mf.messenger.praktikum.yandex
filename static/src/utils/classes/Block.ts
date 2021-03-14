@@ -1,12 +1,10 @@
-import { EVENTS } from "../../const/events";
-import Meta from "../../types/Meta";
-import { Nullable } from "../../types/Nullable";
-import Props from "../../types/Props";
-import EventBus from "./Event-Bus";
+import { EVENTS } from "../../const/events.js";
+import BlockProps from "../../types/BlockProps.js";
+import { Nullable } from "../../types/Nullable.js";
+import EventBus from "./Event-Bus.js";
 
-export default class Block {
+export default class Block<Props extends BlockProps> {
   private _element: Nullable<HTMLElement>;
-  private meta: Meta;
   private eventBus: EventBus;
   props: Props;
 
@@ -16,13 +14,8 @@ export default class Block {
    *
    * @returns {void}
    */
-  constructor(tagName = "div", props: Props) {
+  constructor(props: Props) {
     const eventBus = new EventBus();
-
-    this.meta = {
-      tagName,
-      props,
-    };
 
     this.props = this.makePropsProxy(props);
 
@@ -41,8 +34,12 @@ export default class Block {
   }
 
   private createResources() {
-    const { tagName } = this.meta;
-    this._element = this.createDocumentElement(tagName);
+    const { tagNameBlock, classListBlock } = this.props;
+    this._element = this.createDocumentElement(tagNameBlock);
+    if (classListBlock)
+      classListBlock.forEach((item) => {
+        if (this._element !== null) this._element.classList.add(item);
+      });
   }
 
   init() {
@@ -53,7 +50,7 @@ export default class Block {
   private _componentDidMount() {
     this._render();
     this.show();
-    this.componentDidMount({});
+    this.componentDidMount({} as Props);
   }
 
   public componentDidMount(oldProps: Props) {
@@ -66,7 +63,7 @@ export default class Block {
   }
 
   public componentDidUpdate(oldProps: Props, newProps: Props) {
-    return oldProps.text !== newProps.text ? true : false;
+    return oldProps.text !== newProps.text;
   }
 
   setProps = (nextProps: Props) => {
@@ -94,17 +91,17 @@ export default class Block {
     return this.element;
   }
 
-  private makePropsProxy(props: Props) {
+  private makePropsProxy(props: any) {
     const self = this;
     const proxyProps = new Proxy(props, {
       get(props, prop) {
-        return props[String(prop)];
+        return props[prop];
       },
 
       set(props, prop, val: string) {
-        const oldProps: Props = {};
+        const oldProps = {};
         Object.assign(oldProps, props);
-        props[String(prop)] = val;
+        props[prop] = val;
         self.eventBus.emit(EVENTS.FLOW_CDU, oldProps, props);
         return true;
       },
@@ -122,7 +119,12 @@ export default class Block {
   }
 
   show() {
-    if (this._element !== null) this._element.style.display = "block";
+    if (this._element !== null) {
+      const { displayBlock } = this.props;
+      displayBlock
+        ? (this._element.style.display = displayBlock)
+        : (this._element.style.display = "block");
+    }
   }
 
   hide() {

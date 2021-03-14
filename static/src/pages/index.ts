@@ -1,12 +1,37 @@
 import Button from "../../blocks/button/Button.js";
 import Form from "../../blocks/form/Form.js";
-import { formSignIn } from "../template-parts/form-sign-in.tmpl.js";
 import { Nullable } from "../types/Nullable.js";
 import render from "../utils/functions/render.js";
+import IndexPage from "./classes/IndexPage.js";
 
-const body: Nullable<HTMLBodyElement> = document.getElementsByTagName("body")[0] as HTMLBodyElement;
-
-body.insertAdjacentHTML("afterbegin", _.template(formSignIn.tmpl)());
+render([
+  {
+    query: ".body-container",
+    block: new IndexPage({
+      tagNameBlock: "main",
+      classListBlock: ["body"],
+      displayBlock: "flex",
+    }),
+  },
+  {
+    query: ".form__wrap_buttons",
+    block: new Button({
+      tagNameBlock: "div",
+      name: "submit_btn",
+      text: "Авторизоваться",
+      classList: "button",
+    }),
+  },
+  {
+    query: ".form__wrap_buttons",
+    block: new Button({
+      tagNameBlock: "div",
+      name: "link",
+      text: "Нет аккаунта?",
+      classList: "form__button-link",
+    }),
+  },
+]);
 
 const formContainer: Nullable<HTMLFormElement> = document.querySelector(".form__signin");
 
@@ -16,21 +41,3 @@ if (formContainer !== null) {
   });
   form.create();
 }
-
-render(
-  ".form__wrap_buttons",
-  new Button({
-    name: "submit_btn",
-    text: "Авторизоваться",
-    classList: "button",
-  })
-);
-
-render(
-  ".form__wrap_buttons",
-  new Button({
-    name: "link",
-    text: "Нет аккаунта?",
-    classList: "form__button-link",
-  })
-); 
