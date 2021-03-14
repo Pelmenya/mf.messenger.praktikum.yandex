@@ -1,3 +1,3 @@
-type Template = {
+export type Template = {
   tmpl:string;
 }

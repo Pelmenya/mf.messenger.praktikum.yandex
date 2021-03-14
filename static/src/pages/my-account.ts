@@ -1,17 +1,21 @@
-(() => {
-  const { PATTERN_EMAIL, PATTERN_PHONE } = PATTERNS
+import { PATTERNS } from "../const/regex.js";
+import render from "../utils/functions/render.js";
+import MyAccountPage from "./classes/MyAccountPage.js";
 
-  const body: Nullable<HTMLBodyElement> = document.getElementsByTagName(
-    "body"
-  )[0] as HTMLBodyElement;
-
-  body.insertAdjacentHTML(
-    "afterbegin",
-    _.template(myAccount.tmpl)({
+render([
+  {
+    query: ".body-container",
+    block: new MyAccountPage({
+      tagNameBlock: "main",
+      classListBlock: [
+        "body",
+        "body_grey",
+      ],
+      displayBlock: "flex",
+      phone: PATTERNS.PATTERN_PHONE,
+      email: PATTERNS.PATTERN_EMAIL,
       disabled: "disabled",
       menu: "menu_is-opened",
-      phone: PATTERN_PHONE,
-      email: PATTERN_EMAIL,
-    })
-  );
-})();
+    }),
+  },
+]);

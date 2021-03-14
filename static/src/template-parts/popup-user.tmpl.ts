@@ -1,7 +1,8 @@
-const popupUser:Template = (() => {
-  const tmpl:string =
-  '<div class="popup popup_is-opened">\
-    <div class="popup__content">\
+import { Template } from "../types/Template.js";
+
+export const popupUser: Template = {
+  tmpl:
+    '<div class="popup__content">\
       <div class="form-window form-window_is-opened form-window_popup">\
         <div class="form-window__content form-window__content_popup">\
           <h3 class="form-window__title form-window__title_popup"><%=title%></h3>\
@@ -15,8 +16,6 @@ const popupUser:Template = (() => {
           </form>\
         </div>  \
       </div>\
-    </div>\
-  </div>\
-  <a class="page-link page-link_chat" href="<%=next%>">Следущая страница</a>';
-    return { tmpl }
-})();
+    </div>'
+};
+

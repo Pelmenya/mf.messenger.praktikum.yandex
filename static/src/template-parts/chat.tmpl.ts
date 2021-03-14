@@ -1,8 +1,8 @@
+import { Template } from "../types/Template.js";
 
-const chat:Template = (() => {
-  const tmpl:string =
-  '<main class="body body_grey">\
-  <div class="body__container body__container_is-opened">\
+export const chat: Template = {
+  tmpl:
+    '<div class="body__container body__container_is-opened">\
     <h1 hidden>Чат для общения</h1>\
     <aside class="sidebar chats">\
       <header class="chats__header">\
@@ -134,9 +134,5 @@ const chat:Template = (() => {
         </div>\
       </section>\
     </aside>\
-  </div>\
-  <a class="page-link page-link_chat" href="add-user.html">Следущая страница</a>\
-  </main>';
-    return { tmpl }
-})();
-
+  </div>'
+};

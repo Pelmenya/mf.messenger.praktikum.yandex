@@ -1,6 +1,5 @@
-const button:Template = (() => {
+import { Template } from "../../src/types/Template.js";
 
-  const tmpl:string = '<button name="<%=name%>" class="<%=classList%>"><%=text%></button>';
-
-    return { tmpl }
-})()
+export const button: Template = {
+  tmpl: '<button name="<%=name%>" class="<%=classList%>"><%=text%></button>',
+};

@@ -1,8 +1,14 @@
-const express = require('express');
+const express = require("express");
 const PORT = 3000;
 
 const app = express();
-app.use(express.static(`${__dirname}/static`));
+
+const options = {
+  extensions: [
+    "js",
+  ],
+};
+
+app.use(express.static(`${__dirname}/static`, options));
 
 app.listen(PORT);
-

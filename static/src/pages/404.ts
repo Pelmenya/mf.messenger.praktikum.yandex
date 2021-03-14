@@ -1,15 +1,17 @@
-(() => {
-  const body: Nullable<HTMLBodyElement> = document.getElementsByTagName(
-    "body"
-  )[0] as HTMLBodyElement;
+import render from "../utils/functions/render.js";
+import ErrorPage from "./classes/ErrorPage.js";
 
-  body.insertAdjacentHTML(
-    "afterbegin",
-    _.template(err.tmpl)({
+render([
+  {
+    query: ".body-container",
+    block: new ErrorPage({
+      tagNameBlock: "main",
+      classListBlock: ["body"],
+      displayBlock: "flex",
       title: "404",
       message: "Не туда попали",
       back: "index.html",
       next: "change-chat.html",
-    })
-  );
-})();
+    }),
+  },
+]);
