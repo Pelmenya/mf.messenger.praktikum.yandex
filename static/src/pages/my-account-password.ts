@@ -1,7 +1,8 @@
-(() => {
-  const { render } = renderFunction;
-  const { Button } = ButtonClass;
-  const { Form } = FormClass;
+import Button from "../../blocks/button/Button.js";
+import Form from "../../blocks/form/Form.js";
+import { myAccountPassword } from "../template-parts/my-account-password.tmpl.js";
+import { Nullable } from "../types/Nullable.js";
+import render from "../utils/functions/render.js";
 
   const body: Nullable<HTMLBodyElement> = document.getElementsByTagName(
     "body"
@@ -30,4 +31,3 @@
   );
 
 
-})();

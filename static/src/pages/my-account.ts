@@ -1,5 +1,6 @@
-(() => {
-  const { PATTERN_EMAIL, PATTERN_PHONE } = PATTERNS
+import { PATTERNS } from "../const/regex.js";
+import { myAccount } from "../template-parts/my-account.tmpl.js";
+import { Nullable } from "../types/Nullable.js";
 
   const body: Nullable<HTMLBodyElement> = document.getElementsByTagName(
     "body"
@@ -10,8 +11,7 @@
     _.template(myAccount.tmpl)({
       disabled: "disabled",
       menu: "menu_is-opened",
-      phone: PATTERN_PHONE,
-      email: PATTERN_EMAIL,
+      phone: PATTERNS.PATTERN_PHONE,
+      email: PATTERNS.PATTERN_EMAIL,
     })
   );
-})();

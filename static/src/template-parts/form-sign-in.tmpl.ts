@@ -1,6 +1,8 @@
-const formSignIn:Template = (() => {
-  const tmpl:string =
-  '<main class="body">\
+import { Template } from "../types/Template";
+
+export const formSignIn: Template = {
+  tmpl:
+    '<main class="body">\
     <div class="form-window form-window_is-opened">\
       <div class="form-window__content form-window__content_login">\
         <h1 class="form-window__title">Вход</h1>\
@@ -19,7 +21,5 @@ const formSignIn:Template = (() => {
       </div>\
     </div>\
     <a class="page-link" href="sign-up.html">Следущая страница</a>\
-  </main>';
-    return { tmpl }
-})();
-
+  </main>',
+};

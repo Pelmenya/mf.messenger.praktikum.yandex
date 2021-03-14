@@ -1,6 +1,7 @@
+import { Template } from "../types/Template.js";
 
-const err:Template = (() => {
-  const tmpl:string =
+export const err: Template = {
+  tmpl:
     '<main class="body body_is-opened">\
       <div class="error">\
         <div class="error__wrap">\
@@ -10,7 +11,5 @@ const err:Template = (() => {
         </div>\
       </div>\
       <a class="page-link" href="<%=next%>">Следущая страница</a>\
-    </main>';
-    return { tmpl }
-})();
-
+    </main>',
+};

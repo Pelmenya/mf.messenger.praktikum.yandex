@@ -1,6 +1,7 @@
-(() => {
-  const { render } = renderFunction;
-  const { Button } = ButtonClass;
+import Button from "../../blocks/button/Button.js";
+import { popupAvatar } from "../template-parts/popup-avatar.tmpl.js";
+import { Nullable } from "../types/Nullable.js";
+import render from "../utils/functions/render.js";
 
   const body: Nullable<HTMLBodyElement> = document.getElementsByTagName(
     "body"
@@ -25,5 +26,3 @@
       classList: "button",
     })
   );
-
-})();

@@ -1,6 +1,8 @@
-const changeChat:Template = (() => {
-  const tmpl:string =
-  '<main class="body body_grey">\
+import { Template } from "../types/Template.js";
+
+export const changeChat: Template = {
+  tmpl:
+    '<main class="body body_grey">\
     <div class="body__container body__container_is-opened">\
       <h1 hidden>Чат для общения</h1>\
       <aside class="sidebar chats">\
@@ -56,6 +58,5 @@ const changeChat:Template = (() => {
       </aside>\
     </div>\
     <a class="page-link" href="chat.html">Следущая страница</a>\
-  </main>';
-    return { tmpl }
-})();
+  </main>',
+};

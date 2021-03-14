@@ -1,7 +1,8 @@
+import { Template } from "../types/Template.js";
 
-const popupAvatar:Template = (() => {
-  const tmpl:string =
-  '<div class="popup popup_is-opened">\
+export const popupAvatar: Template = {
+  tmpl:
+    '<div class="popup popup_is-opened">\
     <div class="popup__content">\
       <div class="form-window form-window_is-opened form-window_popup">\
         <div class="form-window__content form-window__content_popup">\
@@ -18,6 +19,5 @@ const popupAvatar:Template = (() => {
           </div>\
       </div>\
     </div>\
-  </div>';
-    return { tmpl }
-})();
+  </div>',
+};

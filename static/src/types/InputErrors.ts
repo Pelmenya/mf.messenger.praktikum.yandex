@@ -1,4 +1,4 @@
-interface InputErrors {
+export default interface InputErrors {
  ERROR_TEXT: string;
  ERROR_EMAIL: string;
  ERROR_PASSWORD: string;

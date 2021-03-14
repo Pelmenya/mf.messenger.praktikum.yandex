@@ -1,6 +1,8 @@
-const formSignUp:Template = (() => {
-  const tmpl:string =
-  '<main class="body">\
+import { Template } from "../types/Template.js";
+
+export const formSignUp: Template = {
+  tmpl:
+    '<main class="body">\
     <div class="form-window form-window_is-opened">\
       <div class="form-window__content form-window__content_login">\
         <h1 class="form-window__title">Регистрация</h1>\
@@ -34,6 +36,5 @@ const formSignUp:Template = (() => {
       </div>\
     </div>\
     <a class="page-link" href="500.html">Следущая страница</a>\
-  </main>';
-    return { tmpl }
-})();
+  </main>',
+};

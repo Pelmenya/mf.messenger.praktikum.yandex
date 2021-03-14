@@ -1,7 +1,7 @@
-(() => {
-
-  const { render } = renderFunction;
-  const { Button } = ButtonClass;
+import Button from "../../blocks/button/Button.js";
+import { popupUser } from "../template-parts/popup-user.tmpl.js";
+import { Nullable } from "../types/Nullable.js";
+import render from "../utils/functions/render.js";
 
   const body: Nullable<HTMLBodyElement> = document.getElementsByTagName(
     "body"
@@ -24,5 +24,3 @@
       classList: "button form__btn-user",
     })
   );
-
-})();
