@@ -2,7 +2,7 @@ import Button from "../../blocks/button/Button.js";
 import Form from "../../blocks/form/Form.js";
 import { Nullable } from "../types/Nullable.js";
 import render from "../utils/functions/render.js";
-import IndexPage from "./classes/IndexPage.js";
+import IndexPage from "./classes/SignInPage.js";
 
 render([
   {

@@ -18,6 +18,5 @@ export const formSignIn: Template = {
           </div>\
         </form>\
       </div>\
-    </div>\
-    <a class="page-link" href="sign-up.html">Следущая страница</a>',
+    </div>',
 };
