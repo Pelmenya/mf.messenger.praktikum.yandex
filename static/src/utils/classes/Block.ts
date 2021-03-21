@@ -7,6 +7,7 @@ export default class Block<Props extends BlockProps> {
   private _element: Nullable<HTMLElement>;
   private eventBus: EventBus;
   props: Props;
+  handler: Function | undefined;
 
   /** JSDoc
    * @param {string} tagName
@@ -20,7 +21,11 @@ export default class Block<Props extends BlockProps> {
     this.props = this.makePropsProxy(props);
 
     this._element = null;
+
+    if (this.props.handler !== undefined) this.handler = this.props.handler;
+
     this.eventBus = eventBus;
+
     this.registerEvents(eventBus);
 
     eventBus.emit(EVENTS.INIT);
@@ -30,7 +35,9 @@ export default class Block<Props extends BlockProps> {
     eventBus.on(EVENTS.INIT, this.init.bind(this));
     eventBus.on(EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
+    eventBus.on(EVENTS.FLOW_CWU, this._componentWillUnmount.bind(this));
     eventBus.on(EVENTS.FLOW_RENDER, this._render.bind(this));
+    if (this.handler !== undefined) eventBus.on(EVENTS.FLOW_HANDLER, this.handler.bind(this));
   }
 
   private createResources() {
@@ -42,6 +49,14 @@ export default class Block<Props extends BlockProps> {
       });
   }
 
+  private destroyResources() {
+    this._componentWillUnmount();
+    if (this._element !== null) {
+      if(this._element.parentNode !==null)
+      this._element.parentNode.removeChild(this._element);
+    }
+  }
+
   init() {
     this.createResources();
     this.eventBus.emit(EVENTS.FLOW_CDM);
@@ -49,7 +64,6 @@ export default class Block<Props extends BlockProps> {
 
   private _componentDidMount() {
     this._render();
-    this.show();
     this.componentDidMount({} as Props);
   }
 
@@ -64,6 +78,15 @@ export default class Block<Props extends BlockProps> {
 
   public componentDidUpdate(oldProps: Props, newProps: Props) {
     return oldProps.text !== newProps.text;
+  }
+
+  private _componentWillUnmount() {
+    this.eventBus.off(EVENTS.INIT, this.init.bind(this));
+    this.eventBus.off(EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
+    this.eventBus.off(EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
+    this.eventBus.off(EVENTS.FLOW_CWU, this._componentWillUnmount.bind(this));
+    this.eventBus.off(EVENTS.FLOW_RENDER, this._render.bind(this));
+    if (this.handler !== undefined) this.eventBus.off(EVENTS.FLOW_HANDLER, this.handler.bind(this));
   }
 
   setProps = (nextProps: Props) => {
@@ -118,16 +141,19 @@ export default class Block<Props extends BlockProps> {
     return document.createElement(tagName);
   }
 
-  show() {
+  public show() {
     if (this._element !== null) {
       const { displayBlock } = this.props;
       displayBlock
         ? (this._element.style.display = displayBlock)
         : (this._element.style.display = "block");
     }
+    if (this.handler !== undefined) this.eventBus.emit(EVENTS.FLOW_HANDLER);
   }
 
-  hide() {
+  public hide(destroy = "no") {
+    console.log(destroy);
     if (this._element !== null) this._element.style.display = "none";
+    if (destroy === "yes") this.destroyResources();
   }
 }

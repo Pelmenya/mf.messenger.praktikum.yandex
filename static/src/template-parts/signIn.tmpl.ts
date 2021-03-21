@@ -14,10 +14,8 @@ export const formSignIn: Template = {
             <input class="input" name="password" id="password-signin" type="password" placeholder="Пароль" required  minlength="6">\
             <span class="form__error form__error_password"></span>\
           </div>\
-          <div class="form__wrap form__wrap_buttons">\
-          </div>\
+          <div class="form__wrap form__wrap_buttons"></div>\
         </form>\
       </div>\
-    </div>\
-    <a class="page-link" href="sign-up.html">Следущая страница</a>',
+    </div>',
 };

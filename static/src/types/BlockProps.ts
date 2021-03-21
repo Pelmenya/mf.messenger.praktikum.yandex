@@ -4,4 +4,6 @@ export default interface BlockProps {
   displayBlock?: string;
   classList?:string;
   text?: string;
+  handler?: Function;
+  elements?: object[];
 };
