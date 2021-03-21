@@ -5,6 +5,8 @@ import { Nullable } from "../../src/types/Nullable.js";
 export default class Form {
   form: HTMLFormElement;
   handlerSubmit?: Nullable<Function>;
+  errorLabelClass: string | undefined;
+  inputLabelClass: string | undefined;
   inputs: NodeListOf<HTMLInputElement>;
   validatePasswords: boolean;
 
@@ -31,30 +33,38 @@ export default class Form {
   private handlerInputInput = (event: Event) => {
     if (event.target instanceof HTMLInputElement) {
       if (event.target.previousElementSibling !== null)
-        if (event.target.previousElementSibling.classList.contains("form__label"))
-          if (event.target.value !== "")
-            event.target.previousElementSibling.classList.remove("form__label_hidden");
-          else event.target.previousElementSibling.classList.add("form__label_hidden");
+        if (this.inputLabelClass !== undefined)
+          if (event.target.previousElementSibling.classList.contains(this.inputLabelClass))
+            if (event.target.value !== "")
+              event.target.previousElementSibling.classList.remove(
+                `${this.inputLabelClass}_hidden`
+              );
+            else
+              event.target.previousElementSibling.classList.add(`${this.inputLabelClass}_hidden`);
     }
   };
 
   private handlerFocusInput = (event: Event) => {
     if (event.target instanceof HTMLInputElement) {
       if (event.target.nextElementSibling !== null)
-        if (event.target.nextElementSibling.classList.contains("form__error")) {
-          event.target.nextElementSibling.classList.remove("form__error_is-opened");
-          event.target.nextElementSibling.textContent = "";
-        }
+        if (this.errorLabelClass !== undefined)
+          if (event.target.nextElementSibling.classList.contains(this.errorLabelClass)) {
+            event.target.nextElementSibling.classList.remove(`${this.errorLabelClass}_is-opened`);
+            event.target.nextElementSibling.textContent = "";
+          }
     }
   };
 
   private handlerBlurInput = (event: Event) => {
     if (event.target instanceof HTMLInputElement) {
       if (event.target.nextElementSibling !== null)
-        if (event.target.nextElementSibling.classList.contains("form__error")) {
-          if (!this.validateInput(event.target, event.target.nextElementSibling as HTMLSpanElement))
-            event.target.nextElementSibling.classList.add("form__error_is-opened");
-        }
+        if (this.errorLabelClass !== undefined)
+          if (event.target.nextElementSibling.classList.contains(this.errorLabelClass)) {
+            if (
+              !this.validateInput(event.target, event.target.nextElementSibling as HTMLSpanElement)
+            )
+              event.target.nextElementSibling.classList.add(`${this.errorLabelClass}_is-opened`);
+          }
     }
   };
 
@@ -66,20 +76,22 @@ export default class Form {
       let input: HTMLInputElement = this.inputs[Number(item)];
       if (input.type === "password" && input.name !== "old_password") {
         if (input.nextElementSibling !== null)
-          if (input.nextElementSibling.classList.contains("form__error")) {
-            input.nextElementSibling.textContent = "";
-            input.nextElementSibling.classList.remove("form__error_is-opened");
-          }
+          if (this.errorLabelClass !== undefined)
+            if (input.nextElementSibling.classList.contains(this.errorLabelClass)) {
+              input.nextElementSibling.textContent = "";
+              input.nextElementSibling.classList.remove(`${this.errorLabelClass}_is-opened`);
+            }
         if (flag) {
           str = input.value;
           flag = false;
         } else if (str !== input.value) {
           if (input.nextElementSibling !== null)
-            if (input.nextElementSibling.classList.contains("form__error")) {
-              input.nextElementSibling.textContent = ERRORS.ERROR_PASSWORDS;
-              input.nextElementSibling.classList.add("form__error_is-opened");
-              valid = false;
-            }
+            if (this.errorLabelClass !== undefined)
+              if (input.nextElementSibling.classList.contains(this.errorLabelClass)) {
+                input.nextElementSibling.textContent = ERRORS.ERROR_PASSWORDS;
+                input.nextElementSibling.classList.add(`${this.errorLabelClass}_is-opened`);
+                valid = false;
+              }
         }
       }
     });
@@ -95,6 +107,10 @@ export default class Form {
   };
 
   constructor(props: FormProps) {
+    this.errorLabelClass = props.errorLabelClass;
+    if (this.errorLabelClass === undefined) this.errorLabelClass = "form__error";
+    this.inputLabelClass = props.inputLabelClass;
+    if (this.inputLabelClass === undefined) this.inputLabelClass = "form__label";
     this.form = props.container;
     this.handlerSubmit = props.handlerSubmit;
     this.inputs = this.form.querySelectorAll(".input");

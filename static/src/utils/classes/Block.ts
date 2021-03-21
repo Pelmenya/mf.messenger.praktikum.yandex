@@ -21,12 +21,11 @@ export default class Block<Props extends BlockProps> {
     this.props = this.makePropsProxy(props);
 
     this._element = null;
-    
-    if (this.props.handler !== undefined)
-      this.handler = this.props.handler;
+
+    if (this.props.handler !== undefined) this.handler = this.props.handler;
 
     this.eventBus = eventBus;
-    
+
     this.registerEvents(eventBus);
 
     eventBus.emit(EVENTS.INIT);
@@ -36,6 +35,7 @@ export default class Block<Props extends BlockProps> {
     eventBus.on(EVENTS.INIT, this.init.bind(this));
     eventBus.on(EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
+    eventBus.on(EVENTS.FLOW_CWU, this._componentWillUnmount.bind(this));
     eventBus.on(EVENTS.FLOW_RENDER, this._render.bind(this));
     if (this.handler !== undefined) eventBus.on(EVENTS.FLOW_HANDLER, this.handler.bind(this));
   }
@@ -49,10 +49,17 @@ export default class Block<Props extends BlockProps> {
       });
   }
 
+  private destroyResources() {
+    this._componentWillUnmount();
+    if (this._element !== null) {
+      if(this._element.parentNode !==null)
+      this._element.parentNode.removeChild(this._element);
+    }
+  }
+
   init() {
     this.createResources();
     this.eventBus.emit(EVENTS.FLOW_CDM);
-
   }
 
   private _componentDidMount() {
@@ -71,6 +78,15 @@ export default class Block<Props extends BlockProps> {
 
   public componentDidUpdate(oldProps: Props, newProps: Props) {
     return oldProps.text !== newProps.text;
+  }
+
+  private _componentWillUnmount() {
+    this.eventBus.off(EVENTS.INIT, this.init.bind(this));
+    this.eventBus.off(EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
+    this.eventBus.off(EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
+    this.eventBus.off(EVENTS.FLOW_CWU, this._componentWillUnmount.bind(this));
+    this.eventBus.off(EVENTS.FLOW_RENDER, this._render.bind(this));
+    if (this.handler !== undefined) this.eventBus.off(EVENTS.FLOW_HANDLER, this.handler.bind(this));
   }
 
   setProps = (nextProps: Props) => {
@@ -132,11 +148,12 @@ export default class Block<Props extends BlockProps> {
         ? (this._element.style.display = displayBlock)
         : (this._element.style.display = "block");
     }
-   if (this.handler !== undefined) this.eventBus.emit(EVENTS.FLOW_HANDLER);
+    if (this.handler !== undefined) this.eventBus.emit(EVENTS.FLOW_HANDLER);
   }
 
-  public hide() {
+  public hide(destroy = "no") {
+    console.log(destroy);
     if (this._element !== null) this._element.style.display = "none";
-    if (this.handler !== undefined) this.eventBus.off(EVENTS.FLOW_HANDLER, this.handler);
+    if (destroy === "yes") this.destroyResources();
   }
 }

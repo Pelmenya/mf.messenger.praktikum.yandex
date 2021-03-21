@@ -1,47 +1,53 @@
+import BlockProps from "../../types/BlockProps.js";
+import { Nullable } from "../../types/Nullable.js";
 import isEqual from "../functions/isEqualStrings.js";
 import render from "../functions/render.js";
+import Block from "./Block.js";
 
 interface RouteProps {
   rootQuery: string;
-  blockProps: object;
+  blockProps: any;
 }
 
+
 export default class Route {
-  private _props: RouteProps;
-  constructor(pathname, view, props: RouteProps) {
-    this._pathname = pathname;
-    this._blockClass = view;
-    this._block = null;
-    this._props = props;
+  private props: RouteProps;
+  private pathname: string;
+  private blockClass: any;
+  private block : Nullable<Block<BlockProps>>;
+
+  constructor(pathname: string, view: any , props: RouteProps) {
+    this.pathname = pathname;
+    this.blockClass = view;
+    this.block = null;
+    this.props = props;
   }
 
-  navigate(pathname) {
+  navigate(pathname: string) {
     if (this.match(pathname)) {
       this.render();
     }
   }
 
   leave() {
-    if (this._block) {
-      this._block.hide();
+    if (this.block) {
+      this.block.hide("yes");
     }
   }
 
-  match(pathname) {
-    return isEqual(pathname, this._pathname);
+  match(pathname:string) {
+    return isEqual(pathname, this.pathname);
   }
 
   render() {
-    if (!this._block) {
-      console.log(this._props.blockProps);
-
-      this._block = new this._blockClass(this._props.blockProps);
-
-      render([
-        { query: this._props.rootQuery, block: this._block },
-        ...this._props.blockProps.elements,
-      ]);
+    console.log(this.block)
+    if (!this.block) {
+      this.block = new this.blockClass(this.props.blockProps);
     }
-      this._block.show();
+    render([
+      { query: this.props.rootQuery, block: this.block },
+      ...this.props.blockProps.elements,
+    ]);
+    if (this.block !== null) this.block.show();
   }
 }
