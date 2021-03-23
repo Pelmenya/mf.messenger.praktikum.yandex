@@ -2,8 +2,7 @@ import { Template } from "../types/Template.js";
 
 export const chat: Template = {
   tmpl:
-    '<div class="body__container body__container_is-opened">\
-    <h1 hidden>Чат для общения</h1>\
+   '<h1 hidden>Чат для общения</h1>\
     <aside class="sidebar chats">\
       <header class="chats__header">\
         <nav class="chats__nav">\
@@ -133,6 +132,5 @@ export const chat: Template = {
           </form>\
         </div>\
       </section>\
-    </aside>\
-  </div>'
+    </aside>'
 };

@@ -1,6 +1,6 @@
 import BlockProps from "../../types/BlockProps.js";
 import Block from "../../utils/classes/Block.js";
-import { formSignUp } from "../../template-parts/form-sign-up.tmpl.js";
+import { formSignUp } from "../../template-parts/signIp.tmpl.js";
 
  interface SignUpPageProps extends BlockProps {
   phone:string;

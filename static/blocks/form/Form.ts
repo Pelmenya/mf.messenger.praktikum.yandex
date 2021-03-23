@@ -1,9 +1,11 @@
 import { ERRORS } from "../../src/const/errors.js";
 import FormProps from "../../src/types/FormProps.js";
 import { Nullable } from "../../src/types/Nullable.js";
+import { Options } from "../../src/types/Options.js";
 
 export default class Form {
   form: HTMLFormElement;
+  serverError: Nullable<HTMLSpanElement>;
   handlerSubmit?: Nullable<Function>;
   errorLabelClass: string | undefined;
   inputLabelClass: string | undefined;
@@ -45,6 +47,7 @@ export default class Form {
   };
 
   private handlerFocusInput = (event: Event) => {
+    this.setServerError("");
     if (event.target instanceof HTMLInputElement) {
       if (event.target.nextElementSibling !== null)
         if (this.errorLabelClass !== undefined)
@@ -99,10 +102,20 @@ export default class Form {
   }
 
   private handlerSubmitForm = (event: Event) => {
+    event.preventDefault();
     if (this.validatePasswords) {
       if (this.validatePasswordsFields()) {
-        if (typeof this.handlerSubmit === "function") this.handlerSubmit();
-      } else event.preventDefault();
+        if (typeof this.handlerSubmit === "function") {
+          this.handlerSubmit(this.getFormData()).then((data: string) => {
+            this.setServerError(data);
+          });
+        }
+      }
+    } else {
+      if (typeof this.handlerSubmit === "function")
+        this.handlerSubmit(this.getFormData()).then((data: string) => {
+          this.setServerError(data);
+        });
     }
   };
 
@@ -111,13 +124,27 @@ export default class Form {
     if (this.errorLabelClass === undefined) this.errorLabelClass = "form__error";
     this.inputLabelClass = props.inputLabelClass;
     if (this.inputLabelClass === undefined) this.inputLabelClass = "form__label";
+
     this.form = props.container;
+    this.serverError = this.form.querySelector(`.${this.errorLabelClass}_server`);
     this.handlerSubmit = props.handlerSubmit;
     this.inputs = this.form.querySelectorAll(".input");
     this.validatePasswords = false;
   }
 
-  create(): void {
+  public setServerError(data: string) {
+    if (this.serverError !== null) this.serverError.textContent = data;
+  }
+
+  public getFormData(): Options {
+    const formData = { data: {} } as Options;
+    Object.keys(this.inputs).forEach((item: string) => {
+      formData.data[this.inputs[Number(item)].name] = this.inputs[Number(item)].value;
+    });
+    return formData;
+  }
+
+  public create(): void {
     if (this.inputs !== null) {
       let countPasswordFields: number = 0;
       Object.keys(this.inputs).forEach((item: string) => {

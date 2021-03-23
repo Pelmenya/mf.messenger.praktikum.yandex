@@ -1,6 +1,8 @@
 import { EVENTS } from "../../const/events.js";
 import BlockProps from "../../types/BlockProps.js";
 import { Nullable } from "../../types/Nullable.js";
+import { PlainObject } from "../../types/PlainObject.js";
+import isEqual from "../functions/isEqual.js";
 import EventBus from "./Event-Bus.js";
 
 export default class Block<Props extends BlockProps> {
@@ -71,13 +73,13 @@ export default class Block<Props extends BlockProps> {
     return oldProps;
   }
 
-  private _componentDidUpdate(oldProps: Props, newProps: Props) {
+  private _componentDidUpdate(oldProps: PlainObject, newProps: PlainObject) {
     const response = this.componentDidUpdate(oldProps, newProps);
     if (response) this._render();
   }
 
-  public componentDidUpdate(oldProps: Props, newProps: Props) {
-    return oldProps.text !== newProps.text;
+  public componentDidUpdate(oldProps: PlainObject, newProps: PlainObject) {
+    return isEqual(oldProps, newProps);
   }
 
   private _componentWillUnmount() {
@@ -118,13 +120,17 @@ export default class Block<Props extends BlockProps> {
     const self = this;
     const proxyProps = new Proxy(props, {
       get(props, prop) {
+
         return props[prop];
       },
 
-      set(props, prop, val: string) {
+      set(props, prop, val) {
+        console.log("LFFFFFFFFFFFF")
+
         const oldProps = {};
         Object.assign(oldProps, props);
         props[prop] = val;
+        console.log("LFFFFFFFFFFFF")
         self.eventBus.emit(EVENTS.FLOW_CDU, oldProps, props);
         return true;
       },
@@ -151,9 +157,9 @@ export default class Block<Props extends BlockProps> {
     if (this.handler !== undefined) this.eventBus.emit(EVENTS.FLOW_HANDLER);
   }
 
-  public hide(destroy = "no") {
+  public hide(destroy = false) {
     console.log(destroy);
     if (this._element !== null) this._element.style.display = "none";
-    if (destroy === "yes") this.destroyResources();
+    if (destroy) this.destroyResources();
   }
 }

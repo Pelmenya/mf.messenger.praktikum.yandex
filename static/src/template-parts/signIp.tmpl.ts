@@ -30,6 +30,7 @@ export const formSignUp: Template = {
             <span class="form__error form__error_password"></span>\
           </div>\
           <div class="form__wrap form__wrap_buttons">\
+          <span class="form__error form__error_server"></span>\
         </div>\
         </form>\
       </div>\

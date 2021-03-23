@@ -1,5 +1,5 @@
-import { BlockClass } from "../../types/BlockClass.js";
 import { Nullable } from "../../types/Nullable.js";
+import getUrlRoute from "../functions/getUrlRoute.js";
 import Route from "./Route.js";
 
 export default class Router {
@@ -17,63 +17,43 @@ export default class Router {
     this.activePage = 0;
   }
 
-  use(pathname: string, block: BlockClass, blockProps: any) {
-    if (this.rootQuery !== undefined && this.routes !== undefined) {
+  public use(pathname: string, block: Function, blockProps: any) {
       const route = new Route(pathname, block, { blockProps, rootQuery: this.rootQuery });
       this.routes.push(route);
       return this;
-    }
   }
 
-  start() {
-    // Реагируем на изменения в адресной строке и вызываем перерисовку
-    window.onpopstate = (event: Event) => {
-      if (event.currentTarget instanceof Window)
+  private handlerOnPopState = (event: Event) => {
+    if (event.currentTarget instanceof Window)
       if (this.history.state !== null) {
-        this._onRoute(this.history.state.url);
-        console.log("Router.start : event", this.history.state.url);
+        this.onRoute(this.history.state.url);
       } else {
-        this._onRoute(event.currentTarget.location.pathname);
-        console.log("Router.start : event", event.currentTarget.location.pathname);
+        this.onRoute(getUrlRoute(event.currentTarget));
       }
-    };
+  };
 
-    if (this.history.state === null) this._onRoute(window.location.pathname);
-    else this._onRoute(this.history.state.url);
+  public start() {
+    window.onpopstate = this.handlerOnPopState;
 
-    console.log(window.location.pathname);
-    console.log(this.history.state);
+    if (this.history.state === null) this.onRoute(getUrlRoute(window));
+    else this.onRoute(this.history.state.url);
   }
 
-  _onRoute(pathname: string) {
+  private onRoute(pathname: string) {
     const route = this.getRoute(pathname);
-
-    console.log(route);
-
     if (!route) {
       return;
     }
-
     if (this.currentRoute) {
       this.currentRoute.leave();
     }
-
     this.currentRoute = route;
     route.render();
   }
 
-  go(pathname: string) {
-    window.onpopstate = (event: Event) => {
-      if (event.currentTarget instanceof Window)
-        if (this.history.state !== null) {
-          this._onRoute(this.history.state.url);
-          console.log("Router.go : event", this.history.state.url);
-        } else {
-          this._onRoute(event.currentTarget.location.pathname);
 
-          console.log("Router.go : event", event.currentTarget.location.pathname);
-        }
-    };
+  public go(pathname: string) {
+    window.onpopstate = this.handlerOnPopState;
 
     this.activePage++;
     this.history.pushState(
@@ -82,28 +62,23 @@ export default class Router {
       pathname
     );
 
-    console.log(this.history.state);
-
-    this._onRoute(pathname);
+    this.onRoute(pathname);
   }
 
-  back() {
-    window.onpopstate = (event: Event) => {
-      if (event.currentTarget instanceof Window)
-        this._onRoute(event.currentTarget.location.pathname);
-    };
+  public back() {
+    window.onpopstate = this.handlerOnPopState;
     this.history.back();
   }
 
-  forward() {
-    window.onpopstate = (event: Event) => {
-      if (event.currentTarget instanceof Window)
-        this._onRoute(event.currentTarget.location.pathname);
-    };
+  public forward() {
+    window.onpopstate = this.handlerOnPopState;
     this.history.forward();
   }
 
-  getRoute(pathname: string) {
+  public getRoute(pathname: string) {
     return this.routes.find((route) => route.match(pathname));
   }
 }
+
+
+export const router = new Router(".app");

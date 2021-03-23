@@ -6,4 +6,5 @@ export default interface BlockProps {
   text?: string;
   handler?: Function;
   elements?: object[];
+  visible?:boolean;
 };
