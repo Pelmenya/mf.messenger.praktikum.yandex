@@ -1,4 +1,5 @@
 import Form from "../../../../../blocks/form/Form.js";
+import { ROUTES } from "../../../../const/routes.js";
 import { Nullable } from "../../../../types/Nullable.js";
 import Router from "../../../classes/Router.js";
 import handlerSignUpSubmit from "../handlerSignUpSubmit.js";
@@ -17,7 +18,7 @@ export function handlerSignUpPage(router: Router): void {
   if (btn !== null) {
     btn.addEventListener("click", (event) => {
       event.preventDefault();
-      router.go("/");
+      router.go(ROUTES.ROOT);
     });
   }
 }

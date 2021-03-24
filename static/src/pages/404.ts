@@ -6,12 +6,13 @@ render([
     query: ".body-container",
     block: new ErrorPage({
       tagNameBlock: "main",
-      classListBlock: ["body"],
+      classListBlock: [
+        "body",
+      ],
       displayBlock: "flex",
       title: "404",
       message: "Не туда попали",
       back: "index.html",
-      next: "change-chat.html",
     }),
   },
 ]);

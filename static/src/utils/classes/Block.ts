@@ -125,12 +125,9 @@ export default class Block<Props extends BlockProps> {
       },
 
       set(props, prop, val) {
-        console.log("LFFFFFFFFFFFF")
-
         const oldProps = {};
         Object.assign(oldProps, props);
         props[prop] = val;
-        console.log("LFFFFFFFFFFFF")
         self.eventBus.emit(EVENTS.FLOW_CDU, oldProps, props);
         return true;
       },
@@ -158,7 +155,6 @@ export default class Block<Props extends BlockProps> {
   }
 
   public hide(destroy = false) {
-    console.log(destroy);
     if (this._element !== null) this._element.style.display = "none";
     if (destroy) this.destroyResources();
   }

@@ -23,6 +23,8 @@ export default class Store{
     eventBus.on(EVENTS.PUT_STORE, controller.setSignUpProps)
     eventBus.on(EVENTS.PUT_STORE, controller.setCurrentUserProps)
     eventBus.on(EVENTS.PUT_STORE, controller.setChatsProps)
+    eventBus.on(EVENTS.PUT_STORE, controller.setErrorProps)
+
   }
 
   public listen(){

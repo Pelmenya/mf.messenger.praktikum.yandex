@@ -38,6 +38,7 @@ export default class Route {
   render() {
     if (!this.block) {
       this.block = new this.blockClass(this.props.blockProps);
+      console.log(this.block)
     }
     if (this.props.blockProps.elements !== undefined)
       render([

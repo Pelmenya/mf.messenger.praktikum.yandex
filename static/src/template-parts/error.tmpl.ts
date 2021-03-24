@@ -8,6 +8,5 @@ export const err: Template = {
           <p class="error__message"><%=message%></p>\
           <a class= "error__link" href="<%=back%>">Назад к чатам</a>\
         </div>\
-      </div>\
-      <a class="page-link" href="<%=next%>">Следущая страница</a>',
+      </div>',
 };
