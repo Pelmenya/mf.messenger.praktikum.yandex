@@ -40,7 +40,8 @@ export default class Controller {
         if (res.length > 0) {
           let arr: RendersBlocks = [];
           const arrChats = JSON.parse(data.response);
-          arrChats.forEach((chat: any) => {
+          arrChats.forEach((chat: any, index: number) => {
+            console.log(index);
             arr.push({
               query: ".chats-list__container",
               block: new Card({
@@ -48,11 +49,13 @@ export default class Controller {
                 classListBlock: [
                   "card",
                 ],
+                tabIndex: index + 1,
                 displayBlock: "flex",
                 title: chat.title,
                 name: chat.title,
                 last_message: chat.message,
                 unread_count: chat.unread_count,
+                id: chat.id,
               }),
             });
           });

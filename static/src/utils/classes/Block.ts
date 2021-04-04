@@ -43,12 +43,13 @@ export default class Block<Props extends BlockProps> {
   }
 
   private createResources() {
-    const { tagNameBlock, classListBlock } = this.props;
+    const { tagNameBlock, classListBlock, tabIndex } = this.props;
     this._element = this.createDocumentElement(tagNameBlock);
     if (classListBlock)
       classListBlock.forEach((item) => {
         if (this._element !== null) this._element.classList.add(item);
       });
+    if (tabIndex) this._element.tabIndex = tabIndex;
   }
 
   private destroyResources() {
