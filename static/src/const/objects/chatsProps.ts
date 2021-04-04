@@ -1,6 +1,6 @@
 import { router } from "../../utils/classes/Router.js";
 import handlerChatsPage from "../../utils/functions/handlers/pages/handlerChatsPage.js";
-import { popupsProps } from "./popupsProps.js";
+import { initalChatsElements } from "./initalChatsElements.js";
 
 export const chatsProps = {
   tagNameBlock: "main",
@@ -9,7 +9,7 @@ export const chatsProps = {
     "body__container_is-opened",
   ],
   displayBlock: "flex",
-  elements: popupsProps,
+  elements: initalChatsElements,
   handler: () => {
     handlerChatsPage(router);
   },

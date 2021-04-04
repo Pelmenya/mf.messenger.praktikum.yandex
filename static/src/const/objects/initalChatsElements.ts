@@ -1,7 +1,19 @@
 import Button from "../../../blocks/button/Button.js";
 import Popup from "../../../blocks/popup/Popup.js";
+import ChatNotSelected from "../../template-parts/Chat-Not-Selected.js";
 
-export const popupsProps = [
+export const initalChatsElements = [
+  {
+    query: "div .body__container .body__container_is-opened",
+    block: new ChatNotSelected({
+      tagNameBlock: "aside",
+      classListBlock: [
+        "sidebar",
+        "chat",
+      ],
+      displayBlock: "flex",
+    }),
+  },
   {
     query: ".app",
     block: new Popup({
