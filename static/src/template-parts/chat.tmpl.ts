@@ -6,6 +6,10 @@ export const chat: Template = {
     <aside class="sidebar chats">\
       <header class="chats__header">\
         <nav class="chats__nav">\
+          <button class="menu__button">\
+            <span class="menu__button-icon menu__button-icon_cross"></span>\
+            <span class="menu__button-text">Удалить пользователя</span>\
+          </button>\
           <a class="chats__link" href="my-account.html">\
             <span class="chats__link-text">Профиль&nbsp;&nbsp;</span>\
             <span class="chats__icon-angle-right"></span>\

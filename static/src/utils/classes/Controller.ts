@@ -12,6 +12,10 @@ import { router } from "./Router.js";
 import getUrlRoute from "../functions/getUrlRoute.js";
 import { ROUTES } from "../../const/routes.js";
 import { errorProps } from "../../const/objects/errorProps.js";
+import { chatsAPI } from "../api/ChatsApi.js";
+import Card from "../../../blocks/card/Card.js";
+import render from "../functions/render.js";
+import { RendersBlocks } from "../../types/RendersBlocks.js";
 
 export default class Controller {
   private putToStore(store: Store, obj: Nullable<Object>, key: string) {
@@ -28,12 +32,44 @@ export default class Controller {
 
   setChatsProps = () => {
     this.putToStore(store, chatsProps, "chatsProps");
+    chatsAPI
+      .getChats()
+      .then((data) => {
+        const res = JSON.parse(data.response);
+        console.log(res);
+        if (res.length > 0) {
+          let arr: RendersBlocks = [];
+          const arrChats = JSON.parse(data.response);
+          arrChats.forEach((chat: any) => {
+            arr.push({
+              query: ".chats-list__container",
+              block: new Card({
+                tagNameBlock: "div",
+                classListBlock: [
+                  "card",
+                ],
+                displayBlock: "flex",
+                title: chat.title,
+                name: chat.title,
+                last_message: chat.message,
+                unread_count: chat.unread_count,
+              }),
+            });
+          });
+          render(arr);
+          chatsProps.elements = [
+            ...chatsProps.elements,
+            ...arr,
+          ];
+          this.putToStore(store, chatsProps, "chatsProps");
+        } else this.putToStore(store, chatsProps, "chatsProps");
+      })
+      .catch((err) => console.log(err));
   };
 
   setErrorProps = () => {
     this.putToStore(store, errorProps, "errorProps");
   };
-
 
   setCurrentUserProps = () => {
     authApi
@@ -46,9 +82,8 @@ export default class Controller {
           else {
             const routeUrl = getUrlRoute(window);
             console.log(routeUrl);
-            if (routeUrl === ROUTES.ROOT) router.start();
+            if (routeUrl === ROUTES.SIGNIN) router.start();
             else if (routeUrl === ROUTES.SIGNUP) {
-              console.log(routeUrl);
               router.start();
               router.go(ROUTES.SIGNUP);
             } else {
@@ -60,11 +95,10 @@ export default class Controller {
       })
       .then((data: CurrentUser) => {
         if (data !== null) {
-          for (let key in data) {
-            currentUser[key] = data[key];
-          }
+          Object.assign(currentUser, data);
           this.putToStore(store, currentUser, "currentUser");
           if (!isDataEmptyInStore("currentUser")) {
+            console.log(store);
             router.go(ROUTES.CHATS);
           }
         }

@@ -10,7 +10,7 @@
   display: none;
 }
 
-.form__error:last-of-type{
+.form__error:last-of-type {
   display: block;
   display: none;
   margin-bottom: 50px;

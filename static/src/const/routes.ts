@@ -1,5 +1,5 @@
 export enum ROUTES {
-  ROOT = "/",
+  SIGNIN = "/",
   SIGNUP = "/#signup",
   ERROR = "/#error",
   CHATS = "/#chats",

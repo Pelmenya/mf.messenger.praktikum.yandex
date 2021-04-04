@@ -5,4 +5,7 @@ export enum URLS_API {
   SIGNUP = "/signup",
   GET_USER = "/user",
   LOGOUT = "/logout",
+  CHATS = "/chats",
+  GET_CHATS = "",
+  CREATE_CHAT = "",
 }

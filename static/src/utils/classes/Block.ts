@@ -92,6 +92,7 @@ export default class Block<Props extends BlockProps> {
   }
 
   setProps = (nextProps: Props) => {
+
     if (!nextProps) {
       return;
     }
@@ -112,7 +113,7 @@ export default class Block<Props extends BlockProps> {
     return "";
   }
 
-  getContent() {
+  public getContent() {
     return this.element;
   }
 
@@ -120,7 +121,6 @@ export default class Block<Props extends BlockProps> {
     const self = this;
     const proxyProps = new Proxy(props, {
       get(props, prop) {
-
         return props[prop];
       },
 

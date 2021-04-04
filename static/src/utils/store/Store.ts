@@ -5,7 +5,7 @@ import EventBus from "../classes/Event-Bus.js";
 
 
 export default class Store{
-  public objects: PlainObject;
+  public objects: PlainObject<any>;
   private eventBus: EventBus;
   
   constructor(){
@@ -19,12 +19,11 @@ export default class Store{
   }
 
   public createResource(eventBus: EventBus):void{
+    eventBus.on(EVENTS.PUT_STORE, controller.setCurrentUserProps)
     eventBus.on(EVENTS.PUT_STORE, controller.setSignInProps)
     eventBus.on(EVENTS.PUT_STORE, controller.setSignUpProps)
-    eventBus.on(EVENTS.PUT_STORE, controller.setCurrentUserProps)
     eventBus.on(EVENTS.PUT_STORE, controller.setChatsProps)
     eventBus.on(EVENTS.PUT_STORE, controller.setErrorProps)
-
   }
 
   public listen(){

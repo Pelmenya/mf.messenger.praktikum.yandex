@@ -1,5 +1,5 @@
 import render from "../utils/functions/render.js";
-import ChangeChatPage from "./classes/ChangeChatPage.js";
+import ChangeChatPage from "./classes/ChatsPage.js";
 
 render([
   {

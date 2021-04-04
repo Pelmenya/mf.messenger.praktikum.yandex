@@ -18,7 +18,7 @@ export function handlerSignUpPage(router: Router): void {
   if (btn !== null) {
     btn.addEventListener("click", (event) => {
       event.preventDefault();
-      router.go(ROUTES.ROOT);
+      router.go(ROUTES.SIGNIN);
     });
   }
 }
