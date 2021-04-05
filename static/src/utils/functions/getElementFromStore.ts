@@ -4,8 +4,6 @@ export default function getElementFromStore(store: Store, pageProps: string, nam
   let obj: any;
 
   if (store.objects[pageProps] !== null) {
-    console.log(store.objects[pageProps]);
-
     if (store.objects[pageProps].elements !== undefined) {
       store.objects[pageProps].elements.forEach((element: any) => {
         if (element.block.props.name !== undefined)

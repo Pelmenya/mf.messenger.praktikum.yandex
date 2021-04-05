@@ -5,3 +5,7 @@
   height: 100vh;
   background-color: #fbfbfb;
 }
+
+.sidebar_is-closed{
+  display: none;
+}

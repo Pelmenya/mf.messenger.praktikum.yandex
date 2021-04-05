@@ -36,12 +36,11 @@ export default class Controller {
       .getChats()
       .then((data) => {
         const res = JSON.parse(data.response);
-        console.log(res);
+
         if (res.length > 0) {
           let arr: RendersBlocks = [];
           const arrChats = JSON.parse(data.response);
           arrChats.forEach((chat: any, index: number) => {
-            console.log(index);
             arr.push({
               query: ".chats-list__container",
               block: new Card({
@@ -49,21 +48,24 @@ export default class Controller {
                 classListBlock: [
                   "card",
                 ],
-                tabIndex: index + 1,
+                tabIndex: index + 2,
                 displayBlock: "flex",
                 title: chat.title,
-                name: chat.title,
+                name: `${chat.title}${Math.random()}`,
                 last_message: chat.message,
                 unread_count: chat.unread_count,
                 id: chat.id,
               }),
             });
           });
+
           render(arr);
+
           chatsProps.elements = [
             ...chatsProps.elements,
             ...arr,
           ];
+
           this.putToStore(store, chatsProps, "chatsProps");
         } else this.putToStore(store, chatsProps, "chatsProps");
       })
@@ -78,7 +80,6 @@ export default class Controller {
     authApi
       .getCurrentUser()
       .then((data: any) => {
-        console.log(data);
         const { status } = data;
         if (status !== undefined)
           if (status === 200) return JSON.parse(data.response);
@@ -101,7 +102,6 @@ export default class Controller {
           Object.assign(currentUser, data);
           this.putToStore(store, currentUser, "currentUser");
           if (!isDataEmptyInStore("currentUser")) {
-            console.log(store);
             router.go(ROUTES.CHATS);
           }
         }

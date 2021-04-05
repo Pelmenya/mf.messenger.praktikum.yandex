@@ -48,7 +48,7 @@ export default class Route {
       render([
         { query: this.props.rootQuery, block: this.block },
       ]);
-
-    if (this.block !== null) this.block.show();
+    //if (this.props.blockProps.visible === undefined || this.props.blockProps.visible === true)
+      if (this.block !== null) this.block.show();
   }
 }

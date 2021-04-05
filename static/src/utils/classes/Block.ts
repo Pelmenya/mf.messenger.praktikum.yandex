@@ -93,7 +93,6 @@ export default class Block<Props extends BlockProps> {
   }
 
   setProps = (nextProps: Props) => {
-
     if (!nextProps) {
       return;
     }

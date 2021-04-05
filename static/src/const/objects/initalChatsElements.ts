@@ -1,6 +1,7 @@
 import Button from "../../../blocks/button/Button.js";
 import Popup from "../../../blocks/popup/Popup.js";
-import ChatNotSelected from "../../template-parts/Chat-Not-Selected.js";
+import ChatNotSelected from "../../template-parts/ChatNotSelected.js";
+import ChatSelected from "../../template-parts/ChatSelected.js";
 
 export const initalChatsElements = [
   {
@@ -12,6 +13,21 @@ export const initalChatsElements = [
         "chat",
       ],
       displayBlock: "flex",
+      name: "chatNotSelected"
+    }),
+  },
+  {
+    query: "div .body__container .body__container_is-opened",
+    block: new ChatSelected({
+      tagNameBlock: "aside",
+      classListBlock: [
+        "sidebar",
+        "chat",
+        "sidebar_is-closed"
+      ],
+      displayBlock: "flex",
+      name: "chatSelected",
+      title: "",
     }),
   },
   {
