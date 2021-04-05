@@ -13,10 +13,13 @@
 
 .card {
   width: 100%;
-  height: 67px;
-  max-height: 67px;
   display: flex;
   align-items: center;
   flex-direction: column;
   cursor: pointer;
+}
+
+.card:focus {
+  background-color: #e4edfd;
+  outline: none;
 }

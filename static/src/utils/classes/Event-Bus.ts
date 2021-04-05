@@ -1,4 +1,4 @@
-import { EVENTS } from "../../const/events.js";
+import { EVENTS } from "../../const/events";
 
 export default class EventBus {
   listeners: Record<string, Function[]>;

@@ -3,10 +3,8 @@ import Block from "../../utils/classes/Block.js";
 import { err } from "../../template-parts/error.tmpl.js";
 
 interface ErrorPageProps extends BlockProps {
-  title: string,
-  message: string,
-  back: string,
-  next: string
+  title: string;
+  message: string;
 }
 
 export default class ErrorPage extends Block<ErrorPageProps> {

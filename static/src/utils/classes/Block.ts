@@ -1,6 +1,8 @@
 import { EVENTS } from "../../const/events.js";
 import BlockProps from "../../types/BlockProps.js";
 import { Nullable } from "../../types/Nullable.js";
+import { PlainObject } from "../../types/PlainObject.js";
+import isEqual from "../functions/isEqual.js";
 import EventBus from "./Event-Bus.js";
 
 export default class Block<Props extends BlockProps> {
@@ -41,12 +43,13 @@ export default class Block<Props extends BlockProps> {
   }
 
   private createResources() {
-    const { tagNameBlock, classListBlock } = this.props;
+    const { tagNameBlock, classListBlock, tabIndex } = this.props;
     this._element = this.createDocumentElement(tagNameBlock);
     if (classListBlock)
       classListBlock.forEach((item) => {
         if (this._element !== null) this._element.classList.add(item);
       });
+    if (tabIndex) this._element.tabIndex = tabIndex;
   }
 
   private destroyResources() {
@@ -71,13 +74,13 @@ export default class Block<Props extends BlockProps> {
     return oldProps;
   }
 
-  private _componentDidUpdate(oldProps: Props, newProps: Props) {
+  private _componentDidUpdate(oldProps: PlainObject, newProps: PlainObject) {
     const response = this.componentDidUpdate(oldProps, newProps);
     if (response) this._render();
   }
 
-  public componentDidUpdate(oldProps: Props, newProps: Props) {
-    return oldProps.text !== newProps.text;
+  public componentDidUpdate(oldProps: PlainObject, newProps: PlainObject) {
+    return isEqual(oldProps, newProps);
   }
 
   private _componentWillUnmount() {
@@ -110,7 +113,7 @@ export default class Block<Props extends BlockProps> {
     return "";
   }
 
-  getContent() {
+  public getContent() {
     return this.element;
   }
 
@@ -121,7 +124,7 @@ export default class Block<Props extends BlockProps> {
         return props[prop];
       },
 
-      set(props, prop, val: string) {
+      set(props, prop, val) {
         const oldProps = {};
         Object.assign(oldProps, props);
         props[prop] = val;
@@ -151,9 +154,8 @@ export default class Block<Props extends BlockProps> {
     if (this.handler !== undefined) this.eventBus.emit(EVENTS.FLOW_HANDLER);
   }
 
-  public hide(destroy = "no") {
-    console.log(destroy);
+  public hide(destroy = false) {
     if (this._element !== null) this._element.style.display = "none";
-    if (destroy === "yes") this.destroyResources();
+    if (destroy) this.destroyResources();
   }
 }

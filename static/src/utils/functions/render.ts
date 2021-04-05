@@ -1,9 +1,8 @@
-import Block from "../classes/Block.js";
+import { RendersBlocks } from "../../types/RendersBlocks.js";
 
-type RendersBlocks = Array<{ query: string; block: Block<any> }>;
 
-export default function render(renderBloks: RendersBlocks) {
-  renderBloks.forEach((element) => {
+export default function render(rendersBloks: RendersBlocks) {
+  rendersBloks.forEach((element) => {
     const root = document.querySelector(element.query);
     if (root) root.appendChild(element.block.getContent() as HTMLElement);
   });

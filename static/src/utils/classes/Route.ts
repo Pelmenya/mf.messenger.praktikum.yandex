@@ -1,22 +1,18 @@
-import BlockProps from "../../types/BlockProps.js";
-import { Nullable } from "../../types/Nullable.js";
-import isEqual from "../functions/isEqualStrings.js";
+import isEqualStrings from "../functions/isEqualStrings.js";
 import render from "../functions/render.js";
-import Block from "./Block.js";
 
 interface RouteProps {
   rootQuery: string;
   blockProps: any;
 }
 
-
 export default class Route {
   private props: RouteProps;
   private pathname: string;
   private blockClass: any;
-  private block : Nullable<Block<BlockProps>>;
+  private block: any;
 
-  constructor(pathname: string, view: any , props: RouteProps) {
+  constructor(pathname: string, view: Function, props: RouteProps) {
     this.pathname = pathname;
     this.blockClass = view;
     this.block = null;
@@ -31,23 +27,28 @@ export default class Route {
 
   leave() {
     if (this.block) {
-      this.block.hide("yes");
+      this.block.hide(true);
     }
   }
 
-  match(pathname:string) {
-    return isEqual(pathname, this.pathname);
+  match(pathname: string) {
+    return isEqualStrings(pathname, this.pathname);
   }
 
   render() {
-    console.log(this.block)
     if (!this.block) {
       this.block = new this.blockClass(this.props.blockProps);
     }
-    render([
-      { query: this.props.rootQuery, block: this.block },
-      ...this.props.blockProps.elements,
-    ]);
-    if (this.block !== null) this.block.show();
+    if (this.props.blockProps.elements !== undefined)
+      render([
+        { query: this.props.rootQuery, block: this.block },
+        ...this.props.blockProps.elements,
+      ]);
+    else
+      render([
+        { query: this.props.rootQuery, block: this.block },
+      ]);
+    //if (this.props.blockProps.visible === undefined || this.props.blockProps.visible === true)
+      if (this.block !== null) this.block.show();
   }
 }

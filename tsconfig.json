@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
     "outDir": "./static/dist",
-    "target": "es2016",
+    "target": "es2017",
     "declaration": false,
-    "module": "es2015",
+    "module": "esNext",
     "strict": true,
     "esModuleInterop": true,
     "noImplicitAny": true,

@@ -1,3 +1,3 @@
-export default  function isEqual(lhs:string, rhs:string):boolean {
+export default  function isEqualStrings(lhs:string, rhs:string):boolean {
   return lhs === rhs;
 }
