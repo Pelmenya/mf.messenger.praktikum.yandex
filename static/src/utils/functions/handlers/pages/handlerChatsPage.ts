@@ -7,13 +7,13 @@ import getElementFromStore from "../../getElementFromStore.js";
 import handlerAddChatSubmit from "../handlerAddChatSubmit.js";
 
 export default function handlerChatsPage(router: Router) {
-
   const addChatPopupElement: Popup = getElementFromStore(store, "chatsProps", "add_chat");
 
   if (addChatPopupElement !== undefined) {
     const addChatPopupContent: Nullable<HTMLElement> = addChatPopupElement.getContent();
-    const createChartBtn : Nullable<HTMLButtonElement> = document.querySelector(".chats__nav-btn_create");
-
+    const createChartBtn: Nullable<HTMLButtonElement> = document.querySelector(
+      ".chats__nav-btn_create"
+    );
 
     if (addChatPopupContent !== null) {
       const formContainerAddChat: Nullable<HTMLFormElement> = addChatPopupContent.querySelector(

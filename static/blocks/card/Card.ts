@@ -32,8 +32,10 @@ export default class Card extends Block<CardProps> {
 
   public handlerMouseDownCard = () => {
     this.chatNotSelected.hide();
-    this.chatSelected.show();
+    this.chatSelected.setProps({ title: this.props.title, name_chat: this.props.name });
     this.chatSelected.setProps({ title: this.props.title, name_chat: this.props.name }); // со второго раза ?
+    this.chatSelected.show();
+    this.chatSelected.addEventListeners();
   };
 
   public handlerFocusCard = () => {
@@ -44,8 +46,6 @@ export default class Card extends Block<CardProps> {
         cards[Number(item)].classList.remove("card__active");
       });
     }
-    console.log(this.props.name)
-    this.chatSelected.setProps({ title: this.props.title, name_chat: this.props.name });
   };
   public addEventListeners = () => {
     if (this.element !== null) {

@@ -6,6 +6,21 @@ import ChatSelected from "../../template-parts/ChatSelected.js";
 export const initalChatsElements = [
   {
     query: "div .body__container .body__container_is-opened",
+    block: new ChatSelected({
+      tagNameBlock: "aside",
+      classListBlock: [
+        "sidebar",
+        "chat",
+        "sidebar_is-closed",
+      ],
+      displayBlock: "flex",
+      name: "chatSelected",
+      title: "",
+      name_chat: "",
+    }),
+  },
+  {
+    query: "div .body__container .body__container_is-opened",
     block: new ChatNotSelected({
       tagNameBlock: "aside",
       classListBlock: [
@@ -13,21 +28,7 @@ export const initalChatsElements = [
         "chat",
       ],
       displayBlock: "flex",
-      name: "chatNotSelected"
-    }),
-  },
-  {
-    query: "div .body__container .body__container_is-opened",
-    block: new ChatSelected({
-      tagNameBlock: "aside",
-      classListBlock: [
-        "sidebar",
-        "chat",
-        "sidebar_is-closed"
-      ],
-      displayBlock: "flex",
-      name: "chatSelected",
-      title: "",
+      name: "chatNotSelected",
     }),
   },
   {

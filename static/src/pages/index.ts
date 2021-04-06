@@ -1,7 +1,6 @@
 import { ROUTES } from "../const/routes.js";
 import { router } from "../utils/classes/Router.js";
 import getDataFromStore from "../utils/functions/getDataFromStrore.js";
-import isDataEmptyInStore from "../utils/functions/isDataEmptyInStore.js";
 import { store } from "../utils/store/storeObj.js";
 import ChatsPage from "./classes/ChatsPage.js";
 import ErrorPage from "./classes/ErrorPage.js";
@@ -17,11 +16,9 @@ router
   .use(ROUTES.ERROR, ErrorPage, getDataFromStore("errorProps"))
 
   
-  //console.log(store.objects.chatsProps.elements[4].block.props.name);
 
   console.log(store)
 
- if (!isDataEmptyInStore("currentUser")) router.go("/#chats");
  
 
 

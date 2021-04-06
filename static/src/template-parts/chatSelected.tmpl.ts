@@ -12,18 +12,18 @@ export const chatSelected: Template = {
             <span class="messages-list__settings-icon"></span> \
           </button>\
           <div class="form-window form-window__absolute form-window_messages-list-header">\
-            <form class="form-window__content form-window__content_menu">\
+            <div class="form-window__content form-window__content_menu form-window__content_menu_user">\
               <div class="menu">\
-                <button class="menu__button">\
+                <button class="menu__button menu__button_add-user">\
                   <span class="menu__button-icon menu__button-icon_plus"></span>\
                   <span class="menu__button-text">Добавить пользователя</span>\
                 </button>\
-                <button class="menu__button">\
+                <button class="menu__button menu__button_remove-user">\
                   <span class="menu__button-icon menu__button-icon_cross"></span>\
                   <span class="menu__button-text">Удалить пользователя</span>\
                 </button>\
               </div>\
-            </form>\
+            </div>\
           </div>\
         </header>\
         <hr class="messages-list__spliter">\
