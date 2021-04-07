@@ -1,5 +1,4 @@
 import { Nullable } from "../../types/Nullable.js";
-import { authApi } from "../api/AuthAPI.js";
 import { currentUser } from "../../const/objects/currentUser.js";
 import { signInProps } from "../../const/objects/signInProps.js";
 import { signUpProps } from "../../const/objects/signUpProps.js";
@@ -13,6 +12,9 @@ import getUrlRoute from "../functions/getUrlRoute.js";
 import { ROUTES } from "../../const/routes.js";
 import { errorProps } from "../../const/objects/errorProps.js";
 import renderChats from "../functions/renderChats.js";
+import { authAPI } from "../api/AuthAPI.js";
+import { chatsSelectedProps } from "../../const/objects/chatsSelectedProps.js";
+import { myAccountProps } from "../../const/objects/myAccountProps.js";
 
 export default class Controller {
   private putToStore(store: Store, obj: Nullable<Object>, key: string) {
@@ -35,34 +37,27 @@ export default class Controller {
     this.putToStore(store, errorProps, "errorProps");
   };
 
+  setChatsSelectedProps = () => {
+    this.putToStore(store, chatsSelectedProps, "chatsSelectedProps");
+  };
+
+  setMyaAccountProps = () => {
+    this.putToStore(store, myAccountProps, "myAccountProps");
+  };
+
   setCurrentUserProps = () => {
-    authApi
+    authAPI
       .getCurrentUser()
       .then((data: any) => {
         const { status } = data;
         if (status !== undefined)
           if (status === 200) return JSON.parse(data.response);
-          else {
-            const routeUrl = getUrlRoute(window);
-            console.log(routeUrl);
-            if (routeUrl === ROUTES.SIGNIN) router.start();
-            else if (routeUrl === ROUTES.SIGNUP) {
-              router.start();
-              router.go(ROUTES.SIGNUP);
-            } else {
-              router.start();
-              router.go(ROUTES.ERROR);
-            }
-          }
         return null;
       })
       .then((data: CurrentUser) => {
         if (data !== null) {
           Object.assign(currentUser, data);
           this.putToStore(store, currentUser, "currentUser");
-          if (!isDataEmptyInStore("currentUser")) {
-            return renderChats();
-          }
         }
       })
       .catch((err) => console.log(err));

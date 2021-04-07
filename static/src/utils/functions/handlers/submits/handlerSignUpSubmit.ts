@@ -1,9 +1,9 @@
-import { Options } from "../../../types/Options.js";
-import { authApi } from "../../api/AuthAPI.js";
-import renderChats from "../renderChats.js";
+import { Options } from "../../../../types/Options.js";
+import { authAPI } from "../../../api/AuthAPI.js";
+import renderChats from "../../renderChats.js";
 
 export default function handlerSignUpSubmit(options: Options) {
-  return authApi.signup(options).then((data) => {
+  return authAPI.signup(options).then((data) => {
     if (data.status === 200)
       return renderChats();
     else {

@@ -2,7 +2,7 @@ import Form from "../../../../../blocks/form/Form.js";
 import { ROUTES } from "../../../../const/routes.js";
 import { Nullable } from "../../../../types/Nullable.js";
 import Router from "../../../classes/Router.js";
-import handlerSignInSubmit from "../handlerSignInSubmit.js";
+import handlerSignInSubmit from "../submits/handlerSignInSubmit.js";
 
 export function handlerSignInPage(router: Router): void {
   const formContainer: Nullable<HTMLFormElement> = document.querySelector(".form__signin");
@@ -10,7 +10,7 @@ export function handlerSignInPage(router: Router): void {
   if (formContainer !== null) {
     const form = new Form({
       container: formContainer,
-      handlerSubmit: handlerSignInSubmit 
+      handlerSubmit: handlerSignInSubmit
     });
 
     form.create();

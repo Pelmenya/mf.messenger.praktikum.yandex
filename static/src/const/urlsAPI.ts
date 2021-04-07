@@ -3,9 +3,11 @@ export enum URLS_API {
   AUTH = "/auth",
   SIGNIN = "/signin",
   SIGNUP = "/signup",
-  GET_USER = "/user",
   LOGOUT = "/logout",
   CHATS = "/chats",
   GET_CHATS = "",
   CREATE_CHAT = "",
+  USER = "/user",
+  USERS = "/users",
+  SEARCH_USER = "/search",
 }

@@ -1,4 +1,3 @@
-import Form from "../../blocks/form/Form.js";
 import Popup from "../../blocks/popup/Popup.js";
 import BlockProps from "../types/BlockProps.js";
 import { Nullable } from "../types/Nullable.js";
@@ -10,6 +9,7 @@ import { chatSelected } from "./chatSelected.tmpl.js";
 interface ChatSelectedProps extends BlockProps {
   title: string;
   name_chat: string;
+  chatId: number;
 }
 
 export default class ChatSelected extends Block<ChatSelectedProps> {
@@ -20,7 +20,6 @@ export default class ChatSelected extends Block<ChatSelectedProps> {
 
   addEventListeners = () => {
     if (this.element !== null) {
-      //const removeUserPopupElement: Popup = getElementFromStore(store, "chatsProps", "remove_user");
       const menuUser: Nullable<HTMLElement> = this.element.querySelector(
         ".form-window_messages-list-header"
       );
@@ -48,54 +47,16 @@ export default class ChatSelected extends Block<ChatSelectedProps> {
 
       if (addUserBtn !== null && menuUser !== null)
         addUserBtn.addEventListener("click", () => {
-          menuUser.classList.toggle("form-window_is-opened");
-
           const addUserPopupElement: Popup = getElementFromStore(store, "chatsProps", "add_user");
-
+          menuUser.classList.toggle("form-window_is-opened");
           addUserPopupElement.show();
-
-          if (addUserPopupElement !== undefined) {
-            const addUserPopupContent = addUserPopupElement.getContent();
-            if (addUserPopupContent !== null) {
-              const formContainerAddUser: Nullable<
-                HTMLFormElement
-              > = addUserPopupContent.querySelector("form");
-
-              if (formContainerAddUser !== null) {
-                const form = new Form({
-                  container: formContainerAddUser,
-                  handlerSubmit: () => {}, // handlerAddUserSubmit,
-                });
-                form.create();
-              }
-            }
-          }
         });
 
       if (removeUserBtn !== null && menuUser !== null)
         removeUserBtn.addEventListener("click", () => {
-          menuUser.classList.toggle("form-window_is-opened");
-
           const removeUserPopupElement: Popup = getElementFromStore(store, "chatsProps", "remove_user");
-
+          menuUser.classList.toggle("form-window_is-opened");
           removeUserPopupElement.show();
-
-          if (removeUserPopupElement !== undefined) {
-            const removeUserPopupContent = removeUserPopupElement.getContent();
-            if (removeUserPopupContent !== null) {
-              const formContainerRemoveUser: Nullable<
-                HTMLFormElement
-              > = removeUserPopupContent.querySelector("form");
-
-              if (formContainerRemoveUser !== null) {
-                const form = new Form({
-                  container: formContainerRemoveUser,
-                  handlerSubmit: () => {}, // handlerAddUserSubmit,
-                });
-                form.create();
-              }
-            }
-          }
         });
     }
   };

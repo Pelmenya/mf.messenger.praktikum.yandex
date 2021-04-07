@@ -32,8 +32,16 @@ export default class Card extends Block<CardProps> {
 
   public handlerMouseDownCard = () => {
     this.chatNotSelected.hide();
-    this.chatSelected.setProps({ title: this.props.title, name_chat: this.props.name });
-    this.chatSelected.setProps({ title: this.props.title, name_chat: this.props.name }); // со второго раза ?
+    this.chatSelected.setProps({
+      title: this.props.title,
+      name_chat: this.props.name,
+      chatId: this.props.id,
+    });
+    this.chatSelected.setProps({
+      title: this.props.title,
+      name_chat: this.props.name,
+      chatId: this.props.id,
+    }); // со второго раза ?
     this.chatSelected.show();
     this.chatSelected.addEventListeners();
   };

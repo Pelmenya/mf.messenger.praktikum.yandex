@@ -9,7 +9,7 @@ export const popup: Template = {
           <form class="form form__user" name="<%=name%>">\
             <div class="form__wrap">\
               <label class="form__label form__label_hidden" for="<%=name%>-name"><%=placeholder%></label>\
-              <input class="input" name="<%=field%>" id="<%=name%>-name" minlength="2" type="text" placeholder="<%=placeholder%>">\
+              <input class="input" name="<%=field%>" id="<%=name%>-name" required minlength="2" maxlength="30" type="text" placeholder="<%=placeholder%>">\
               <span class="form__error form__error_margin"></span>\
             </div>\
             <div class="form__wrap form__wrap_buttons">\

@@ -2,7 +2,7 @@ import Card from "../../../blocks/card/Card.js";
 import { chatsProps } from "../../const/objects/chatsProps.js";
 import { ROUTES } from "../../const/routes.js";
 import { RendersBlocks } from "../../types/RendersBlocks.js";
-import { chatsAPI } from "../api/ChatsApi.js";
+import { chatsAPI } from "../api/ChatsAPI.js";
 import { router } from "../classes/Router.js";
 import render from "./render.js";
 
