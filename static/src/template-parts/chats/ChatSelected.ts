@@ -1,9 +1,9 @@
-import Popup from "../../blocks/popup/Popup.js";
-import BlockProps from "../types/BlockProps.js";
-import { Nullable } from "../types/Nullable.js";
-import Block from "../utils/classes/Block.js";
-import getElementFromStore from "../utils/functions/getElementFromStore.js";
-import { store } from "../utils/store/storeObj.js";
+import Popup from "../../../blocks/popup/Popup.js";
+import BlockProps from "../../types/BlockProps.js";
+import { Nullable } from "../../types/Nullable.js";
+import Block from "../../utils/classes/Block.js";
+import getElementFromStore from "../../utils/functions/getElementFromStore.js";
+import { store } from "../../utils/store/storeObj.js";
 import { chatSelected } from "./chatSelected.tmpl.js";
 
 interface ChatSelectedProps extends BlockProps {

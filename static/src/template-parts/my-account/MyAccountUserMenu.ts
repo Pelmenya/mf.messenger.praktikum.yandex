@@ -1,10 +1,10 @@
-import { ROUTES } from "../const/routes.js";
-import BlockProps from "../types/BlockProps.js";
-import Block from "../utils/classes/Block.js";
-import { router } from "../utils/classes/Router.js";
-import handlerLogOutUser from "../utils/functions/handlers/handlerLogOutUser.js";
-import setEditPasswordFields from "../utils/functions/setEditPasswordFields.js";
-import setEditUserFields from "../utils/functions/setEditUserFields.js";
+import { ROUTES } from "../../const/routes.js";
+import BlockProps from "../../types/BlockProps.js";
+import Block from "../../utils/classes/Block.js";
+import { router } from "../../utils/classes/Router.js";
+import handlerLogOutUser from "../../utils/functions/handlers/handlerLogOutUser.js";
+import setEditPasswordFields from "../../utils/functions/setEditPasswordFields.js";
+import setEditUserFields from "../../utils/functions/setEditUserFields.js";
 import { myAccountUserMenu } from "./my-account-user-menu.tmpl.js";
 
 export default class MyAccountUserMenu extends Block<BlockProps> {

@@ -1,8 +1,8 @@
-import Form from "../../blocks/form/Form.js";
-import BlockProps from "../types/BlockProps.js";
-import CurrentUser from "../types/CurrentUser.js";
-import { Nullable } from "../types/Nullable.js";
-import Block from "../utils/classes/Block.js";
+import Form from "../../../blocks/form/Form.js";
+import BlockProps from "../../types/BlockProps.js";
+import CurrentUser from "../../types/CurrentUser.js";
+import { Nullable } from "../../types/Nullable.js";
+import Block from "../../utils/classes/Block.js";
 import { myAccountUser } from "./my-account-user.tmpl.js";
 
 interface MyAccountUserProps extends BlockProps {

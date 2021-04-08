@@ -1,6 +1,6 @@
 import Button from "../../../blocks/button/Button.js";
 import Popup from "../../../blocks/popup/Popup.js";
-import ChatNotSelected from "../../template-parts/ChatNotSelected.js";
+import ChatNotSelected from "../../template-parts/chats/ChatNotSelected.js";
 import handlerAddChatSubmit from "../../utils/functions/handlers/submits/handlerAddChatSubmit.js";
 import handlerAddUserSubmit from "../../utils/functions/handlers/submits/handlerAddUserSubmit.js";
 import handlerRemoveUserSubmit from "../../utils/functions/handlers/submits/handlerRemoveUserSubmit.js";

@@ -3,7 +3,6 @@ import { ROUTES } from "../const/routes.js";
 import { router } from "../utils/classes/Router.js";
 import getCurrentUser from "../utils/functions/getCurrentUser.js";
 import getDataFromStore from "../utils/functions/getDataFromStrore.js";
-import getElementFromStore from "../utils/functions/getElementFromStore.js";
 import getUrlRoute from "../utils/functions/getUrlRoute.js";
 import renderChats from "../utils/functions/renderChats.js";
 import setEditPasswordFields from "../utils/functions/setEditPasswordFields.js";

@@ -1,4 +1,4 @@
-import { myAccount } from "../../template-parts/my-account.tmpl.js";
+import { myAccount } from "../../template-parts/my-account/my-account.tmpl.js";
 import BlockProps from "../../types/BlockProps.js";
 import Block from "../../utils/classes/Block.js";
 import { router } from "../../utils/classes/Router.js";

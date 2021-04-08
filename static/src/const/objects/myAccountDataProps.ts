@@ -1,5 +1,5 @@
 import Button from "../../../blocks/button/Button.js";
-import MyAccountUser from "../../template-parts/MyAccountUser.js";
+import MyAccountUser from "../../template-parts/my-account/MyAccountUser.js";
 import { PATTERNS } from "../regex.js";
 import { currentUser } from "./currentUser.js";
 

@@ -1,5 +1,5 @@
-import MyAccountUserMenu from "../../template-parts/MyAccountUserMenu.js";
-import MyAccountUser from "../../template-parts/MyAccountUser.js";
+import MyAccountUser from "../../template-parts/my-account/MyAccountUser.js";
+import MyAccountUserMenu from "../../template-parts/my-account/MyAccountUserMenu.js";
 import { PATTERNS } from "../regex.js";
 import { currentUser } from "./currentUser.js";
 

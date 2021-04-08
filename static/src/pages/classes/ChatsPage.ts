@@ -1,11 +1,10 @@
 import BlockProps from "../../types/BlockProps.js";
 import Block from "../../utils/classes/Block.js";
-import { chats } from "../../template-parts/chats.tmpl.js";
+import { chats } from "../../template-parts/chats/chats.tmpl.js";
 import { router } from "../../utils/classes/Router.js";
 import { ROUTES } from "../../const/routes.js";
 import getElementFromStore from "../../utils/functions/getElementFromStore.js";
 import { store } from "../../utils/store/storeObj.js";
-import getDataFromStore from "../../utils/functions/getDataFromStrore.js";
 import { Nullable } from "../../types/Nullable.js";
 import Popup from "../../../blocks/popup/Popup.js";
 import setUserFields from "../../utils/functions/setUserFields.js";

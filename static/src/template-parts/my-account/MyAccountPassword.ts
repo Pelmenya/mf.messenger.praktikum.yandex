@@ -1,7 +1,7 @@
-import Form from "../../blocks/form/Form.js";
-import BlockProps from "../types/BlockProps.js";
-import { Nullable } from "../types/Nullable.js";
-import Block from "../utils/classes/Block.js";
+import Form from "../../../blocks/form/Form.js";
+import BlockProps from "../../types/BlockProps.js";
+import { Nullable } from "../../types/Nullable.js";
+import Block from "../../utils/classes/Block.js";
 import { myAccountPassword } from "./my-account-password.tmpl.js";
 
 interface MyAccountPasswordProps extends BlockProps {
