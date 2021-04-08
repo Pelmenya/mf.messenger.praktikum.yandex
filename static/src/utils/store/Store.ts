@@ -24,7 +24,9 @@ export default class Store {
     eventBus.on(EVENTS.PUT_STORE, controller.setChatsProps);
     eventBus.on(EVENTS.PUT_STORE, controller.setChatsSelectedProps);
     eventBus.on(EVENTS.PUT_STORE, controller.setErrorProps);
-    eventBus.on(EVENTS.PUT_STORE, controller.setMyaAccountProps);
+    eventBus.on(EVENTS.PUT_STORE, controller.setMyAccountProps);
+    eventBus.on(EVENTS.PUT_STORE, controller.setMyAccountDataProps);
+    eventBus.on(EVENTS.PUT_STORE, controller.setMyAccountPasswordProps);
   }
 
   public listen() {

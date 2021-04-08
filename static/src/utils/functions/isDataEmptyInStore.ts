@@ -8,3 +8,4 @@ export default function isDataEmptyInStore(key: string) {
   }
   return empty;
 }
+

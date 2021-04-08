@@ -27,10 +27,8 @@ export default class Router {
   }
 
   private handlerOnPopState = (event: Event) => {
-    console.log("handlerOn", getUrlRoute(window));
     const routeUrl = getUrlRoute(window);
     getCurrentUser().then((data) => {
-      console.log(data);
       if (data !== null) {
         if (event.currentTarget instanceof Window)
           if (this.history.state !== null) {
@@ -52,8 +50,6 @@ export default class Router {
 
   public start() {
     window.onpopstate = this.handlerOnPopState;
-    console.log("start", getUrlRoute(window));
-
     if (this.history.state === null) this.onRoute(getUrlRoute(window));
     else this.onRoute(this.history.state.url);
   }
@@ -74,7 +70,6 @@ export default class Router {
 
   public go(pathname: string) {
     window.onpopstate = this.handlerOnPopState;
-    console.log("go", getUrlRoute(window));
 
     if (getUrlRoute(window) === ROUTES.SIGNIN) {
       if (isDataEmptyInStore("currentUser")) {

@@ -1,29 +1,22 @@
-import { ROUTES } from "../../const/routes.js";
 import { myAccount } from "../../template-parts/my-account.tmpl.js";
 import BlockProps from "../../types/BlockProps.js";
 import Block from "../../utils/classes/Block.js";
-import { router } from "../../utils/classes/Router.js";
 import renderChats from "../../utils/functions/renderChats.js";
 
-interface MyAccountPageProps extends BlockProps {
-  disabled: string;
-  menu: string;
-  phone: string;
-  email: string;
-}
-
-export default class MyAccountPage extends Block<MyAccountPageProps> {
-  constructor(props: MyAccountPageProps) {
+export default class MyAccountPage extends Block<BlockProps> {
+  constructor(props: BlockProps) {
     super(props);
-    this.create();
+    this.addListeners();
   }
 
-  create() {
-    this.element.querySelector(".control__back-btn").addEventListener("click", () => {
-      renderChats();
-    });
+  public addListeners() {
+    if (this.element !== null) {
+      const controlBackBtn = this.element.querySelector(".control__back-btn");
+      if (controlBackBtn !== null) controlBackBtn.addEventListener("click", renderChats);
+    }
   }
-  render() {
+
+  public render() {
     return _.template(myAccount.tmpl)(this.props);
   }
 }

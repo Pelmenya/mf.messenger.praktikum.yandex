@@ -5,16 +5,11 @@ import { signUpProps } from "../../const/objects/signUpProps.js";
 import Store from "../store/Store.js";
 import { store } from "../store/storeObj.js";
 import { chatsProps } from "../../const/objects/chatsProps.js";
-import CurrentUser from "../../types/CurrentUser.js";
-import isDataEmptyInStore from "../functions/isDataEmptyInStore.js";
-import { router } from "./Router.js";
-import getUrlRoute from "../functions/getUrlRoute.js";
-import { ROUTES } from "../../const/routes.js";
 import { errorProps } from "../../const/objects/errorProps.js";
-import renderChats from "../functions/renderChats.js";
-import { authAPI } from "../api/AuthAPI.js";
 import { chatsSelectedProps } from "../../const/objects/chatsSelectedProps.js";
 import { myAccountProps } from "../../const/objects/myAccountProps.js";
+import { myAccountDataProps } from "../../const/objects/myAccountDataProps.js";
+import { myAccountPasswordProps } from "../../const/objects/myAccountPasswordProps.js";
 
 export default class Controller {
   private putToStore(store: Store, obj: Nullable<Object>, key: string) {
@@ -41,26 +36,20 @@ export default class Controller {
     this.putToStore(store, chatsSelectedProps, "chatsSelectedProps");
   };
 
-  setMyaAccountProps = () => {
+  setMyAccountProps = () => {
     this.putToStore(store, myAccountProps, "myAccountProps");
   };
 
+  setMyAccountDataProps = () => {
+    this.putToStore(store, myAccountDataProps, "myAccountDataProps");
+  };
+
+  setMyAccountPasswordProps = () => {
+    this.putToStore(store, myAccountPasswordProps, "myAccountPasswordProps");
+  };
+ 
   setCurrentUserProps = () => {
-    authAPI
-      .getCurrentUser()
-      .then((data: any) => {
-        const { status } = data;
-        if (status !== undefined)
-          if (status === 200) return JSON.parse(data.response);
-        return null;
-      })
-      .then((data: CurrentUser) => {
-        if (data !== null) {
-          Object.assign(currentUser, data);
-          this.putToStore(store, currentUser, "currentUser");
-        }
-      })
-      .catch((err) => console.log(err));
+    this.putToStore(store, currentUser, "currentUser");
   };
 }
 

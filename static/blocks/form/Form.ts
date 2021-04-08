@@ -150,7 +150,7 @@ export default class Form {
       Object.keys(this.inputs).forEach((item: string) => {
         if (
           this.inputs[Number(item)].type === "password" &&
-          this.inputs[Number(item)].name !== "old_password"
+          this.inputs[Number(item)].name !== "oldPassword"
         )
           countPasswordFields += 1;
         this.inputs[Number(item)].addEventListener("input", this.handlerInputInput);

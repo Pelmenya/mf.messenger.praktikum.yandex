@@ -1,9 +1,9 @@
-import MyAccountUserMenu from "../../template-parts/MyAccountUserMenu.js";
+import Button from "../../../blocks/button/Button.js";
 import MyAccountUser from "../../template-parts/MyAccountUser.js";
 import { PATTERNS } from "../regex.js";
 import { currentUser } from "./currentUser.js";
 
-export const myAccountProps = {
+export const myAccountDataProps = {
   tagNameBlock: "main",
   classListBlock: [
     "body__container",
@@ -19,23 +19,20 @@ export const myAccountProps = {
           "account__data",
           "account__data_is-opened",
         ],
-        name: "userFields",
+        name: "userDataFields",
         phone_pattern: PATTERNS.PATTERN_PHONE,
         email_pattern: PATTERNS.PATTERN_EMAIL,
-        disabled: "disabled",
+        disabled: "",
         currentUserProps: currentUser,
       }),
     },
     {
-      query: "section.user-fields",
-      block: new MyAccountUserMenu({
+      query: ".account__wrap-col_buttons",
+      block: new Button({
         tagNameBlock: "div",
-        classListBlock: [
-          "menu",
-          "account__menu",
-          "menu_is-opened"
-        ],
-        name: "account_user_menu"
+        name: "submit_btn_data",
+        text: "Сохранить",
+        classList: "button account__save-data",
       }),
     },
   ],

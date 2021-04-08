@@ -10,7 +10,7 @@ export function handlerSignInPage(router: Router): void {
   if (formContainer !== null) {
     const form = new Form({
       container: formContainer,
-      handlerSubmit: handlerSignInSubmit
+      handlerSubmit: handlerSignInSubmit,
     });
 
     form.create();

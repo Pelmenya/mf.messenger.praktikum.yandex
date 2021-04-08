@@ -21,7 +21,7 @@ export const initalChatsElements = [
     }),
   },
   {
-    query: ".app",
+    query: "main",
     block: new Popup({
       tagNameBlock: "div",
       classListBlock: [
@@ -46,7 +46,7 @@ export const initalChatsElements = [
     }),
   },
   {
-    query: ".app",
+    query: "main",
     block: new Popup({
       tagNameBlock: "div",
       classListBlock: [
@@ -71,7 +71,7 @@ export const initalChatsElements = [
     }),
   },
   {
-    query: ".app",
+    query: "main",
     block: new Popup({
       tagNameBlock: "div",
       classListBlock: [
