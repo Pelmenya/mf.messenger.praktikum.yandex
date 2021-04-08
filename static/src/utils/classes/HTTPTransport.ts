@@ -20,6 +20,16 @@ export default class HTTPTransport {
     return this.request(url, { ...options, method: METHOD.POST });
   }
 
+  put(url: string, options: Options): Promise<XMLHttpRequest> {
+    return this.request(url, { ...options, method: METHOD.PUT });
+  }
+
+  delete(url: string, options: Options): Promise<XMLHttpRequest> {
+    return this.request(url, { ...options, method: METHOD.DELETE });
+  }
+
+
+
   request(url: string, options: Options = { method: METHOD.GET }): Promise<XMLHttpRequest> {
     const { method, data = {} } = options;
 

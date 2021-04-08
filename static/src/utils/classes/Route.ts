@@ -7,10 +7,10 @@ interface RouteProps {
 }
 
 export default class Route {
-  private props: RouteProps;
-  private pathname: string;
-  private blockClass: any;
-  private block: any;
+  props: RouteProps;
+  pathname: string;
+  blockClass: any;
+  block: any;
 
   constructor(pathname: string, view: Function, props: RouteProps) {
     this.pathname = pathname;
@@ -48,7 +48,6 @@ export default class Route {
       render([
         { query: this.props.rootQuery, block: this.block },
       ]);
-    //if (this.props.blockProps.visible === undefined || this.props.blockProps.visible === true)
       if (this.block !== null) this.block.show();
   }
 }

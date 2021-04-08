@@ -1,4 +1,4 @@
-import { Template } from "../types/Template.js";
+import { Template } from "../../types/Template.js";
 
 export const chatNotSelected: Template = {
   tmpl:

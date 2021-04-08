@@ -1,4 +1,4 @@
-import { Template } from "../types/Template.js";
+import { Template } from "../../types/Template.js";
 
 export const chats: Template = {
   tmpl:
@@ -11,7 +11,7 @@ export const chats: Template = {
               <span class="chats__create-chat"></span>\
               <span class="chats__link-text">&nbsp;&nbsp;Создать чат</span>\
             </button>\
-            <button class="chats__nav-btn">\
+            <button class="chats__nav-btn chats__nav-btn_my-account">\
               <span class="chats__link-text">Профиль&nbsp;&nbsp;</span>\
               <span class="chats__icon-angle-right"></span>\
             </button>\

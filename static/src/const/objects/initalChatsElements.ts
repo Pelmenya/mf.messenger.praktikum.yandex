@@ -1,9 +1,13 @@
 import Button from "../../../blocks/button/Button.js";
 import Popup from "../../../blocks/popup/Popup.js";
-import ChatNotSelected from "../../template-parts/ChatNotSelected.js";
-import ChatSelected from "../../template-parts/ChatSelected.js";
+import ChatNotSelected from "../../template-parts/chats/ChatNotSelected.js";
+import handlerAddChatSubmit from "../../utils/functions/handlers/submits/handlerAddChatSubmit.js";
+import handlerAddUserSubmit from "../../utils/functions/handlers/submits/handlerAddUserSubmit.js";
+import handlerRemoveUserSubmit from "../../utils/functions/handlers/submits/handlerRemoveUserSubmit.js";
+import { chatsSelectedProps } from "./chatsSelectedProps.js";
 
 export const initalChatsElements = [
+  chatsSelectedProps,
   {
     query: "div .body__container .body__container_is-opened",
     block: new ChatNotSelected({
@@ -13,25 +17,11 @@ export const initalChatsElements = [
         "chat",
       ],
       displayBlock: "flex",
-      name: "chatNotSelected"
+      name: "chatNotSelected",
     }),
   },
   {
-    query: "div .body__container .body__container_is-opened",
-    block: new ChatSelected({
-      tagNameBlock: "aside",
-      classListBlock: [
-        "sidebar",
-        "chat",
-        "sidebar_is-closed"
-      ],
-      displayBlock: "flex",
-      name: "chatSelected",
-      title: "",
-    }),
-  },
-  {
-    query: ".app",
+    query: "main",
     block: new Popup({
       tagNameBlock: "div",
       classListBlock: [
@@ -41,8 +31,9 @@ export const initalChatsElements = [
       displayBlock: "flex",
       title: "Добавить пользователя",
       name: "add_user",
-      field: "add_user",
+      field: "login",
       placeholder: "Пользователь",
+      handlerSubmit: handlerAddUserSubmit,
     }),
   },
   {
@@ -55,7 +46,7 @@ export const initalChatsElements = [
     }),
   },
   {
-    query: ".app",
+    query: "main",
     block: new Popup({
       tagNameBlock: "div",
       classListBlock: [
@@ -65,8 +56,9 @@ export const initalChatsElements = [
       displayBlock: "flex",
       title: "Удалить пользователя",
       name: "remove_user",
-      field: "remove_user",
+      field: "login",
       placeholder: "Пользователь",
+      handlerSubmit: handlerRemoveUserSubmit,
     }),
   },
   {
@@ -79,7 +71,7 @@ export const initalChatsElements = [
     }),
   },
   {
-    query: ".app",
+    query: "main",
     block: new Popup({
       tagNameBlock: "div",
       classListBlock: [
@@ -91,6 +83,7 @@ export const initalChatsElements = [
       name: "add_chat",
       field: "title",
       placeholder: "Чат",
+      handlerSubmit: handlerAddChatSubmit,
     }),
   },
   {

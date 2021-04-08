@@ -4,7 +4,7 @@ import Block from "../../utils/classes/Block.js";
 import { router } from "../../utils/classes/Router.js";
 import setUserFields from "../../utils/functions/setUserFields.js";
 
-export default class MyAccountPasswordPage extends Block<BlockProps> {
+export default class MyAccountDataPage extends Block<BlockProps> {
   constructor(props: BlockProps) {
     super(props);
     this.addEventListeners();

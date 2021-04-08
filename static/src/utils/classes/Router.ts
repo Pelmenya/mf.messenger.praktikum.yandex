@@ -1,5 +1,8 @@
+import { ROUTES } from "../../const/routes.js";
 import { Nullable } from "../../types/Nullable.js";
+import getCurrentUser from "../functions/getCurrentUser.js";
 import getUrlRoute from "../functions/getUrlRoute.js";
+import isDataEmptyInStore from "../functions/isDataEmptyInStore.js";
 import Route from "./Route.js";
 
 export default class Router {
@@ -18,23 +21,35 @@ export default class Router {
   }
 
   public use(pathname: string, block: Function, blockProps: any) {
-      const route = new Route(pathname, block, { blockProps, rootQuery: this.rootQuery });
-      this.routes.push(route);
-      return this;
+    const route = new Route(pathname, block, { blockProps, rootQuery: this.rootQuery });
+    this.routes.push(route);
+    return this;
   }
 
   private handlerOnPopState = (event: Event) => {
-    if (event.currentTarget instanceof Window)
-      if (this.history.state !== null) {
-        this.onRoute(this.history.state.url);
+    const routeUrl = getUrlRoute(window);
+    getCurrentUser().then((data) => {
+      if (data !== null) {
+        if (event.currentTarget instanceof Window)
+          if (this.history.state !== null) {
+            this.onRoute(this.history.state.url);
+          } else {
+            this.onRoute(getUrlRoute(event.currentTarget));
+          }
       } else {
-        this.onRoute(getUrlRoute(event.currentTarget));
+        console.log(routeUrl);
+        if (routeUrl === ROUTES.SIGNIN) this.onRoute(ROUTES.SIGNIN);
+        else if (routeUrl === ROUTES.SIGNUP) {
+          this.onRoute(ROUTES.SIGNUP);
+        } else {
+          this.onRoute(ROUTES.ERROR);
+        }
       }
+    });
   };
 
   public start() {
     window.onpopstate = this.handlerOnPopState;
-
     if (this.history.state === null) this.onRoute(getUrlRoute(window));
     else this.onRoute(this.history.state.url);
   }
@@ -44,25 +59,45 @@ export default class Router {
     if (!route) {
       return;
     }
+
     if (this.currentRoute) {
       this.currentRoute.leave();
     }
+
     this.currentRoute = route;
     route.render();
   }
 
-
   public go(pathname: string) {
     window.onpopstate = this.handlerOnPopState;
 
-    this.activePage++;
-    this.history.pushState(
-      { page: this.activePage, url: pathname },
-      `Title: ${this.activePage}`,
-      pathname
-    );
-
-    this.onRoute(pathname);
+    if (getUrlRoute(window) === ROUTES.SIGNIN) {
+      if (isDataEmptyInStore("currentUser")) {
+        this.activePage++;
+        this.history.pushState(
+          { page: this.activePage, url: pathname },
+          `Title: ${this.activePage}`,
+          pathname
+        );
+        this.onRoute(pathname);
+      } else {
+        this.activePage++;
+        this.history.replaceState(
+          { page: this.activePage, url: ROUTES.CHATS },
+          `Title: ${this.activePage}`,
+          ROUTES.CHATS
+        );
+        this.onRoute(ROUTES.CHATS);
+      }
+    } else {
+      this.activePage++;
+      this.history.pushState(
+        { page: this.activePage, url: pathname },
+        `Title: ${this.activePage}`,
+        pathname
+      );
+      this.onRoute(pathname);
+    }
   }
 
   public back() {
@@ -79,6 +114,5 @@ export default class Router {
     return this.routes.find((route) => route.match(pathname));
   }
 }
-
 
 export const router = new Router(".app");

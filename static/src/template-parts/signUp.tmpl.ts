@@ -34,6 +34,5 @@ export const formSignUp: Template = {
         </div>\
         </form>\
       </div>\
-    </div>\
-    <a class="page-link" href="500.html">Следущая страница</a>',
+    </div>',
 };
