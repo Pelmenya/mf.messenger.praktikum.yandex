@@ -1,5 +1,5 @@
 import { currentUser } from "../../const/objects/currentUser.js";
-import { URLS_API } from "../../const/urlsApi.js";
+import { URLS_API } from "../../const/urlsAPI.js";
 import { store } from "../store/storeObj.js";
 import getElementFromStore from "./getElementFromStore.js";
 
