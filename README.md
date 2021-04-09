@@ -1,4 +1,4 @@
-# Проектная работа №2.
+# Проектная работа №2
 
 «[Сайт проекта Messanger на Netlify](https://trusting-elion-30443a.netlify.app)»
 
