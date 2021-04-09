@@ -2,7 +2,6 @@ import queryString from "../functions/getString.js";
 import { METHOD } from "../../const/methods.js";
 import { Options } from "../../types/Options.js";
 
-
 type OptionsWithoutMethod = Omit<Options, "method">;
 
 export default class HTTPTransport {
@@ -28,8 +27,6 @@ export default class HTTPTransport {
     return this.request(url, { ...options, method: METHOD.DELETE });
   }
 
-
-
   request(url: string, options: Options = { method: METHOD.GET }): Promise<XMLHttpRequest> {
     const { method, data = {} } = options;
 
@@ -52,8 +49,12 @@ export default class HTTPTransport {
         xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");
         xhr.send();
       } else {
-        xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");
-        xhr.send(JSON.stringify(data));
+        if (data instanceof FormData) {
+          xhr.send(data);
+        } else {
+          xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");
+          xhr.send(JSON.stringify(data));
+        }
       }
     });
   }

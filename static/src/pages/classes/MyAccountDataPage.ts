@@ -7,10 +7,14 @@ import setUserFields from "../../utils/functions/setUserFields.js";
 export default class MyAccountDataPage extends Block<BlockProps> {
   constructor(props: BlockProps) {
     super(props);
-    this.addEventListeners();
+    this.create();
   }
 
-  public addEventListeners() {
+  public create(){
+    this.addListeners();
+  }
+
+  public addListeners() {
     if (this.element !== null) {
       const controlBackBtn = this.element.querySelector(".control__back-btn");
       if (controlBackBtn !== null)

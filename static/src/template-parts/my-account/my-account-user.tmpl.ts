@@ -2,15 +2,7 @@ import { Template } from "../../types/Template.js";
 
 export const myAccountUser: Template = {
   tmpl:
-    '<h2 hidden>Личный кабинет</h2>\
-      <div class="account__avatar">\
-        <div class="account__avatar-overlay">\
-          <div class="account__wrap-row account__wrap-row_avatar">\
-            <span class="account__avatar-text">Поменять аватар</span>\
-          </div>\
-        </div>\
-      </div>\
-      <p class="account__name"><%=currentUserProps.first_name%></p>\
+     '<p class="account__name"><%=currentUserProps.first_name%></p>\
       <form class="form account__form account__form_data" name="edit_data">\
         <div class="account__wrap-row">\
           <label class="account__label" for="email-field">Почта</label>\
@@ -48,6 +40,7 @@ export const myAccountUser: Template = {
           <span class="form__error form__error_account"></span>\
         </div>\
         <div class="account__wrap-col account__wrap-col_buttons">\
+          <span class="form__error form__error_server"></span>\
         </div>\
       </form>',
 };

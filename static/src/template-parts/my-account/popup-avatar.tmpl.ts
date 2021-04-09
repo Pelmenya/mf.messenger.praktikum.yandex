@@ -1,4 +1,4 @@
-import { Template } from "../types/Template.js";
+import { Template } from "../../types/Template.js";
 
 export const popupAvatar: Template = {
   tmpl:
@@ -11,7 +11,7 @@ export const popupAvatar: Template = {
             <div class="form__wrap form__wrap_data">\
               <label class="form__select-file <%=load%>" for="photo-field"><%=label%></label>\
             </div>\
-            <div class="form__wrap form__wrap_buttons">\
+            <div class="form__wrap form__wrap_buttons form__wrap_buttons_avatar">\
             </div>\
             <span class="form__error form__error_popup <%=error%>">Нужно выбрать файл</span>\
             </form>\

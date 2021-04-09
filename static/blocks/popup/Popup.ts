@@ -4,15 +4,21 @@ import { popup } from "./popup.tmpl.js";
 import Form from "../form/Form.js";
 import { Nullable } from "../../src/types/Nullable.js";
 
-interface PopupProps extends BlockProps {
+export interface PopupProps extends BlockProps {
   title: string;
-  name: string;
   field: string;
   placeholder: string;
   handlerSubmit: Function;
 }
 
-export default class Popup extends Block<PopupProps> {
+export interface PopupAvatarProps extends PopupProps {
+  error_title: string;
+  load: string;
+  label: string;
+  error: string;
+}
+
+export default class Popup extends Block<PopupProps | PopupAvatarProps > {
   constructor(props: PopupProps) {
     super(props);
     this.create();

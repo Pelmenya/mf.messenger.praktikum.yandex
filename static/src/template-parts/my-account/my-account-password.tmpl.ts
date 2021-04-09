@@ -2,9 +2,7 @@ import { Template } from "../../types/Template.js";
 
 export const myAccountPassword: Template = {
   tmpl:
-    '<h2 hidden>Личный кабинет - смена пароля</h2>\
-    <div class="account__avatar"></div>\
-    <form class="form account__form account__form_password" name="newpassword">\
+    '<form class="form account__form account__form_password" name="newpassword">\
       <div class="account__wrap-row">\
         <label class="account__label" for="old-password">Старый пароль</label>\
         <input value="<%=oldPassword%>" name="oldPassword" id="old-password" class="input account__input" type="password" required minlength="6">\
@@ -23,6 +21,7 @@ export const myAccountPassword: Template = {
         <span class="form__error form__error_account"></span>\
       </div>\
       <div class="account__wrap-col account__wrap-col_buttons">\
+        <span class="form__error form__error_server"></span>\
       </div>\
     </form>',
 };

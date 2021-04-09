@@ -1,6 +1,6 @@
 import Button from "../../blocks/button/Button.js";
 import render from "../utils/functions/render.js";
-import PopupAvatarPage from "./classes/PopupAvatarPage.js";
+import PopupAvatarPage from "../template-parts/my-account/PopupAvatar.js";
 
 render([
   {

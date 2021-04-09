@@ -4,6 +4,7 @@ import { ROUTES } from "../../const/routes.js";
 import { RendersBlocks } from "../../types/RendersBlocks.js";
 import { chatsAPI } from "../api/ChatsAPI.js";
 import { router } from "../classes/Router.js";
+import clearChats from "./clearChats.js";
 import render from "./render.js";
 
 export default function renderChats() {
@@ -32,7 +33,7 @@ export default function renderChats() {
       });
 
       router.go(ROUTES.CHATS);
-
+      clearChats();
       render(arr);
 
       chatsProps.elements = [
