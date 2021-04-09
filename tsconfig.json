@@ -4,6 +4,7 @@
     "target": "es2017",
     "declaration": false,
     "module": "esNext",
+    "strict": true,
     "esModuleInterop": true,
     "noImplicitAny": true,
     "noUnusedLocals": true,
