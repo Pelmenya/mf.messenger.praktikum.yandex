@@ -7,7 +7,7 @@ import getCurrentUser from "../../utils/functions/getCurrentUser.js";
 import { currentUser } from "../../const/objects/currentUser.js";
 import getElementFromStore from "../../utils/functions/getElementFromStore.js";
 import { store } from "../../utils/store/storeObj.js";
-import { URLS_API } from "../../const/urlsApi.js";
+import { URLS_API } from "../../const/urlsAPI.js";
 
 
 

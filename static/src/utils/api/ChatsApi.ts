@@ -1,6 +1,6 @@
 import HTTPTransport from "../classes/HTTPTransport.js";
 import BaseAPI from "./BaseAPI.js";
-import { URLS_API } from "../../const/urlsApi.js";
+import { URLS_API } from "../../const/urlsAPI.js";
 import { Options } from "../../types/Options.js";
 
 const chatsAPIInstance = new HTTPTransport(`${URLS_API.BASE}${URLS_API.CHATS}`);
