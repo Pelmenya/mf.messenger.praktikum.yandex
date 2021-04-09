@@ -10,4 +10,8 @@ export enum URLS_API {
   USER = "/user",
   USERS = "/users",
   SEARCH_USER = "/search",
+  PROFILE = "/profile",
+  AVATAR = "/avatar",
+  PASSWORD = "/password",
+  RESOURCES = "/resources"
 }

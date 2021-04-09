@@ -6,6 +6,10 @@ import renderChats from "../../utils/functions/renderChats.js";
 export default class MyAccountPage extends Block<BlockProps> {
   constructor(props: BlockProps) {
     super(props);
+    this.create();
+  }
+
+  public create(){
     this.addListeners();
   }
 

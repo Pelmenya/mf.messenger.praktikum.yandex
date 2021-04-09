@@ -77,7 +77,7 @@ export default class Form {
     let valid: boolean = true;
     Object.keys(this.inputs).forEach((item: string) => {
       let input: HTMLInputElement = this.inputs[Number(item)];
-      if (input.type === "password" && input.name !== "old_password") {
+      if (input.type === "password" && input.name !== "oldPassword") {
         if (input.nextElementSibling !== null)
           if (this.errorLabelClass !== undefined)
             if (input.nextElementSibling.classList.contains(this.errorLabelClass)) {

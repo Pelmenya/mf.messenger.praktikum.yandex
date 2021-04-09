@@ -5,6 +5,7 @@ import getCurrentUser from "../utils/functions/getCurrentUser.js";
 import getDataFromStore from "../utils/functions/getDataFromStrore.js";
 import getUrlRoute from "../utils/functions/getUrlRoute.js";
 import renderChats from "../utils/functions/renderChats.js";
+import setAvatarField from "../utils/functions/setAvatarField.js";
 import setEditPasswordFields from "../utils/functions/setEditPasswordFields.js";
 import setEditUserFields from "../utils/functions/setEditUserFields.js";
 import setUserFields from "../utils/functions/setUserFields.js";

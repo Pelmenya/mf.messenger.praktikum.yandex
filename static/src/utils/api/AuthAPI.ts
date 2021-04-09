@@ -8,12 +8,7 @@ const authAPIInstance = new HTTPTransport(`${URLS_API.BASE}${URLS_API.AUTH}`);
 
 export default class AuthAPI extends BaseAPI {
   getCurrentUser() {
-    return authAPIInstance
-      .get(URLS_API.USER)
-      .then((data) => {
-        return data;
-      })
-      .catch((err) => console.log(err));
+    return authAPIInstance.get(URLS_API.USER);
   }
 
   signup(options: Options) {

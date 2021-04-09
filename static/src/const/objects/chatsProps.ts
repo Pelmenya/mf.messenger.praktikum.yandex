@@ -1,5 +1,3 @@
-import { router } from "../../utils/classes/Router.js";
-import handlerChatsPage from "../../utils/functions/handlers/pages/handlerChatsPage.js";
 import { initalChatsElements } from "./initalChatsElements.js";
 
 export const chatsProps = {
@@ -10,7 +8,5 @@ export const chatsProps = {
   ],
   displayBlock: "flex",
   elements: initalChatsElements,
-  handler: () => {
-    handlerChatsPage(router);
-  },
+  handler: () => {},
 };

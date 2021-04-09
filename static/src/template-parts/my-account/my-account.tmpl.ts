@@ -8,6 +8,7 @@ export const myAccount: Template = {
       </aside>\
       <aside class="sidebar account">\
         <section class="account__data account__data_is-opened user-fields">\
+          <h2 hidden>Личный кабинет</h2>\
         </section>\
       </aside>\
   </div>',

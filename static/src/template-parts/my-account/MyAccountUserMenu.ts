@@ -3,6 +3,7 @@ import BlockProps from "../../types/BlockProps.js";
 import Block from "../../utils/classes/Block.js";
 import { router } from "../../utils/classes/Router.js";
 import handlerLogOutUser from "../../utils/functions/handlers/handlerLogOutUser.js";
+import setAvatarField from "../../utils/functions/setAvatarField.js";
 import setEditPasswordFields from "../../utils/functions/setEditPasswordFields.js";
 import setEditUserFields from "../../utils/functions/setEditUserFields.js";
 import { myAccountUserMenu } from "./my-account-user-menu.tmpl.js";

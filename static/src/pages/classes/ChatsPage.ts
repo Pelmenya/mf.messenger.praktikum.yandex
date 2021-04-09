@@ -8,6 +8,7 @@ import { store } from "../../utils/store/storeObj.js";
 import { Nullable } from "../../types/Nullable.js";
 import Popup from "../../../blocks/popup/Popup.js";
 import setUserFields from "../../utils/functions/setUserFields.js";
+import setAvatarField from "../../utils/functions/setAvatarField.js";
 
 export default class ChatsPage extends Block<BlockProps> {
   constructor(props: BlockProps) {

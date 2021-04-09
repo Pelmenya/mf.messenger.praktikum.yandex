@@ -3,6 +3,7 @@ import { Options } from "../../../../types/Options.js";
 import { chatsAPI } from "../../../api/ChatsAPI.js";
 import { store } from "../../../store/storeObj.js";
 import getElementFromStore from "../../getElementFromStore.js";
+import renderChats from "../../renderChats.js";
 
 
 export default function handlerAddChatSubmit(options: Options) {
@@ -14,6 +15,7 @@ export default function handlerAddChatSubmit(options: Options) {
         const addChatPopupElement: Popup = getElementFromStore(store, "chatsProps", "add_chat");
         console.log(addChatPopupElement)
         if (addChatPopupElement !== null) addChatPopupElement.hide();
+        renderChats();
       } else {
         const obj = JSON.parse(data.response);
         return obj.reason;
