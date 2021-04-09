@@ -11,9 +11,7 @@ export default function handlerAddChatSubmit(options: Options) {
     .createChat(options)
     .then((data) => {
       if (data.status === 200) {
-        console.log(store)
         const addChatPopupElement: Popup = getElementFromStore(store, "chatsProps", "add_chat");
-        console.log(addChatPopupElement)
         if (addChatPopupElement !== null) addChatPopupElement.hide();
         renderChats();
       } else {
