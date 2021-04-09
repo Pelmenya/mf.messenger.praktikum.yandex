@@ -3,7 +3,6 @@ import { currentUser } from "../../../../const/objects/currentUser.js";
 import { Options } from "../../../../types/Options.js";
 import { usersAPI } from "../../../api/UsersAPI.js";
 import getCurrentUser from "../../getCurrentUser.js";
-import setAvatarField from "../../setAvatarField.js";
 
 export default function handlerEditUserDataSubmit(options: Options) {
   return usersAPI.putUserProfile(options).then((data) => {
