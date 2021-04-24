@@ -5,7 +5,7 @@ export const chatSelected: Template = {
      '<section class="messages-list">\
         <header class="messages-list__header">\
           <div class="messages-list__wrap-row messages-list__align-center">\
-            <img class="messages-list__avatar" src="./images/Ellipse.jpg" alt="<%=title%>">\
+            <div class="messages-list__avatar"></div>\
             <p class="messages-list__name"><%=title%></p>\
           </div> \
           <button class="messages-list__settings" type="button">\
