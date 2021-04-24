@@ -17,6 +17,12 @@ import MyAccountPasswordPage from "./classes/MyAccountPasswordPage.js";
 import SignInPage from "./classes/SignInPage.js";
 import SignUpPage from "./classes/SignUpPage.js";
 
+import "pages-css/index.css";
+import "pages-css/chat.css";
+
+
+
+
 router
   .use(ROUTES.SIGNIN, SignInPage, getDataFromStore("signInProps"))
   .use(ROUTES.SIGNUP, SignUpPage, getDataFromStore("signUpProps"))
