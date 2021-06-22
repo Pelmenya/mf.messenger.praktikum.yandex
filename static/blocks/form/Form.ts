@@ -1,7 +1,13 @@
 import { ERRORS } from "../../src/const/errors.js";
-import FormProps from "../../src/types/FormProps.js";
 import { Nullable } from "../../src/types/Nullable.js";
 import { Options } from "../../src/types/Options.js";
+
+interface FormProps {
+  container: HTMLFormElement;
+  handlerSubmit?: Nullable<Function>;
+  errorLabelClass?: string;
+  inputLabelClass?: string;
+}
 
 export default class Form {
   form: HTMLFormElement;

@@ -19,8 +19,8 @@ import SignUpPage from "./classes/SignUpPage.js";
 
 import "pages-css/index.css";
 import "pages-css/chat.css";
-
-
+import "pages-css/error-page.css";
+import "pages-css/my-account.css";
 
 
 router
@@ -74,3 +74,4 @@ getCurrentUser()
   .catch((err) => console.log(err));
 
 console.log(store);
+

@@ -4,6 +4,7 @@ import { card } from "./card.tmpl.js";
 import { Nullable } from "../../src/types/Nullable.js";
 import getElementFromStore from "../../src/utils/functions/getElementFromStore.js";
 import { store } from "../../src/utils/store/storeObj.js";
+import DataWebSocket from "../../src/utils/classes/DataWebSocket.js";
 
 interface CardProps extends BlockProps {
   title: string;
@@ -11,6 +12,8 @@ interface CardProps extends BlockProps {
   last_message: Nullable<string>;
   unread_count: number;
   id: number;
+  token: Nullable<string>;
+  socket: Nullable<DataWebSocket>;
 }
 
 export default class Card extends Block<CardProps> {
@@ -23,6 +26,7 @@ export default class Card extends Block<CardProps> {
     this.chatNotSelected = getElementFromStore(store, "chatsProps", "chatNotSelected");
     this.chatSelected = getElementFromStore(store, "chatsProps", "chatSelected");
     this.container = null;
+
     this.create();
   }
 
@@ -31,6 +35,10 @@ export default class Card extends Block<CardProps> {
   }
 
   public handlerMouseDownCard = () => {
+    if (this.props.socket !== null)
+      this.props.socket.create();
+
+    console.log(this.props.id);
     this.chatNotSelected.hide();
     this.chatSelected.setProps({
       title: this.props.title,
@@ -41,7 +49,8 @@ export default class Card extends Block<CardProps> {
       title: this.props.title,
       name_chat: this.props.name,
       chatId: this.props.id,
-    }); // со второго раза ?
+    });
+   
     this.chatSelected.show();
     this.chatSelected.addEventListeners();
   };
@@ -55,6 +64,7 @@ export default class Card extends Block<CardProps> {
       });
     }
   };
+
   public addEventListeners = () => {
     if (this.element !== null) {
       this.element.addEventListener("mousedown", this.handlerMouseDownCard);
