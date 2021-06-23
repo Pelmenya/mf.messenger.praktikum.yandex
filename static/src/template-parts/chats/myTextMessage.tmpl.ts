@@ -7,5 +7,5 @@ export const myTextMessage: Template = {
 	<time class="messages-list__time-msg messages-list__time-msg_you" datetime="<%=time%>">\
 	<span class="messages-list__time-msg-check"></span><%=time%>\
 	</time>\
-     </p>'
+     </p>',
 };
