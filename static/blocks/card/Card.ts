@@ -39,6 +39,7 @@ export default class Card extends Block<CardProps> {
 
   public handlerMouseDownCard = () => {
     if (this.props.socket !== null) {
+
       this.chatNotSelected.hide();
 
       this.chatSelected.setProps({
@@ -50,7 +51,7 @@ export default class Card extends Block<CardProps> {
         title: this.props.title,
         name_chat: this.props.name,
         chatId: this.props.id,
-      }); // ?
+      }); // так и не понял, почему со второго рвзв
 
       const messagesContainer = this.chatSelected.element.querySelector(
         ".messages-list__container"
@@ -88,43 +89,17 @@ export default class Card extends Block<CardProps> {
     }
   }
 
+
   public handlerFocusCard = () => {
     if (this.element !== null) this.container = this.element.parentNode;
     this.setNotActiveCards();
   };
 
-  public handlerBlurCard = () => {
-    window.addEventListener("click", (event: any) => {
-      const { path } = event;
-      const arrElements: Array<HTMLElement> = [];
-
-      path.forEach((item: HTMLElement) => {
-        if (item.classList !== undefined) {
-          arrElements.push(item);
-        }
-      });
-
-      const flagRightPanel = arrElements.some((item: HTMLElement) =>
-        item.classList.contains("messages-list")
-      );
-
-      const flagCard = arrElements.some((item: HTMLElement) => item.classList.contains("card"));
-
-      if (flagRightPanel || flagCard) {
-        return;
-      } else {
-        this.setNotActiveCards();
-        this.chatSelected.hide();
-        this.chatNotSelected.show();
-      }
-    });
-  };
 
   public addEventListeners = () => {
     if (this.element !== null) {
       this.element.addEventListener("mousedown", this.handlerMouseDownCard);
       this.element.addEventListener("focus", this.handlerFocusCard, true);
-      this.element.addEventListener("blur", this.handlerBlurCard);
     }
   };
 

@@ -54,7 +54,11 @@ export default class ChatSelected extends Block<ChatSelectedProps> {
 
       if (removeUserBtn !== null && menuUser !== null)
         removeUserBtn.addEventListener("click", () => {
-          const removeUserPopupElement: Popup = getElementFromStore(store, "chatsProps", "remove_user");
+          const removeUserPopupElement: Popup = getElementFromStore(
+            store,
+            "chatsProps",
+            "remove_user"
+          );
           menuUser.classList.toggle("form-window_is-opened");
           removeUserPopupElement.show();
         });
