@@ -2,7 +2,7 @@ import { Template } from "../../types/Template.js";
 
 export const chatSelected: Template = {
   tmpl:
-    '<section class="messages-list">\
+     '<section class="messages-list">\
         <header class="messages-list__header">\
           <div class="messages-list__wrap-row messages-list__align-center">\
             <div class="messages-list__avatar"></div>\
@@ -53,7 +53,7 @@ export const chatSelected: Template = {
           </div>\
           <div class="messages-list__wrap-row messages-list__align-end">\
             <p class="messages-list__text messages-list__text-msg messages-list__text-msg_you">\
-              <time class="messages-list__time-msg messages-list__time-msg_you" datetime="00:24:45"><span class="messages-list__time-msg-check"></span>24:45</time> \
+              <time class="messages-list__time-msg messages-list__time-msg_you" datetime="00:24:45"><span class="messages-list__time-msg-check"></span>24:45</time>\
               Круто!\
             </p>\
           </div>\

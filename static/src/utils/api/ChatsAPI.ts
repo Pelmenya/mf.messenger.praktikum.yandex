@@ -1,7 +1,6 @@
 import HTTPTransport from "../classes/HTTPTransport.js";
 import { URLS_API } from "../../const/urlsAPI.js";
 import { Options } from "../../types/Options.js";
-import { METHOD } from "../../const/methods.js";
 
 const chatsAPIInstance = new HTTPTransport(`${URLS_API.BASE}${URLS_API.CHATS}`);
 
@@ -33,6 +32,3 @@ export default class ChatsAPI {
 
 export const chatsAPI = new ChatsAPI();
 
-chatsAPI.getCountNewMessagesOfChat({ method: METHOD.GET , id: 94 }).then( data =>{
-  console.log(data.response)
-});

@@ -22,6 +22,7 @@ export default function setTokensAndSokets() {
               path: `${URLS_API.WEBSOCKET}${URLS_API.CHATS}/${currentUser.id}/${idChat}/${item.block
                 .props.token}`,
             });
+            item.block.props.socket.create();
           }
         })
         .catch((err) => console.log(err));

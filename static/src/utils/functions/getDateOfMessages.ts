@@ -1,4 +1,4 @@
-export default function getCommonDateOfMessages(str: string): string {
+export default function getDateOfMessages(str: string, full = true): string {
   const strObj = str.split("-");
   const year = strObj[0];
   const month = strObj[1];
@@ -17,5 +17,6 @@ export default function getCommonDateOfMessages(str: string): string {
     "ноября",
     "декабря",
   ];
-  return `${day} ${objMonth[Number(month) - 1]}, ${year}г.`;
+  if (full) return `${day} ${objMonth[Number(month) - 1]} ${year}г.`;
+  else return `${day} ${objMonth[Number(month) - 1]}`;
 }

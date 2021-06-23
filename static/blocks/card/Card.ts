@@ -5,11 +5,15 @@ import { Nullable } from "../../src/types/Nullable.js";
 import getElementFromStore from "../../src/utils/functions/getElementFromStore.js";
 import { store } from "../../src/utils/store/storeObj.js";
 import DataWebSocket from "../../src/utils/classes/DataWebSocket.js";
+import renderOldMessages from "../../src/utils/functions/renderOldMessages.js";
+import clearContainer from "../../src/utils/functions/clearContainer.js";
 
 interface CardProps extends BlockProps {
   title: string;
   name: string;
   last_message: Nullable<string>;
+  datetime: Nullable<string>;
+  date: Nullable<string>;
   unread_count: number;
   id: number;
   token: Nullable<string>;
@@ -26,7 +30,6 @@ export default class Card extends Block<CardProps> {
     this.chatNotSelected = getElementFromStore(store, "chatsProps", "chatNotSelected");
     this.chatSelected = getElementFromStore(store, "chatsProps", "chatSelected");
     this.container = null;
-
     this.create();
   }
 
@@ -35,24 +38,45 @@ export default class Card extends Block<CardProps> {
   }
 
   public handlerMouseDownCard = () => {
-    if (this.props.socket !== null)
-      this.props.socket.create();
+    if (this.props.socket !== null) {
+      this.chatNotSelected.hide();
 
-    console.log(this.props.id);
-    this.chatNotSelected.hide();
-    this.chatSelected.setProps({
-      title: this.props.title,
-      name_chat: this.props.name,
-      chatId: this.props.id,
-    });
-    this.chatSelected.setProps({
-      title: this.props.title,
-      name_chat: this.props.name,
-      chatId: this.props.id,
-    });
-   
-    this.chatSelected.show();
-    this.chatSelected.addEventListeners();
+      this.chatSelected.setProps({
+        title: this.props.title,
+        name_chat: this.props.name,
+        chatId: this.props.id,
+      });
+      this.chatSelected.setProps({
+        title: this.props.title,
+        name_chat: this.props.name,
+        chatId: this.props.id,
+      }); // ?
+
+      const messagesContainer = this.chatSelected.element.querySelector(
+        ".messages-list__container"
+      );
+
+      clearContainer(messagesContainer);
+
+      if (this.props.socket.messages.length > 0) {
+        renderOldMessages(this.props.socket.messages, messagesContainer);
+      }
+
+      this.chatSelected.show();
+      this.chatSelected.addEventListeners();
+
+      messagesContainer.scrollTo({
+        top: Math.max(
+          messagesContainer.scrollHeight,
+          document.documentElement.scrollHeight,
+          messagesContainer.offsetHeight,
+          document.documentElement.offsetHeight,
+          messagesContainer.clientHeight,
+          document.documentElement.clientHeight
+        ),
+        behavior: "smooth",
+      });
+    }
   };
 
   public handlerFocusCard = () => {

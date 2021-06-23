@@ -4,6 +4,7 @@ import ChatNotSelected from "../../template-parts/chats/ChatNotSelected.js";
 import handlerAddChatSubmit from "../../utils/functions/handlers/submits/handlerAddChatSubmit.js";
 import handlerAddUserSubmit from "../../utils/functions/handlers/submits/handlerAddUserSubmit.js";
 import handlerRemoveUserSubmit from "../../utils/functions/handlers/submits/handlerRemoveUserSubmit.js";
+import { MESSAGES } from "../messages.js";
 import { chatsSelectedProps } from "./chatsSelectedProps.js";
 
 export const initalChatsElements = [
@@ -18,6 +19,7 @@ export const initalChatsElements = [
       ],
       displayBlock: "flex",
       name: "chatNotSelected",
+      message: MESSAGES.SELECT_CHAT
     }),
   },
   {

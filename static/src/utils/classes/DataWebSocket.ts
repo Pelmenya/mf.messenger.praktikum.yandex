@@ -37,9 +37,7 @@ export default class DataWebSocket {
     if (this.dataWebSocket !== null) {
       this.dataWebSocket.addEventListener("open", () => {
         if (this.dataWebSocket !== null) {
-          this.dataWebSocket.send(
-            JSON.stringify({ content: `${this.count}`, type: TypeSocketData.GET_OLD })
-          );
+          this.dataWebSocket.send(JSON.stringify({ content: `${this.count}`, type:TypeSocketData.GET_OLD }));
         }
       });
 

@@ -4,7 +4,7 @@ import { Nullable } from "../../types/Nullable.js";
 import Block from "../../utils/classes/Block.js";
 import getElementFromStore from "../../utils/functions/getElementFromStore.js";
 import { store } from "../../utils/store/storeObj.js";
-import { chatSelected } from "./chatSelected.tmpl.js";
+import { chatSelected } from "./chatSelected.base.tmpl.js";
 
 interface ChatSelectedProps extends BlockProps {
   title: string;
