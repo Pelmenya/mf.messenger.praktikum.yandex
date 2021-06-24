@@ -39,7 +39,6 @@ export default class Card extends Block<CardProps> {
 
   public handlerMouseDownCard = () => {
     if (this.props.socket !== null) {
-
       this.chatNotSelected.hide();
 
       this.chatSelected.setProps({
@@ -53,6 +52,7 @@ export default class Card extends Block<CardProps> {
         chatId: this.props.id,
       }); // так и не понял, почему со второго рвзв
 
+      this.chatSelected.create();
       const messagesContainer = this.chatSelected.element.querySelector(
         ".messages-list__container"
       );
@@ -60,7 +60,11 @@ export default class Card extends Block<CardProps> {
       clearContainer(messagesContainer);
 
       if (this.props.socket.messages.length > 0) {
-        renderOldMessages(this.props.socket.messages, messagesContainer);
+        const messages = [
+          ...this.props.socket.messages,
+        ];
+        messages.reverse();
+        renderOldMessages(messages, messagesContainer);
       }
 
       this.chatSelected.show();
@@ -89,12 +93,10 @@ export default class Card extends Block<CardProps> {
     }
   }
 
-
   public handlerFocusCard = () => {
     if (this.element !== null) this.container = this.element.parentNode;
     this.setNotActiveCards();
   };
-
 
   public addEventListeners = () => {
     if (this.element !== null) {
