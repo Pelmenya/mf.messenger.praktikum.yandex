@@ -8,7 +8,6 @@ import renderChats from "../utils/functions/renderChats.js";
 import setEditPasswordFields from "../utils/functions/setEditPasswordFields.js";
 import setEditUserFields from "../utils/functions/setEditUserFields.js";
 import setUserFields from "../utils/functions/setUserFields.js";
-import { store } from "../utils/store/storeObj.js";
 import ChatsPage from "./classes/ChatsPage.js";
 import ErrorPage from "./classes/ErrorPage.js";
 import MyAccountDataPage from "./classes/MyAccountDataPage.js";
@@ -72,6 +71,4 @@ getCurrentUser()
     else router.go(ROUTES.ERROR);
   })
   .catch((err) => console.log(err));
-
-console.log(store);
 

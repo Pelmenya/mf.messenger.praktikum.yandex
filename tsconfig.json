@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "outDir": "./static/dist",
+    "rootDir": "../",
     "target": "es2017",
     "declaration": false,
     "module": "esNext",
@@ -13,7 +14,9 @@
     "strictNullChecks": true,
     "allowUmdGlobalAccess": true,
   },
+  
  "include": [
-    "./static/**/*"
-  ],
+    "./static/**/*",
+    "./static/src/*.spec.ts"
+, "babel-register.js"  ],
 } 

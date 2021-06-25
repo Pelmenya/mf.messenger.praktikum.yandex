@@ -1,7 +1,12 @@
-import PART_OF_MESSAGES from "../../const/consts.js";
+import { PART_OF_MESSAGES } from "../../const/consts.js";
 import { EVENTS } from "../../const/events.js";
-import { TypeSocketData } from "../../const/typeSocketData.js";
+import { TYPE_SOCKET_DATA } from "../../const/typeSocketData.js";
 import { Nullable } from "../../types/Nullable.js";
+import getElementFromStore from "../functions/getElementFromStore.js";
+import renderMessages from "../functions/renderMessages.js";
+import scrollMessagesContainer from "../functions/scrollMessagesContainer.js";
+import { store } from "../store/storeObj.js";
+
 import EventBus from "./Event-Bus.js";
 
 interface DataWebSocketProps {
@@ -13,6 +18,7 @@ export default class DataWebSocket {
   public props: DataWebSocketProps;
   public messages: Array<any>;
   public count: number;
+  public flag: boolean;
   private eventBus: EventBus;
 
   constructor(props: DataWebSocketProps) {
@@ -24,12 +30,13 @@ export default class DataWebSocket {
     this.props = props;
     this.messages = [];
     this.count = 0;
-
+    this.flag = true;
     this.createResource(eventBus);
   }
 
   public create = () => {
     this.dataWebSocket = new WebSocket(this.props.path);
+    this.count = 0;
     this.listen();
   };
 
@@ -37,25 +44,30 @@ export default class DataWebSocket {
     eventBus.on(EVENTS.OPEN_SOCKET, this.openSocket);
     eventBus.on(EVENTS.MESSAGE_SOKET, this.messageSocket);
     eventBus.on(EVENTS.ERROR_SOCKET, this.errorSocket);
+    eventBus.on(EVENTS.CLOSE_SOCKET, this.closeSocket);
   }
 
   public listen() {
     this.eventBus.emit(EVENTS.OPEN_SOCKET);
     this.eventBus.emit(EVENTS.MESSAGE_SOKET);
     this.eventBus.emit(EVENTS.ERROR_SOCKET);
+    this.eventBus.emit(EVENTS.CLOSE_SOCKET);
   }
 
   public closeSocket = () => {
     if (this.dataWebSocket !== null) {
-      this.dataWebSocket.close();
-      this.dataWebSocket = null;
+      this.dataWebSocket.addEventListener("close", (event: CloseEvent) => {
+        if (!event.wasClean) {
+          this.create();
+        }
+      });
     }
   };
 
   public getAllOldMessages = () => {
     if (this.dataWebSocket !== null && this.messages.length === 0) {
       this.dataWebSocket.send(
-        JSON.stringify({ content: `${this.count}`, type: TypeSocketData.GET_OLD })
+        JSON.stringify({ content: `${this.count}`, type: TYPE_SOCKET_DATA.GET_OLD })
       );
     }
   };
@@ -69,18 +81,38 @@ export default class DataWebSocket {
   public messageSocket = () => {
     if (this.dataWebSocket !== null) {
       this.dataWebSocket.addEventListener("message", (event: MessageEvent) => {
-        if (event instanceof MessageEvent) {
-          const data = JSON.parse(event.data);
-          if (data.length < PART_OF_MESSAGES) {
-            this.messages = this.messages.concat(data);
-          } else {
-            this.messages = this.messages.concat(data);
-            this.count = this.count + PART_OF_MESSAGES;
-             if (this.dataWebSocket !== null) {
-              this.dataWebSocket.send(
-                JSON.stringify({ content: `${this.count}`, type: TypeSocketData.GET_OLD })
-              );
+        const data = JSON.parse(event.data);
+        if (this.flag) {
+          if (event instanceof MessageEvent) {
+            if (data.length < PART_OF_MESSAGES) {
+              this.messages = this.messages.concat(data);
+              this.flag = false;
+              this.count = this.count + data.length;
+            } else {
+              this.messages = this.messages.concat(data);
+              this.count = this.count + PART_OF_MESSAGES;
+              if (this.dataWebSocket !== null) {
+                this.dataWebSocket.send(
+                  JSON.stringify({ content: `${this.count}`, type: TYPE_SOCKET_DATA.GET_OLD })
+                );
+              }
             }
+          }
+        } else {
+          if (data.type === TYPE_SOCKET_DATA.TEXT) {
+            const chatSelected = getElementFromStore(store, "chatsProps", "chatSelected");
+            const messagesContainer = chatSelected.element.querySelector(
+              ".messages-list__container"
+            );
+            renderMessages(
+              [
+                data,
+              ],
+              messagesContainer
+            );
+
+            this.messages.unshift(data)
+            scrollMessagesContainer(messagesContainer);
           }
         }
       });

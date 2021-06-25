@@ -5,8 +5,9 @@ import { Nullable } from "../../src/types/Nullable.js";
 import getElementFromStore from "../../src/utils/functions/getElementFromStore.js";
 import { store } from "../../src/utils/store/storeObj.js";
 import DataWebSocket from "../../src/utils/classes/DataWebSocket.js";
-import renderOldMessages from "../../src/utils/functions/renderOldMessages.js";
 import clearContainer from "../../src/utils/functions/clearContainer.js";
+import renderMessages from "../../src/utils/functions/renderMessages.js";
+import scrollMessagesContainer from "../../src/utils/functions/scrollMessagesContainer.js";
 
 interface CardProps extends BlockProps {
   title: string;
@@ -46,18 +47,18 @@ export default class Card extends Block<CardProps> {
         name_chat: this.props.name,
         chatId: this.props.id,
       });
-       this.chatSelected.setProps({
+      this.chatSelected.setProps({
         title: this.props.title,
         name_chat: this.props.name,
         chatId: this.props.id,
-      });  // так и не понял, почему со второго рвзв
+      }); // так и не понял, почему со второго рвзв
 
       this.chatSelected.initFormSendMessage();
-      
 
       const messagesContainer = this.chatSelected.element.querySelector(
         ".messages-list__container"
       );
+
 
       clearContainer(messagesContainer);
 
@@ -65,24 +66,14 @@ export default class Card extends Block<CardProps> {
         const messages = [
           ...this.props.socket.messages,
         ];
+
         messages.reverse();
-        renderOldMessages(messages, messagesContainer);
+        renderMessages(messages, messagesContainer);
       }
 
       this.chatSelected.show();
       this.chatSelected.addEventListeners();
-
-      messagesContainer.scrollTo({
-        top: Math.max(
-          messagesContainer.scrollHeight,
-          document.documentElement.scrollHeight,
-          messagesContainer.offsetHeight,
-          document.documentElement.offsetHeight,
-          messagesContainer.clientHeight,
-          document.documentElement.clientHeight
-        ),
-        behavior: "smooth",
-      });
+      scrollMessagesContainer(messagesContainer);
     }
   };
 
