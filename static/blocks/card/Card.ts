@@ -46,13 +46,15 @@ export default class Card extends Block<CardProps> {
         name_chat: this.props.name,
         chatId: this.props.id,
       });
-      this.chatSelected.setProps({
+       this.chatSelected.setProps({
         title: this.props.title,
         name_chat: this.props.name,
         chatId: this.props.id,
-      }); // так и не понял, почему со второго рвзв
+      });  // так и не понял, почему со второго рвзв
 
-      this.chatSelected.create();
+      this.chatSelected.initFormSendMessage();
+      
+
       const messagesContainer = this.chatSelected.element.querySelector(
         ".messages-list__container"
       );

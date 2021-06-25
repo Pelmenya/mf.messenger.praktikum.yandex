@@ -23,11 +23,12 @@ export default class ChatSelected extends Block<ChatSelectedProps> {
     super(props);
     this.form = null;
     this.card = null;
-    this.create();
+    this.addEventListeners();
+
   }
 
-  public create() {
-    if (this.element !== null) {
+  public initFormSendMessage = () => {
+     if (this.element !== null) {
       const formContainer: Nullable<HTMLFormElement> = this.element.querySelector(
         ".messages-list__form-send"
       );
@@ -43,9 +44,8 @@ export default class ChatSelected extends Block<ChatSelectedProps> {
         });
       }
     }
-    if (this.form !== null) this.form.create();
+    if (this.form !== null) this.form.create(); 
 
-    this.addEventListeners();
   }
 
   public addEventListeners = () => {

@@ -75,8 +75,8 @@ export default class DataWebSocket {
             this.messages = this.messages.concat(data);
           } else {
             this.messages = this.messages.concat(data);
-            this.count = this.count + data.length;
-            if (this.dataWebSocket !== null) {
+            this.count = this.count + PART_OF_MESSAGES;
+             if (this.dataWebSocket !== null) {
               this.dataWebSocket.send(
                 JSON.stringify({ content: `${this.count}`, type: TypeSocketData.GET_OLD })
               );
