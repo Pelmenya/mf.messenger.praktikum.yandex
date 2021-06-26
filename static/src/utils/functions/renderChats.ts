@@ -1,16 +1,16 @@
-import Card from "../../../blocks/card/Card.js";
-import { LIMIT_CHATS, OFFSET_CHATS } from "../../const/consts.js";
-import { ROUTES } from "../../const/routes.js";
-import { Nullable } from "../../types/Nullable.js";
-import { Options } from "../../types/Options.js";
-import { RendersBlocks } from "../../types/RendersBlocks.js";
-import { chatsAPI } from "../api/ChatsAPI.js";
-import { router } from "../classes/Router.js";
-import clearContainer from "./clearContainer.js";
-import getDataFromStore from "./getDataFromStrore.js";
-import getDateOfMessages from "./getDateOfMessages.js";
-import render from "./render.js";
-import setTokensAndSokets from "./setTokensAndSockets.js";
+import Card from "../../../blocks/card/Card";
+import { LIMIT_CHATS, OFFSET_CHATS } from "../../const/consts";
+import { ROUTES } from "../../const/routes";
+import { Nullable } from "../../types/Nullable";
+import { Options } from "../../types/Options";
+import { RendersBlocks } from "../../types/RendersBlocks";
+import { chatsAPI } from "../api/ChatsAPI";
+import { router } from "../classes/Router";
+import clearContainer from "./clearContainer";
+import getDataFromStore from "./getDataFromStrore";
+import getDateOfMessages from "./getDateOfMessages";
+import render from "./render";
+import setTokensAndSokets from "./setTokensAndSockets";
 
 export default function renderChats() {
   chatsAPI

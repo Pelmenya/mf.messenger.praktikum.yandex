@@ -1,4 +1,4 @@
-import ChatSelected from "../../template-parts/chats/ChatSelected.js";
+import ChatSelected from "../../template-parts/chats/ChatSelected";
 
 export const chatsSelectedProps = {
   query: "div .body__container .body__container_is-opened",

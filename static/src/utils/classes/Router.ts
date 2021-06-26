@@ -1,9 +1,9 @@
-import { ROUTES } from "../../const/routes.js";
-import { Nullable } from "../../types/Nullable.js";
-import getCurrentUser from "../functions/getCurrentUser.js";
-import getUrlRoute from "../functions/getUrlRoute.js";
-import isDataEmptyInStore from "../functions/isDataEmptyInStore.js";
-import Route from "./Route.js";
+import { ROUTES } from "../../const/routes";
+import { Nullable } from "../../types/Nullable";
+import getCurrentUser from "../functions/getCurrentUser";
+import getUrlRoute from "../functions/getUrlRoute";
+import isDataEmptyInStore from "../functions/isDataEmptyInStore";
+import Route from "./Route";
 
 export default class Router {
   private rootQuery: string;

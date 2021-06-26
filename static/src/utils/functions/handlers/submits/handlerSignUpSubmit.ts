@@ -1,8 +1,8 @@
-import { currentUser } from "../../../../const/objects/currentUser.js";
-import { Options } from "../../../../types/Options.js";
-import { authAPI } from "../../../api/AuthAPI.js";
-import getCurrentUser from "../../getCurrentUser.js";
-import renderChats from "../../renderChats.js";
+import { currentUser } from "../../../../const/objects/currentUser";
+import { Options } from "../../../../types/Options";
+import { authAPI } from "../../../api/AuthAPI";
+import getCurrentUser from "../../getCurrentUser";
+import renderChats from "../../renderChats";
 
 export default function handlerSignUpSubmit(options: Options) {
   return authAPI.signup(options).then((data) => {

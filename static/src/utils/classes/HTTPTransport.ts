@@ -1,6 +1,6 @@
-import queryString from "../functions/getString.js";
-import { METHOD } from "../../const/methods.js";
-import { Options } from "../../types/Options.js";
+import queryString from "../functions/getString";
+import { METHOD } from "../../const/methods";
+import { Options } from "../../types/Options";
 
 type OptionsWithoutMethod = Omit<Options, "method">;
 

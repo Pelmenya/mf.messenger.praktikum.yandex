@@ -1,7 +1,7 @@
-import { TYPE_SOCKET_DATA } from "../../const/typeSocketData.js";
-import MyTextMessage from "../../template-parts/chats/MyTextMessage.js";
-import TalkerTextMessage from "../../template-parts/chats/TalkerTextMessage.js";
-import getDataFromStore from "./getDataFromStrore.js";
+import { TYPE_SOCKET_DATA } from "../../const/typeSocketData";
+import MyTextMessage from "../../template-parts/chats/MyTextMessage";
+import TalkerTextMessage from "../../template-parts/chats/TalkerTextMessage";
+import getDataFromStore from "./getDataFromStrore";
 
 export default function renderMessages(messages: Array<any>, container: HTMLElement) {
   const userId = getDataFromStore("currentUser").id;

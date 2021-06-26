@@ -1,6 +1,6 @@
-import { URLS_API } from "../../const/urlsAPI.js";
-import { Options } from "../../types/Options.js";
-import HTTPTransport from "../classes/HTTPTransport.js";
+import { URLS_API } from "../../const/urlsAPI";
+import { Options } from "../../types/Options";
+import HTTPTransport from "../classes/HTTPTransport";
 
 const usersAPIInstance = new HTTPTransport(`${URLS_API.BASE}${URLS_API.USER}`);
 

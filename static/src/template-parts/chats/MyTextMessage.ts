@@ -1,6 +1,7 @@
-import BlockProps from "../../types/BlockProps.js";
-import Block from "../../utils/classes/Block.js";
-import { myTextMessage } from "./myTextMessage.tmpl.js";
+import BlockProps from "../../types/BlockProps";
+import Block from "../../utils/classes/Block";
+import { myTextMessage } from "./myTextMessage.tmpl";
+import _ from "lodash";
 
 interface MyTextMessageProps extends BlockProps{
   message: string;

@@ -1,13 +1,14 @@
-import Block from "../../src/utils/classes/Block.js";
-import BlockProps from "../../src/types/BlockProps.js";
-import { card } from "./card.tmpl.js";
-import { Nullable } from "../../src/types/Nullable.js";
-import getElementFromStore from "../../src/utils/functions/getElementFromStore.js";
-import { store } from "../../src/utils/store/storeObj.js";
-import DataWebSocket from "../../src/utils/classes/DataWebSocket.js";
-import clearContainer from "../../src/utils/functions/clearContainer.js";
-import renderMessages from "../../src/utils/functions/renderMessages.js";
-import scrollMessagesContainer from "../../src/utils/functions/scrollMessagesContainer.js";
+import Block from "../../src/utils/classes/Block";
+import BlockProps from "../../src/types/BlockProps";
+import { card } from "./card.tmpl";
+import { Nullable } from "../../src/types/Nullable";
+import getElementFromStore from "../../src/utils/functions/getElementFromStore";
+import { store } from "../../src/utils/store/storeObj";
+import DataWebSocket from "../../src/utils/classes/DataWebSocket";
+import clearContainer from "../../src/utils/functions/clearContainer";
+import renderMessages from "../../src/utils/functions/renderMessages";
+import scrollMessagesContainer from "../../src/utils/functions/scrollMessagesContainer";
+import _ from "lodash";
 
 interface CardProps extends BlockProps {
   title: string;

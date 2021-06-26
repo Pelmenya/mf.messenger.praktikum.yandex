@@ -1,8 +1,8 @@
-import { ERRORS } from "../../../../const/errors.js";
-import { MESSAGES } from "../../../../const/messages.js";
-import { TYPE_SOCKET_DATA } from "../../../../const/typeSocketData.js";
-import { Options } from "../../../../types/Options.js";
-import DataWebSocket from "../../../classes/DataWebSocket.js";
+import { ERRORS } from "../../../../const/errors";
+import { MESSAGES } from "../../../../const/messages";
+import { TYPE_SOCKET_DATA } from "../../../../const/typeSocketData";
+import { Options } from "../../../../types/Options";
+import DataWebSocket from "../../../classes/DataWebSocket";
 
 export default function handlerSendMessageSubmit(options: Options, socket: DataWebSocket) {
   return new Promise((res, rej) => {

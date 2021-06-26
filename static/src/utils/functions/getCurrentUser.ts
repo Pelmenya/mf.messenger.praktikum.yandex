@@ -1,4 +1,4 @@
-import { authAPI } from "../api/AuthAPI.js";
+import { authAPI } from "../api/AuthAPI";
 
 export default function getCurrentUser() {
   return authAPI

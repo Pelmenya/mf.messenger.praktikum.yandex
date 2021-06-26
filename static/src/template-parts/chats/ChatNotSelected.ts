@@ -1,6 +1,7 @@
-import BlockProps from "../../types/BlockProps.js";
-import Block from "../../utils/classes/Block.js";
-import { chatNotSelected } from "./chatNotSelected.tmpl.js";
+import BlockProps from "../../types/BlockProps";
+import Block from "../../utils/classes/Block";
+import { chatNotSelected } from "./chatNotSelected.tmpl";
+import _ from "lodash";
 
 interface ChatNotSelectedProps extends BlockProps{
   message: string;

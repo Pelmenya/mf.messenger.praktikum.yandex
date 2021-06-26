@@ -1,6 +1,6 @@
-import { ERRORS } from "../../src/const/errors.js";
-import { Nullable } from "../../src/types/Nullable.js";
-import { Options } from "../../src/types/Options.js";
+import { ERRORS } from "../../src/const/errors";
+import { Nullable } from "../../src/types/Nullable";
+import { Options } from "../../src/types/Options";
 
 interface FormProps {
   container: HTMLFormElement;

@@ -1,7 +1,7 @@
-import HTTPTransport from "../classes/HTTPTransport.js";
-import { Options } from "../../types/Options.js";
-import { METHOD } from "../../const/methods.js";
-import { URLS_API } from "../../const/urlsAPI.js";
+import HTTPTransport from "../classes/HTTPTransport";
+import { Options } from "../../types/Options";
+import { METHOD } from "../../const/methods";
+import { URLS_API } from "../../const/urlsAPI";
 
 const authAPIInstance = new HTTPTransport(`${URLS_API.BASE}${URLS_API.AUTH}`);
 

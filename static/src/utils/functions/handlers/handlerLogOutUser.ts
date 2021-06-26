@@ -1,7 +1,7 @@
-import { currentUser } from "../../../const/objects/currentUser.js";
-import { ROUTES } from "../../../const/routes.js";
-import { authAPI } from "../../api/AuthAPI.js";
-import { router } from "../../classes/Router.js";
+import { currentUser } from "../../../const/objects/currentUser";
+import { ROUTES } from "../../../const/routes";
+import { authAPI } from "../../api/AuthAPI";
+import { router } from "../../classes/Router";
 
 export default function handlerLogOutUser() {
   return authAPI

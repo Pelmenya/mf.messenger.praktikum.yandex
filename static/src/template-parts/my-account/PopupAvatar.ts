@@ -1,14 +1,14 @@
-import { popupAvatar } from "./popup-avatar.tmpl.js";
-import Popup, {PopupAvatarProps } from "../../../blocks/popup/Popup.js";
-import { Nullable } from "../../types/Nullable.js";
-import { usersAPI } from "../../utils/api/UsersAPI.js";
-import { Options } from "../../types/Options.js";
-import getCurrentUser from "../../utils/functions/getCurrentUser.js";
-import { currentUser } from "../../const/objects/currentUser.js";
-import getElementFromStore from "../../utils/functions/getElementFromStore.js";
-import { store } from "../../utils/store/storeObj.js";
-import { URLS_API } from "../../const/urlsAPI.js";
-
+import { popupAvatar } from "./popup-avatar.tmpl";
+import Popup, {PopupAvatarProps } from "../../../blocks/popup/Popup";
+import { Nullable } from "../../types/Nullable";
+import { usersAPI } from "../../utils/api/UsersAPI";
+import { Options } from "../../types/Options";
+import getCurrentUser from "../../utils/functions/getCurrentUser";
+import { currentUser } from "../../const/objects/currentUser";
+import getElementFromStore from "../../utils/functions/getElementFromStore";
+import { store } from "../../utils/store/storeObj";
+import { URLS_API } from "../../const/urlsAPI";
+import _ from "lodash";
 
 
 export default class PopupAvatar extends Popup {

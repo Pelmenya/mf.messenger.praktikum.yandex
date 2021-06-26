@@ -1,9 +1,9 @@
-import Popup from "../../../../../blocks/popup/Popup.js";
-import { Options } from "../../../../types/Options.js";
-import { chatsAPI } from "../../../api/ChatsAPI.js";
-import { store } from "../../../store/storeObj.js";
-import getElementFromStore from "../../getElementFromStore.js";
-import renderChats from "../../renderChats.js";
+import Popup from "../../../../../blocks/popup/Popup";
+import { Options } from "../../../../types/Options";
+import { chatsAPI } from "../../../api/ChatsAPI";
+import { store } from "../../../store/storeObj";
+import getElementFromStore from "../../getElementFromStore";
+import renderChats from "../../renderChats";
 
 
 export default function handlerAddChatSubmit(options: Options) {

@@ -1,14 +1,15 @@
-import BlockProps from "../../types/BlockProps.js";
-import Block from "../../utils/classes/Block.js";
-import { router } from "../../utils/classes/Router.js";
-import { ROUTES } from "../../const/routes.js";
-import getElementFromStore from "../../utils/functions/getElementFromStore.js";
-import { store } from "../../utils/store/storeObj.js";
-import { Nullable } from "../../types/Nullable.js";
-import Popup from "../../../blocks/popup/Popup.js";
-import setUserFields from "../../utils/functions/setUserFields.js";
-import { chatsPage } from "./chatsPage.tmpl.js";
-import clearContainer from "../../utils/functions/clearContainer.js";
+import BlockProps from "../../types/BlockProps";
+import Block from "../../utils/classes/Block";
+import { router } from "../../utils/classes/Router";
+import { ROUTES } from "../../const/routes";
+import getElementFromStore from "../../utils/functions/getElementFromStore";
+import { store } from "../../utils/store/storeObj";
+import { Nullable } from "../../types/Nullable";
+import Popup from "../../../blocks/popup/Popup";
+import setUserFields from "../../utils/functions/setUserFields";
+import { chatsPage } from "./chatsPage.tmpl";
+import clearContainer from "../../utils/functions/clearContainer";
+import _ from "lodash";
 
 export default class ChatsPage extends Block<BlockProps> {
   constructor(props: BlockProps) {

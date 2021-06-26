@@ -1,13 +1,13 @@
-import { PART_OF_MESSAGES } from "../../const/consts.js";
-import { EVENTS } from "../../const/events.js";
-import { TYPE_SOCKET_DATA } from "../../const/typeSocketData.js";
-import { Nullable } from "../../types/Nullable.js";
-import getElementFromStore from "../functions/getElementFromStore.js";
-import renderMessages from "../functions/renderMessages.js";
-import scrollMessagesContainer from "../functions/scrollMessagesContainer.js";
-import { store } from "../store/storeObj.js";
+import { PART_OF_MESSAGES } from "../../const/consts";
+import { EVENTS } from "../../const/events";
+import { TYPE_SOCKET_DATA } from "../../const/typeSocketData";
+import { Nullable } from "../../types/Nullable";
+import getElementFromStore from "../functions/getElementFromStore";
+import renderMessages from "../functions/renderMessages";
+import scrollMessagesContainer from "../functions/scrollMessagesContainer";
+import { store } from "../store/storeObj";
 
-import EventBus from "./Event-Bus.js";
+import EventBus from "./Event-Bus";
 
 interface DataWebSocketProps {
   path: string;
