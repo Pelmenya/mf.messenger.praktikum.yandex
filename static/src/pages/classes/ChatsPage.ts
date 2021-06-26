@@ -1,6 +1,5 @@
 import BlockProps from "../../types/BlockProps.js";
 import Block from "../../utils/classes/Block.js";
-import { chats } from "../../template-parts/chats/chats.tmpl.js";
 import { router } from "../../utils/classes/Router.js";
 import { ROUTES } from "../../const/routes.js";
 import getElementFromStore from "../../utils/functions/getElementFromStore.js";
@@ -8,7 +7,8 @@ import { store } from "../../utils/store/storeObj.js";
 import { Nullable } from "../../types/Nullable.js";
 import Popup from "../../../blocks/popup/Popup.js";
 import setUserFields from "../../utils/functions/setUserFields.js";
-
+import { chatsPage } from "./chatsPage.tmpl.js";
+import clearContainer from "../../utils/functions/clearContainer.js";
 
 export default class ChatsPage extends Block<BlockProps> {
   constructor(props: BlockProps) {
@@ -24,6 +24,23 @@ export default class ChatsPage extends Block<BlockProps> {
       const createChartBtn: Nullable<HTMLButtonElement> = this.element.querySelector(
         ".chats__nav-btn_create"
       );
+      const chatsHeader: Nullable<HTMLButtonElement> = this.element.querySelector(".chats__header");
+
+      if (chatsHeader !== null) {
+        chatsHeader.addEventListener("click", (event: Event) => {
+          if (event.target instanceof HTMLElement) {
+            const chatNotSelected = getElementFromStore(store, "chatsProps", "chatNotSelected");
+            const chatSelected = getElementFromStore(store, "chatsProps", "chatSelected");
+            const messagesContainer = chatSelected.element.querySelector(
+              ".messages-list__container"
+            );
+            clearContainer(messagesContainer);
+            chatSelected.hide();
+            chatNotSelected.show();
+          }
+        });
+      }
+
       if (createChartBtn !== null) {
         getElementFromStore(store, "chatsProps", "add_chat");
         createChartBtn.addEventListener("click", () => {
@@ -44,6 +61,6 @@ export default class ChatsPage extends Block<BlockProps> {
   };
 
   render() {
-    return _.template(chats.tmpl)(this.props);
+    return _.template(chatsPage.tmpl)(this.props);
   }
 }

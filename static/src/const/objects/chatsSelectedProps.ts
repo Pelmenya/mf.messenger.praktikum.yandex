@@ -11,8 +11,8 @@ export const chatsSelectedProps = {
     ],
     displayBlock: "flex",
     name: "chatSelected",
-    title: "",
-    name_chat: "",
+    title: " ",
+    name_chat: " ",
     chatId: 0,
   }),
 };

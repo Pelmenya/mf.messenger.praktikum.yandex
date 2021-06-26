@@ -13,7 +13,7 @@ export const card: Template = {
         <div class="card__wrap-col card__info">\
           <div class=card__trash></div>\
           <div class="card__number-message"><span class="card__number-message-text"><%=unread_count%></span></div>\
-          <time class="card__time" datetime="00:24:45">24:45</time>\
+          <time class="card__time" datetime="<%=datetime%>"><%=date%></time>\
         </div>\
       </div>\
     <hr class="chats-list__spliter">',
