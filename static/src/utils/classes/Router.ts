@@ -37,7 +37,6 @@ export default class Router {
             this.onRoute(getUrlRoute(event.currentTarget));
           }
       } else {
-        console.log(routeUrl);
         if (routeUrl === ROUTES.SIGNIN) this.onRoute(ROUTES.SIGNIN);
         else if (routeUrl === ROUTES.SIGNUP) {
           this.onRoute(ROUTES.SIGNUP);
@@ -57,6 +56,7 @@ export default class Router {
   private onRoute(pathname: string) {
     const route = this.getRoute(pathname);
     if (!route) {
+      this.go(ROUTES.ERROR);
       return;
     }
 
