@@ -8,9 +8,10 @@
     "build": "tsc --project ./tsconfig.json --watch",
     "build-net": "tsc --build tsconfig.json",
     "cleanup": "rm -rf .cache dist",
-    "build-bundle": "./node_modules/.bin/parcel static/index.html",
+    "build-bundle": "parcel static/index.html",
     "dev": "npm run cleanup && npm run build-bundle",
-    "test": "./node_modules/.bin/mocha -r jsdom-global/register"
+    "test": "mocha -r jsdom-global/register",
+    "deploy": "npm run build-net && npm run build-bundle"
   },
   "repository": {
     "type": "git",
@@ -48,8 +49,8 @@
   },
   "dependencies": {
     "@types/lodash": "4.14.168",
-    "cors": "^2.8.5",
+    "cors": "2.8.5",
     "lodash": "4.17.21",
-    "xmlhttprequest": "^1.8.0"
+    "xmlhttprequest": "1.8.0"
   }
 }
