@@ -29,7 +29,7 @@ export default class PopupAvatar extends Popup {
             const form = new FormData(formContainer);
 
             usersAPI.putUserAvatar({ data: form } as Options).then((data) => {
-              if (data.status === 200)
+              if (data.status >= 200 && data.status <= 299)
                 getCurrentUser().then((data) => {
                   if (data !== null) {
                     Object.assign(currentUser, data);

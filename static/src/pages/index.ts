@@ -21,7 +21,6 @@ import "pages-css/chat.css";
 import "pages-css/error-page.css";
 import "pages-css/my-account.css";
 
-
 router
   .use(ROUTES.SIGNIN, SignInPage, getDataFromStore("signInProps"))
   .use(ROUTES.SIGNUP, SignUpPage, getDataFromStore("signUpProps"))
@@ -70,6 +69,4 @@ getCurrentUser()
     else if (routeUrl === ROUTES.SIGNUP) router.go(ROUTES.SIGNUP);
     else router.go(ROUTES.ERROR);
   })
-  .catch((err) => console.log(err));
-
-
+  .catch((err) => alert(err));

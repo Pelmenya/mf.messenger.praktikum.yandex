@@ -10,8 +10,7 @@
     "cleanup": "rm -rf .cache dist",
     "build-bundle": "parcel static/index.html",
     "dev": "npm run cleanup && npm run build-bundle",
-    "test": "mocha -r jsdom-global/register",
-    "deploy": "npm run build-net && npm run build-bundle"
+    "test": "mocha -r jsdom-global/register"
   },
   "repository": {
     "type": "git",

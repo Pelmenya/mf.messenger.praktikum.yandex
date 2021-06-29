@@ -5,12 +5,11 @@ import { store } from "../../../store/storeObj";
 import getElementFromStore from "../../getElementFromStore";
 import renderChats from "../../renderChats";
 
-
 export default function handlerAddChatSubmit(options: Options) {
   return chatsAPI
     .createChat(options)
     .then((data) => {
-      if (data.status === 200) {
+      if (data.status >= 200 && data.status <= 299) {
         const addChatPopupElement: Popup = getElementFromStore(store, "chatsProps", "add_chat");
         if (addChatPopupElement !== null) addChatPopupElement.hide();
         renderChats();
@@ -19,5 +18,5 @@ export default function handlerAddChatSubmit(options: Options) {
         return obj.reason;
       }
     })
-    .catch((err) => console.log(err));
+    .catch((err) => alert(err));
 }
