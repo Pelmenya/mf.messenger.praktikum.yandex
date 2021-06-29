@@ -1,7 +1,7 @@
 import { currentUser } from "../../../const/objects/currentUser";
+import { router } from "../../../const/objects/router";
 import { ROUTES } from "../../../const/routes";
 import { authAPI } from "../../api/AuthAPI";
-import { router } from "../../classes/Router";
 
 export default function handlerLogOutUser() {
   return authAPI

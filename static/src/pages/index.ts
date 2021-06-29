@@ -1,6 +1,5 @@
 import { currentUser } from "../const/objects/currentUser";
 import { ROUTES } from "../const/routes";
-import { router } from "../utils/classes/Router";
 import getCurrentUser from "../utils/functions/getCurrentUser";
 import getDataFromStore from "../utils/functions/getDataFromStrore";
 import getUrlRoute from "../utils/functions/getUrlRoute";
@@ -15,6 +14,7 @@ import MyAccountPage from "./classes/MyAccountPage";
 import MyAccountPasswordPage from "./classes/MyAccountPasswordPage";
 import SignInPage from "./classes/SignInPage";
 import SignUpPage from "./classes/SignUpPage";
+import { router } from "../const/objects/router";
 
 import "pages-css/index.css";
 import "pages-css/chat.css";

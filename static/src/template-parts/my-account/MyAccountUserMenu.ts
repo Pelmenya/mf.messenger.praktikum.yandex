@@ -1,12 +1,12 @@
 import { ROUTES } from "../../const/routes";
 import BlockProps from "../../types/BlockProps";
 import Block from "../../utils/classes/Block";
-import { router } from "../../utils/classes/Router";
 import handlerLogOutUser from "../../utils/functions/handlers/handlerLogOutUser";
 import setEditPasswordFields from "../../utils/functions/setEditPasswordFields";
 import setEditUserFields from "../../utils/functions/setEditUserFields";
 import { myAccountUserMenu } from "./my-account-user-menu.tmpl";
 import _ from "lodash";
+import { router } from "../../const/objects/router";
 
 export default class MyAccountUserMenu extends Block<BlockProps> {
   constructor(props: BlockProps) {

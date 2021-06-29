@@ -1,7 +1,7 @@
 import Button from "../../../blocks/button/Button";
 import { PATTERNS } from "../regex";
-import { router } from "../../utils/classes/Router";
 import { handlerSignUpPage } from "../../utils/functions/handlers/pages/handlerSignUpPage";
+import { router } from "./router";
 
 export const signUpProps = {
   tagNameBlock: "main",
