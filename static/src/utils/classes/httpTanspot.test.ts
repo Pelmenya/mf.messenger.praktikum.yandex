@@ -1,7 +1,8 @@
-import { expect } from "chai";
+import { assert, expect } from "chai";
 import queryString from "../functions/getString";
 import { METHOD } from "../../const/methods";
 import { Options } from "../../types/Options";
+import "@babel/polyfill";
 
 type OptionsWithoutMethod = Omit<Options, "method">;
 
@@ -68,69 +69,66 @@ export default class HTTPTransport {
 }
 
 describe("Проверяем модуль отправки запросов к серверу", () => {
-  it('При вызове метода GET возвращается от сервера объект { status: "success", message: "Welcome To Testing API" } и статус 200', () => {
+  function requestTest() {
     const httpTransport = new HTTPTransport("http://localhost:3000");
-    let response: object;
-    let status: number;
-    httpTransport
-      .get("/get")
-      .then((data: any) => {
-        response = JSON.parse(data.responseText);
-        status = data.status;
-        expect(response).to.deep.equal({ status: "success", message: "Welcome To Testing API" });
-        expect(status).to.eq(200);
-      })
-      .catch((err: any) => console.log(err.message));
+    return httpTransport.get("/get", {} as Options);
+  }
+  it('При вызове метода GET возвращается от сервера объект { status: "success", message: "Welcome To Testing API" } и статус 200', async () => {
+    return requestTest().then((data) => {
+      const response = JSON.parse(data.responseText);
+      console.log(response);
+      const status = data.status;
+      expect(response).deep.equal({ status: "success", message: "Welcome To Testing API" });
+      assert.equal(status, 200);
+    });
   });
 });
 
 describe("Проверяем модуль отправки запросов к серверу", () => {
-  it('При вызове метода POST возвращается от сервера объект { status: "success", message: "Ok" } и статус 200', () => {
+  function requestTest() {
     const httpTransport = new HTTPTransport("http://localhost:3000");
-    let response: object;
-    let status: number;
-    httpTransport
-      .post("/post", {}  as Options)
-      .then((data: any) => {
-        response = JSON.parse(data.responseText);
-        status = data.status;
-        expect(response).to.deep.equal({ status: "success", result: "Ок" });
-        expect(status).to.eq(200);
-      })
-      .catch((err: any) => console.log(err.message));
+    return httpTransport.post("/post", {} as Options);
+  }
+  it('При вызове метода POST возвращается от сервера объект { status: "success", message: "Ok" } и статус 200', async () => {
+    return requestTest().then((data) => {
+      const response = JSON.parse(data.responseText);
+      console.log(response);
+      const status = data.status;
+      expect(response).deep.equal({ status: "success", message: "Ok" });
+      assert.equal(status, 200);
+    });
   });
 });
 
 describe("Проверяем модуль отправки запросов к серверу", () => {
-  it('При вызове метода DELETE возвращается от сервера объект { status: "success", message: "Ok" } и статус 200', () => {
+  function requestTest() {
     const httpTransport = new HTTPTransport("http://localhost:3000");
-    let response: object;
-    let status: number;
-    httpTransport
-      .delete("/delete", {}  as Options)
-      .then((data: any) => {
-        response = JSON.parse(data.responseText);
-        status = data.status;
-        expect(response).to.deep.equal({ status: "success", result: "Ок" });
-        expect(status).to.eq(200);
-      })
-      .catch((err: any) => console.log(err.message));
+    return httpTransport.delete("/delete", {} as Options);
+  }
+
+  it('При вызове метода DELETE возвращается от сервера объект { status: "success", message: "Ok" } и статус 200', async () => {
+    return requestTest().then((data) => {
+      const response = JSON.parse(data.responseText);
+      console.log(response);
+      const status = data.status;
+      expect(response).deep.equal({ status: "success", message: "Ok" });
+      assert.equal(status, 200);
+    });
   });
 });
 
 describe("Проверяем модуль отправки запросов к серверу", () => {
-  it('При вызове метода PUT возвращается от сервера объект { status: "success", message: "Ok" } и статус 200', () => {
+  function requestTest() {
     const httpTransport = new HTTPTransport("http://localhost:3000");
-    let response: object;
-    let status: number;
-    httpTransport
-      .put("/put", {data:{x:1}}  as Options)
-      .then((data: any) => {
-        response = JSON.parse(data.responseText);
-        status = data.status;
-        expect(response).to.deep.equal({ status: "success", result: "Ок" });
-        expect(status).to.eq(200);
-      })
-      .catch((err: any) => console.log(err.message));
+    return httpTransport.put("/put", {} as Options);
+  }
+  it('При вызове метода PUT возвращается от сервера объект { status: "success", message: "Ok" } и статус 200', async () => {
+    return requestTest().then((data) => {
+      const response = JSON.parse(data.responseText);
+      console.log(response);
+      const status = data.status;
+      expect(response).deep.equal({ status: "success", message: "Ok" });
+      assert.equal(status, 200);
+    });
   });
 });

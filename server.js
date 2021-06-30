@@ -22,7 +22,7 @@ app.get("/get", (req, res) => {
 app.post("/post", (req, res) => {
   res.json({
     status: "success",
-    result: "Ок",
+    message: "Ok",
   });
 });
 
@@ -30,14 +30,14 @@ app.put("/put", (req, res) => {
   console.log(req.body)
   res.json({
     status: "success",
-    result: "Ок",
+    message: "Ok",
   });
 });
 
 app.delete("/delete", (req, res) => {
   res.json({
     status: "success",
-    result: "Ок",
+    message: "Ok",
   });
 });
 
