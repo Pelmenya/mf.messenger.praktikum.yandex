@@ -6,7 +6,6 @@ import DataWebSocket from "../classes/DataWebSocket";
 import getDataFromStore from "./getDataFromStrore";
 
 export default function setTokensAndSokets() {
-
   const chatsProps = getDataFromStore("chatsProps");
   const currentUser = getDataFromStore("currentUser");
 
@@ -25,7 +24,7 @@ export default function setTokensAndSokets() {
             item.block.props.socket.create();
           }
         })
-        .catch((err) => console.log(err));
+        .catch((err) => alert(err));
     }
   });
 }

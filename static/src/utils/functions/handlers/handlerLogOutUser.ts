@@ -1,13 +1,13 @@
 import { currentUser } from "../../../const/objects/currentUser";
+import { router } from "../../../const/objects/router";
 import { ROUTES } from "../../../const/routes";
 import { authAPI } from "../../api/AuthAPI";
-import { router } from "../../classes/Router";
 
 export default function handlerLogOutUser() {
   return authAPI
     .logOut()
     .then((data: any) => {
-      if (data.status === 200) {
+      if (data.status >= 200 && data.status <= 299) {
         Object.assign(currentUser, {
           avatar: null,
           display_name: null,
@@ -21,5 +21,5 @@ export default function handlerLogOutUser() {
         router.go(ROUTES.SIGNIN);
       }
     })
-    .catch((err) => console.log(err));
+    .catch((err) => alert(err));
 }

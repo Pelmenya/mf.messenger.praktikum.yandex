@@ -1,11 +1,11 @@
 import Card from "../../../blocks/card/Card";
 import { LIMIT_CHATS, OFFSET_CHATS } from "../../const/consts";
+import { router } from "../../const/objects/router";
 import { ROUTES } from "../../const/routes";
 import { Nullable } from "../../types/Nullable";
 import { Options } from "../../types/Options";
 import { RendersBlocks } from "../../types/RendersBlocks";
 import { chatsAPI } from "../api/ChatsAPI";
-import { router } from "../classes/Router";
 import clearContainer from "./clearContainer";
 import getDataFromStore from "./getDataFromStrore";
 import getDateOfMessages from "./getDateOfMessages";
@@ -72,5 +72,5 @@ export default function renderChats() {
 
       setTokensAndSokets();
     })
-    .catch((err) => console.log(err));
+    .catch((err) => alert(err));
 }

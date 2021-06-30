@@ -6,7 +6,7 @@ import renderChats from "../../renderChats";
 
 export default function handlerSignInSubmit(options: Options) {
   return authAPI.signin(options).then((data) => {
-    if (data.status === 200) {
+    if (data.status >= 200 && data.status <= 299) {
       renderChats();
       getCurrentUser().then((data) => {
         if (data !== null) {
